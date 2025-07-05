@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>OverLong-Encoding - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="OverLong-Encoding - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/06/23/OverLong-Encoding/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-06-23T08:45:57.556Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="/friends" style="--index: 2">Friends</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-06-23T16:45:57+08:00">
+      June 23, 2025
+    </time>
+    
+
+    <h1 class="title">OverLong-Encoding</h1>
+  </div>
+
+  <div class="content">
+    <p>简单来说就是将原本的是一个字节表示的字符用两个或三个字节来表示</p>
+<h2 id="utf-8编码"><a href="#utf-8编码" class="headerlink" title="utf-8编码"></a>utf-8编码</h2><p>这是unicode字符专属的编码方式，兼容了ascii编码，ascii编码表中所包含的字符在utf-8中编码的字节与在ascii中一样。</p>
+<p>utf-8不同的字符可能对应不同的字节数，utf-8使用1-4个字节表示一个字符</p>
+<h2 id="unicode字符"><a href="#unicode字符" class="headerlink" title="unicode字符"></a>unicode字符</h2><p>为所有字符分配了一个独一无二的编号，称为”码位”(code point)。</p>
+<p>举个例子</p>
+<p>A                        码位:U+0041</p>
+<p>中                       码位:U+4E2D</p>
+<p>😀                      码位:U+1F600</p>
+<h2 id="Byte"><a href="#Byte" class="headerlink" title="Byte"></a>Byte</h2><p>其实byte就是utf-8编码之后的结果，之前我在调试Java程序的时候发现byte数组都是[18,57……]</p>
+<p>这种十进制数的。其实为了方便人类阅读，编译器将原本的二进制给你翻译成了十进制而已，其实byte本质上还是二进制数。</p>
+<p>还有，utf-8编码二进制所对应的数字在0-255，但是呢Java中的byte数组会有负数在里面，例如[-18,57……]</p>
+<p>这是因为java中的byte所对应的二进制数字所对应的十进制数字为-128-127,在utf-8中为254的在Java中就为-2.</p>
+<p>虽说10进制看起来不同，但是二进制所对应的数其实是一样的，比如utf-8中对应的254所说在Java中为-2，但是这两个字符所对应的二进制数字其实是一样的</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>java中一个byte是一个8位二进制数(因为一个byte只能表示-128-127)</p>
+<p>调用逻辑后面再说，现在先讲讲绕过的真正原理</p>
+<p>在ObjectInputStream#readUTFSpan中可以看到</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506191417060.png" alt="屏幕截图 2025-06-18 140242"></p>
+<h3 id="一个字节"><a href="#一个字节" class="headerlink" title="一个字节"></a>一个字节</h3><p>先定义三个int,b1,b2,b3(注意不是byte)</p>
+<p>读取当前在字节数组中的position并赋给b1(8位二进制数)</p>
+<p>将b1右移四位，前面空出来的补0，变成了0000xxxx</p>
+<p>判断b1&gt;&gt;4的值，如果在0-7之间，就对应着这个字符只用了1个字节表示</p>
+<p>Case 7旁边有个注释，为什么b1的第一位肯定为0?</p>
+<p>因为如果是1为第一位，b1&gt;&gt;4就为1xxx，这就大于7了。</p>
+<h3 id="两个字节"><a href="#两个字节" class="headerlink" title="两个字节"></a>两个字节</h3><p>当b1&gt;&gt;4的值为12或13时就会读取两个字节然后经过一定运算得到新的二进制数来表示字符</p>
+<p>Case 13旁边也有注释，说b1开头是110，原理跟case 7那一样的</p>
+<p>给b2复制b1的下一个字节，并将其跟0x80进行的&amp;运算的值进行了一个条件判断</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b2 &amp; <span class="number">0xC0</span> != <span class="number">0x80</span></span><br></pre></td></tr></table></figure>
+
+<p>0xC0的二进制为11000000</p>
+<p>0x80的二进制为10000000</p>
+<p>这个条件判断的意思就是如果b1的开头为110，但是b2开头不为10就报错</p>
+<p>确定了b1和b2各自的开头分别为110，10后给cbuf[cpos++]赋值一个新的数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cbuf[cpos++] = (char) (((b1 &amp; <span class="number">0x1F</span>) &lt;&lt; <span class="number">6</span>) |((b2 &amp; <span class="number">0x3F</span>) &lt;&lt; <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+
+<p>0x1F二进制为11111,与b1进行&amp;运算后表示保留b1后5位的值(因为前三位是固定的)</p>
+<p>然后将后五位的值左移6位，新增的6位补0，即xxxxx000000，因为是int而不是byte，所以可以超过8位</p>
+<p>b2 &amp; 0x3F 表示保留b2后六位</p>
+<p>将这俩数进行或运算，即b2 &amp; 0x3F的值把xxxxx000000后面的6个0给替换了。</p>
+<p>变成了b1后五位+b2后六位</p>
+<p>生成了一个11位的二进制</p>
+<p>但是因为我们要进行绕过的都是类名，而类名都是字母</p>
+<p>而字母都是ascii表中的，前面提到过utf-8是兼容了ascii的。</p>
+<p>而ascii表中的值都是对应0-127的，而0-127都是0xxxxxxx</p>
+<p>所以我要将b1后五位中的前4位都变成0，这样就是一个0xxxxxxx了</p>
+<h3 id="三个字节"><a href="#三个字节" class="headerlink" title="三个字节"></a>三个字节</h3><p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506191417897.png" alt="屏幕截图 2025-06-18 143805"></p>
+<p>需要b1,b2,b3分别以110,10,10开头，理由同case7</p>
+<p>b2为b1下一个字节，b3为b2下一个字节</p>
+<p>if判断就是case14旁边注释的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cbuf[cpos++] = (char) (((b1 &amp; <span class="number">0x0F</span>) &lt;&lt; <span class="number">12</span>) |</span><br><span class="line">                       ((b2 &amp; <span class="number">0x3F</span>) &lt;&lt; <span class="number">6</span>) |</span><br><span class="line">                       ((b3 &amp; <span class="number">0x3F</span>) &lt;&lt; <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+
+<p>这条语句的值为b1后五位+b2后六位+b3后六位</p>
+<p>还是因为字母都是8位二进制数，所以b1后五位+b2前5位都要为0</p>
+<p>举个🌰</p>
+<p>假如要伪造一个j</p>
+<p>j的二进制为01101010</p>
+<p>那我b1要为11000000,b2为10000001,b3为10101010</p>
+<h2 id="Poc"><a href="#Poc" class="headerlink" title="Poc"></a>Poc</h2><p>在序列化时写入类名的方法为</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506191418581.png" alt="屏幕截图 2025-06-18 170757"></p>
+<p>调用它的方法是</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506191418262.png" alt="屏幕截图 2025-06-18 170813"></p>
+<p>所以我们可以重写writeClassDescriptor</p>
+<p>为什么不重写writeNoneProxy呢？</p>
+<p>我的理解是因为是调用ObjectOutputStream来写入数据，如果重写writeNoneProxy的话就要去反射修改ObjectOutputStream中desc对象，而这个对象多半是动态创建的，我如果要调用重写的writeNoneProxy就要去修改创建desc对象的方法，而且desc被引用的次数非常多，我如果将desc换成了它的子类如果有方法调用了desc的protected&#x2F;private方法就坏事了。(我现在水平还是太低了，等以后再回来修改)</p>
+<p>以下是参考文章的作者的poc</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 参考p神：https://mp.weixin.qq.com/s/fcuKNfLXiFxWrIYQPq7OCg</span></span><br><span class="line"><span class="comment"> * 参考1ue：https://t.zsxq.com/17LkqCzk8</span></span><br><span class="line"><span class="comment"> * 实现：参考 OObjectOutputStream# protected void writeClassDescriptor(ObjectStreamClass desc)方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomObjectOutputStream</span> <span class="keyword">extends</span> <span class="title class_">ObjectOutputStream</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CustomObjectOutputStream</span><span class="params">(OutputStream out)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="built_in">super</span>(out);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;Character, <span class="type">int</span>[]&gt; map;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;Character,<span class="type">int</span>[]&gt; bytesMap=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&#x27;.&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc0</span>, <span class="number">0xae</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;;&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc0</span>, <span class="number">0xbb</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;$&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc0</span>, <span class="number">0xa4</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;[&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x9b</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;]&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x9d</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;a&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa1</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;b&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa2</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;c&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa3</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;d&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa4</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;e&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa5</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;f&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa6</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;g&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa7</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;h&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa8</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;i&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xa9</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;j&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xaa</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;k&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xab</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;l&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xac</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;m&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xad</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;n&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xae</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;o&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xaf</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;p&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb0</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;q&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb1</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;r&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb2</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;s&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb3</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;t&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb4</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;u&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb5</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;v&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb6</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;w&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb7</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;x&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb8</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;y&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xb9</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;z&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0xba</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;A&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x81</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;B&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x82</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;C&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x83</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;D&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x84</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;E&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x85</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;F&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x86</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;G&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x87</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;H&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x88</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;I&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x89</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;J&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x8a</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;K&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x8b</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;L&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x8c</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;M&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x8d</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;N&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x8e</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;O&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x8f</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;P&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x90</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;Q&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x91</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;R&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x92</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;S&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x93</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;T&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x94</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;U&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x95</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;V&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x96</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;W&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x97</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;X&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x98</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;Y&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x99</span>&#125;);</span><br><span class="line">        map.put(<span class="string">&#x27;Z&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xc1</span>, <span class="number">0x9a</span>&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        bytesMap.put(<span class="string">&#x27;$&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x80</span>,<span class="number">0xa4</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;.&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x80</span>,<span class="number">0xae</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;;&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x80</span>,<span class="number">0xbb</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;A&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x81</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;B&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x82</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;C&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x83</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;D&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x84</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;E&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x85</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;F&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x86</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;G&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x87</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;H&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x88</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;I&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x89</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;J&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x8a</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;K&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x8b</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;L&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x8c</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;M&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x8d</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;N&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x8e</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;O&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x8f</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;P&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x90</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;Q&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x91</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;R&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x92</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;S&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x93</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;T&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x94</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;U&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x95</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;V&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x96</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;W&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x97</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;X&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x98</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;Y&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x99</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;Z&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x9a</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;[&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x9b</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;]&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0x9d</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;a&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa1</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;b&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa2</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;c&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa3</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;d&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa4</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;e&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa5</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;f&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa6</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;g&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa7</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;h&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa8</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;i&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xa9</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;j&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xaa</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;k&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xab</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;l&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xac</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;m&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xad</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;n&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xae</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;o&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xaf</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;p&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb0</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;q&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb1</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;r&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb2</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;s&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb3</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;t&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb4</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;u&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb5</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;v&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb6</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;w&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb7</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;x&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb8</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;y&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xb9</span>&#125;);</span><br><span class="line">        bytesMap.put(<span class="string">&#x27;z&#x27;</span>, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">0xe0</span>,<span class="number">0x81</span>,<span class="number">0xba</span>&#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">charWritTwoBytes</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="comment">//将name进行overlong Encoding</span></span><br><span class="line">        <span class="type">byte</span>[] bytes=<span class="keyword">new</span> <span class="title class_">byte</span>[name.length() * <span class="number">2</span>];</span><br><span class="line">        <span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line">        StringBuffer str=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; name.length(); i++) &#123;</span><br><span class="line">            <span class="type">int</span>[] bs = map.get(name.charAt(i));</span><br><span class="line">            bytes[k++]= (<span class="type">byte</span>) bs[<span class="number">0</span>];</span><br><span class="line">            bytes[k++]= (<span class="type">byte</span>) bs[<span class="number">1</span>];</span><br><span class="line">            str.append(Integer.toHexString(bs[<span class="number">0</span>])+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            str.append(Integer.toHexString(bs[<span class="number">1</span>])+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(str.toString());</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            writeShort(name.length() * <span class="number">2</span>);</span><br><span class="line">            write(bytes);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">charWriteThreeBytes</span><span class="params">(String name)</span>&#123;</span><br><span class="line">        <span class="comment">//将name进行overlong Encoding</span></span><br><span class="line">        <span class="type">byte</span>[] bytes=<span class="keyword">new</span> <span class="title class_">byte</span>[name.length() * <span class="number">3</span>];</span><br><span class="line">        <span class="type">int</span> k=<span class="number">0</span>;</span><br><span class="line">        StringBuffer str=<span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; name.length(); i++) &#123;</span><br><span class="line">            <span class="type">int</span>[] bs = bytesMap.get(name.charAt(i));</span><br><span class="line">            bytes[k++]= (<span class="type">byte</span>) bs[<span class="number">0</span>];</span><br><span class="line">            bytes[k++]= (<span class="type">byte</span>) bs[<span class="number">1</span>];</span><br><span class="line">            bytes[k++]= (<span class="type">byte</span>) bs[<span class="number">2</span>];</span><br><span class="line">            str.append(Integer.toHexString(bs[<span class="number">0</span>])+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            str.append(Integer.toHexString(bs[<span class="number">1</span>])+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            str.append(Integer.toHexString(bs[<span class="number">2</span>])+<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(str.toString());</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            writeShort(name.length() * <span class="number">3</span>);</span><br><span class="line">            write(bytes);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">writeClassDescriptor</span><span class="params">(ObjectStreamClass desc)</span></span><br><span class="line">            <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> desc.getName();</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">externalizable</span> <span class="operator">=</span> (<span class="type">boolean</span>) getFieldValue(desc, <span class="string">&quot;externalizable&quot;</span>);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">serializable</span> <span class="operator">=</span> (<span class="type">boolean</span>) getFieldValue(desc, <span class="string">&quot;serializable&quot;</span>);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">hasWriteObjectData</span> <span class="operator">=</span> (<span class="type">boolean</span>) getFieldValue(desc, <span class="string">&quot;hasWriteObjectData&quot;</span>);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isEnum</span> <span class="operator">=</span> (<span class="type">boolean</span>) getFieldValue(desc, <span class="string">&quot;isEnum&quot;</span>);</span><br><span class="line">        ObjectStreamField[] fields = (ObjectStreamField[]) getFieldValue(desc, <span class="string">&quot;fields&quot;</span>);</span><br><span class="line">        System.out.println(name);</span><br><span class="line">        <span class="comment">//写入name（jdk原生写入方法）</span></span><br><span class="line"><span class="comment">//        writeUTF(name);</span></span><br><span class="line">        <span class="comment">//写入name(两个字节表示一个字符)</span></span><br><span class="line"><span class="comment">//        charWritTwoBytes(name);</span></span><br><span class="line">        <span class="comment">//写入name(三个字节表示一个字符)</span></span><br><span class="line">        charWriteThreeBytes(name);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        writeLong(desc.getSerialVersionUID());</span><br><span class="line">        <span class="type">byte</span> <span class="variable">flags</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (externalizable) &#123;</span><br><span class="line">            flags |= ObjectStreamConstants.SC_EXTERNALIZABLE;</span><br><span class="line">            <span class="type">Field</span> <span class="variable">protocolField</span> <span class="operator">=</span></span><br><span class="line">                    <span class="literal">null</span>;</span><br><span class="line">            <span class="type">int</span> protocol;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                protocolField = ObjectOutputStream.class.getDeclaredField(<span class="string">&quot;protocol&quot;</span>);</span><br><span class="line">                protocolField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">                protocol = (<span class="type">int</span>) protocolField.get(<span class="built_in">this</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (protocol != ObjectStreamConstants.PROTOCOL_VERSION_1) &#123;</span><br><span class="line">                flags |= ObjectStreamConstants.SC_BLOCK_DATA;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (serializable) &#123;</span><br><span class="line">            flags |= ObjectStreamConstants.SC_SERIALIZABLE;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (hasWriteObjectData) &#123;</span><br><span class="line">            flags |= ObjectStreamConstants.SC_WRITE_METHOD;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (isEnum) &#123;</span><br><span class="line">            flags |= ObjectStreamConstants.SC_ENUM;</span><br><span class="line">        &#125;</span><br><span class="line">        writeByte(flags);</span><br><span class="line"></span><br><span class="line">        writeShort(fields.length);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; fields.length; i++) &#123;</span><br><span class="line">            <span class="type">ObjectStreamField</span> <span class="variable">f</span> <span class="operator">=</span> fields[i];</span><br><span class="line">            writeByte(f.getTypeCode());</span><br><span class="line">            writeUTF(f.getName());</span><br><span class="line">            <span class="keyword">if</span> (!f.isPrimitive()) &#123;</span><br><span class="line">                invoke(<span class="built_in">this</span>, <span class="string">&quot;writeTypeString&quot;</span>, f.getTypeString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">invoke</span><span class="params">(Object object, String methodName, Object... args)</span> &#123;</span><br><span class="line">        <span class="type">Method</span> <span class="variable">writeTypeString</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            writeTypeString = ObjectOutputStream.class.getDeclaredMethod(methodName, String.class);</span><br><span class="line">            writeTypeString.setAccessible(<span class="literal">true</span>);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                writeTypeString.invoke(object, args);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title function_">getFieldValue</span><span class="params">(Object object, String fieldName)</span> &#123;</span><br><span class="line">        Class&lt;?&gt; clazz = object.getClass();</span><br><span class="line">        <span class="type">Field</span> <span class="variable">field</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">value</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            field = clazz.getDeclaredField(fieldName);</span><br><span class="line">            field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">            value = field.get(object);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考:<a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/13372">https://xz.aliyun.com/news/13372</a></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    <a class="next"></a>
+    
+    <a href="/2025/06/23/%E6%B5%85%E5%AD%A6%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title"></h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/friends" class="item">Friends</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

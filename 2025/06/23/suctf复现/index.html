@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>suctf复现 - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="suctf复现 - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/06/23/suctf%E5%A4%8D%E7%8E%B0/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-06-23T08:45:57.556Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="/friends" style="--index: 2">Friends</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-06-23T16:45:57+08:00">
+      June 23, 2025
+    </time>
+    
+
+    <h1 class="title">suctf复现</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="su-blog"><a href="#su-blog" class="headerlink" title="su_blog"></a>su_blog</h2><p>开局有个注册页面，注册后登录</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221323752.png" alt="image-20250622132335694"></p>
+<p>登录的时候有session<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221327892.png" alt="image-20250622132700852"></p>
+<p>在博客的最下方有这样一句话</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221329021.png" alt="image-20250622132910977"></p>
+<p>知道了secret，session是能被爆破出来的，上面的session第一个点符号之前的base64解码出来是{“username”:”用户名“}</p>
+<p>博客诞生事件就是docker创建时间，写个脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">timestamp = <span class="built_in">int</span>(time.time())</span><br><span class="line">starttime = timestamp -<span class="number">300000</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./1.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">dict</span> = &#123;i:hashlib.md5(<span class="built_in">str</span>(i).encode()).hexdigest() <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span> (starttime,timestamp)&#125;</span><br><span class="line">    <span class="keyword">for</span> key,value <span class="keyword">in</span> <span class="built_in">dict</span>.items():</span><br><span class="line">        f.write(<span class="string">f&quot;<span class="subst">&#123;value&#125;</span>\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221439803.png" alt="image-20250622143947667"></p>
+<p>用flask-unsign爆破一下得到secret</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221442240.png" alt="image-20250622144221210"></p>
+<p>伪造cookie<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221444630.png" alt="image-20250622144455552"></p>
+<p>用管理员登录只是多了个管理友链的功能，可以自己添加删除友链，添加友链的url由自己决定，我试了一下，发现好像除了能alert一下没有其他什么用了。</p>
+<p>有个Articles,这里点击文章有一个任意文件读取漏洞，经过测试发现是会把..&#x2F;替换成空</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221504827.png" alt="image-20250622150433770"></p>
+<p>通过&#x2F;proc&#x2F;self&#x2F;cmdline读到启动命令为pythonapp&#x2F;app.py试着找找，成功读到源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> time,os,json,hashlib</span><br><span class="line"><span class="keyword">from</span> pydash <span class="keyword">import</span> set_</span><br><span class="line"><span class="keyword">from</span> waf <span class="keyword">import</span> pwaf,cwaf</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&#x27;SECRET_KEY&#x27;</span>] = hashlib.md5(<span class="built_in">str</span>(<span class="built_in">int</span>(time.time())).encode()).hexdigest()</span><br><span class="line"></span><br><span class="line">users = &#123;<span class="string">&quot;testuser&quot;</span>: <span class="string">&quot;password&quot;</span>&#125;</span><br><span class="line">BASE_DIR = <span class="string">&#x27;/var/www/html/myblog/app&#x27;</span></span><br><span class="line"></span><br><span class="line">articles = &#123;</span><br><span class="line">    <span class="number">1</span>: <span class="string">&quot;articles/article1.txt&quot;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&quot;articles/article2.txt&quot;</span>,</span><br><span class="line">    <span class="number">3</span>: <span class="string">&quot;articles/article3.txt&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">friend_links = [</span><br><span class="line">    &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;bkf1sh&quot;</span>, <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://ctf.org.cn/&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;fushuling&quot;</span>, <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://fushuling.com/&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;yulate&quot;</span>, <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://www.yulate.com/&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;zimablue&quot;</span>, <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://www.zimablue.life/&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;baozongwi&quot;</span>, <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://baozongwi.xyz/&quot;</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">user_data = User()</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">in</span> session:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;blog.html&#x27;</span>, articles=articles, friend_links=friend_links)</span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/login&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        username = request.form[<span class="string">&#x27;username&#x27;</span>]</span><br><span class="line">        password = request.form[<span class="string">&#x27;password&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> username <span class="keyword">in</span> users <span class="keyword">and</span> users[username] == password:</span><br><span class="line">            session[<span class="string">&#x27;username&#x27;</span>] = username</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Invalid credentials&quot;</span>, <span class="number">403</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;login.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/register&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">register</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        username = request.form[<span class="string">&#x27;username&#x27;</span>]</span><br><span class="line">        password = request.form[<span class="string">&#x27;password&#x27;</span>]</span><br><span class="line">        users[username] = password</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;register.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/change_password&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">change_password</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> session:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        old_password = request.form[<span class="string">&#x27;old_password&#x27;</span>]</span><br><span class="line">        new_password = request.form[<span class="string">&#x27;new_password&#x27;</span>]</span><br><span class="line">        confirm_password = request.form[<span class="string">&#x27;confirm_password&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> users[session[<span class="string">&#x27;username&#x27;</span>]] != old_password:</span><br><span class="line">            flash(<span class="string">&quot;Old password is incorrect&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> new_password != confirm_password:</span><br><span class="line">            flash(<span class="string">&quot;New passwords do not match&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            users[session[<span class="string">&#x27;username&#x27;</span>]] = new_password</span><br><span class="line">            flash(<span class="string">&quot;Password changed successfully&quot;</span>, <span class="string">&quot;success&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;change_password.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/friendlinks&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">friendlinks</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> session <span class="keyword">or</span> session[<span class="string">&#x27;username&#x27;</span>] != <span class="string">&#x27;admin&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;friendlinks.html&#x27;</span>, links=friend_links)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/add_friendlink&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_friendlink</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> session <span class="keyword">or</span> session[<span class="string">&#x27;username&#x27;</span>] != <span class="string">&#x27;admin&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    name = request.form.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    url = request.form.get(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> name <span class="keyword">and</span> url:</span><br><span class="line">        friend_links.append(&#123;<span class="string">&quot;name&quot;</span>: name, <span class="string">&quot;url&quot;</span>: url&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;friendlinks&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/delete_friendlink/&lt;int:index&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delete_friendlink</span>(<span class="params">index</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> session <span class="keyword">or</span> session[<span class="string">&#x27;username&#x27;</span>] != <span class="string">&#x27;admin&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="number">0</span> &lt;= index &lt; <span class="built_in">len</span>(friend_links):</span><br><span class="line">        <span class="keyword">del</span> friend_links[index]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;friendlinks&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/article&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article</span>():</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;username&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> session:</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    file_name = request.args.get(<span class="string">&#x27;file&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> file_name:</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;article.html&#x27;</span>, file_name=<span class="string">&#x27;&#x27;</span>, content=<span class="string">&quot;未提供文件名。&quot;</span>)</span><br><span class="line"></span><br><span class="line">    blacklist = [<span class="string">&quot;waf.py&quot;</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">any</span>(blacklisted_file <span class="keyword">in</span> file_name <span class="keyword">for</span> blacklisted_file <span class="keyword">in</span> blacklist):</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;article.html&#x27;</span>, file_name=file_name, content=<span class="string">&quot;大黑阔不许看&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> file_name.startswith(<span class="string">&#x27;articles/&#x27;</span>):</span><br><span class="line">        <span class="keyword">return</span> render_template(<span class="string">&#x27;article.html&#x27;</span>, file_name=file_name, content=<span class="string">&quot;无效的文件路径。&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> file_name <span class="keyword">not</span> <span class="keyword">in</span> articles.values():</span><br><span class="line">        <span class="keyword">if</span> session.get(<span class="string">&#x27;username&#x27;</span>) != <span class="string">&#x27;admin&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> render_template(<span class="string">&#x27;article.html&#x27;</span>, file_name=file_name, content=<span class="string">&quot;无权访问该文件。&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    file_path = os.path.join(BASE_DIR, file_name)</span><br><span class="line">    file_path = file_path.replace(<span class="string">&#x27;../&#x27;</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            content = f.read()</span><br><span class="line">    <span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">        content = <span class="string">&quot;文件未找到。&quot;</span></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        app.logger.error(<span class="string">f&quot;Error reading file <span class="subst">&#123;file_path&#125;</span>: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">        content = <span class="string">&quot;读取文件时发生错误。&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;article.html&#x27;</span>, file_name=file_name, content=content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/Admin&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">admin</span>():</span><br><span class="line">    <span class="keyword">if</span> request.args.get(<span class="string">&#x27;pass&#x27;</span>)!=<span class="string">&quot;SUers&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;nonono&quot;</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            body = request.json</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> body:</span><br><span class="line">                flash(<span class="string">&quot;No JSON data received&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;No JSON data received&quot;</span>&#125;), <span class="number">400</span></span><br><span class="line"></span><br><span class="line">            key = body.get(<span class="string">&#x27;key&#x27;</span>)</span><br><span class="line">            value = body.get(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> key <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> value <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                flash(<span class="string">&quot;Missing required keys: &#x27;key&#x27; or &#x27;value&#x27;&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Missing required keys: &#x27;key&#x27; or &#x27;value&#x27;&quot;</span>&#125;), <span class="number">400</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> pwaf(key):</span><br><span class="line">                flash(<span class="string">&quot;Invalid key format&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Invalid key format&quot;</span>&#125;), <span class="number">400</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> cwaf(value):</span><br><span class="line">                flash(<span class="string">&quot;Invalid value format&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Invalid value format&quot;</span>&#125;), <span class="number">400</span></span><br><span class="line"></span><br><span class="line">            set_(user_data, key, value)</span><br><span class="line"></span><br><span class="line">            flash(<span class="string">&quot;User data updated successfully&quot;</span>, <span class="string">&quot;success&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;User data updated successfully&quot;</span>&#125;), <span class="number">200</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">except</span> json.JSONDecodeError:</span><br><span class="line">            flash(<span class="string">&quot;Invalid JSON data&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Invalid JSON data&quot;</span>&#125;), <span class="number">400</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            flash(<span class="string">f&quot;An error occurred: <span class="subst">&#123;<span class="built_in">str</span>(e)&#125;</span>&quot;</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">f&quot;An error occurred: <span class="subst">&#123;<span class="built_in">str</span>(e)&#125;</span>&quot;</span>&#125;), <span class="number">500</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;admin.html&#x27;</span>, user_data=user_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/logout&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">logout</span>():</span><br><span class="line">    session.pop(<span class="string">&#x27;username&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line">    flash(<span class="string">&quot;You have been logged out.&quot;</span>, <span class="string">&quot;info&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>,port=<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Admin路由下有个原型链污染</p>
+<h2 id="sujava"><a href="#sujava" class="headerlink" title="sujava"></a>sujava</h2><p>我在生成这道题的dockerfile时遇到了一些小差错</p>
+<p>第一是dockerfile明明将同目录下的start.sh复制到容器根目录下了运行容器却说找不到start.sh</p>
+<p>这是因为下载下来的文件在vscode中打开时默认是CRLF换行符(即windows的标准换行符)</p>
+<p>而start.sh是要在Linux中运行的，所以换行符要为LF(即下图右下角)<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506192035857.png" alt="image-20250619203531713"></p>
+<p>第二就是环境附件没给Java8这个目录，所以我在Windows上把我java8的jdk复制进去了，最后发现Windows版的在Linux中不兼容，运行不了，换成linux版的jdk就成功了。</p>
+<p>附件是一个类，hint说给出的源码进行了混淆，用的环境是mysql-connector-8.0.28</p>
+<p>下图是用idea直接打开class文件</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221317423.png" alt="image-20250622131745301"></p>
+<p>但是如果用jadx对其进行反编译</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506221318518.png" alt="image-20250622131806419"></p>
+<p>这个类很明显是对传入的数据库连接语句进行了一些黑名单检测</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506192049578.png" alt="image-20250619204923528"></p>
+<p>有个jdbc路由</p>
+<h3 id="做题过程"><a href="#做题过程" class="headerlink" title="做题过程"></a>做题过程</h3><p>当mysql版本为8.x时的攻击payload是<code>jdbc:mysql://127.0.0.1:3306/test?autoDeserialize=true&amp;queryInterceptors=com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor&amp;user=yso_JRE8u20_calc</code></p>
+<p>而autoDeserialize被ban了</p>
+<p>而autoDeserialize字段的作用是当执行<code>SHOW SESSION</code>读取到的结果集的第一，二列有blob类型的值时，自动反序列化。</p>
+<p>意思是如果没这个字段了读取了就读取了，而反序列化就是这个漏洞的漏洞点，漏洞点不能替换，所以我认为要么找到一个新的字段能够触发反序列化，要么对黑名单检测进行绕过</p>
+<p>但是我没发现有啥地方说了有哪些依赖</p>
+<p>我看题目给的jar包，好像一条yso能用的链子都没有</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506201509795.png" alt="image-20250620150914679"></p>
+<p>这里可以看到username和password并没有合并到connection的url里面。所以可用参数只有host,port,database</p>
+<p>反编译一下给的jar包，调试发现extraparam参数要key:value的格式，根据&amp;分割参数通过putVal将key计算hash值后放进map中。</p>
+<p>所以user可以放进extraparams,但是因为是通过hash计算放进map中的，放的位置位于下图(不知道这样能不能成功识别user)<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506201708048.png"></p>
+<p>但是我还是不知道如何绕过autodeserialize检测</p>
+<p>nm原来url编码就能绕过</p>
+<p>mysql-connection有另一种连接url的格式<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202506202231897.png" alt="image-20250620223145747"></p>
+<p>将所有属性都写成ADDRESS&#x3D;(host&#x3D;)()并对其进行url编码就能绕过。</p>
+<p>然后用mysql-fake-server进行文件读取就行，但是我不知道为什么读不了，到connection那一步就一直转圈</p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/06/23/%E6%B5%85%E5%AD%A6%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title"></h3>
+      </div>
+    </a>
+    
+    <a class="prev"></a>
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/friends" class="item">Friends</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
