@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   
-  <title>Archives: 2025 - DashingBug</title>
+  <title>CakePHP-POP链 - DashingBug</title>
   
     <link rel="shortcut icon" href="/./bug.png">
   
@@ -16,13 +16,17 @@
   
   
   
-  <meta property="og:title" content="Archives: 2025 - DashingBug" />
+  <meta property="og:title" content="CakePHP-POP链 - DashingBug" />
   
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   
-  <meta property="og:url" content="http://dashingbug.xin/archives/2025/index.html" />
+  <meta property="og:url" content="http://dashingbug.xin/2025/07/07/CakePHP-POP%E9%93%BE/index.html" />
   
   <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-07-06T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
   
   
 
@@ -105,10 +109,6 @@
   
   
   
-<link rel="stylesheet" href="/css/archive.css">
-
-  
-  
   
   
   
@@ -189,101 +189,88 @@
 </nav>
 
     <main id="main-content">
-      <div>
+      
+<article class="post">
   <div class="meta">
-    <div class="date">
-      
-      
-    </div>
+    
 
-    <h2 class="title">
-      
-      
-      Archives
-    </h2>
+    
+    <time class="date" datetime="2025-07-07T00:00:00+08:00">
+      July 7, 2025
+    </time>
+    
+
+    <h1 class="title">CakePHP-POP链</h1>
   </div>
-</div>
 
-<div class="container">
-  <div class="post-list archives">
+  <div class="content">
+    <p>当php&gt;&#x3D;7.1.0时，不能无参调用有参函数，会直接Fatal Error</p>
+<p>当php&lt;&#x3D;7.0.33时，可以无参调用有参函数，只是会有一个Warning</p>
+<h2 id="CakePHP"><a href="#CakePHP" class="headerlink" title="CakePHP&lt;&#x3D;4.2.8"></a>CakePHP&lt;&#x3D;4.2.8</h2><h3 id="第一处"><a href="#第一处" class="headerlink" title="第一处"></a>第一处</h3><p>位于vendor\cakephp\cakephp\src\Mailer\Transport\SmtpTransport.php</p>
+<p>详情请见参考文章</p>
+<h3 id="第二处"><a href="#第二处" class="headerlink" title="第二处"></a>第二处</h3><p>位于vendor\symfony\process\Process.php</p>
+<p>在较新版本的CakePHP中Process#__wakeup是会直接抛出异常的</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071025032.png" alt="image-20250707102510943"></p>
+<p>但下述版本是没有__wakeup限制的</p>
+<p>? &lt; 4.x ≤ 4.2.3<br>? &lt; 3.x ≤ 3.9.6</p>
+<p>Process这个类并不是CakePHP组件的源码，而是symfony组件的，所以要下载完整的CakePHPweb项目包。</p>
+<h4 id="链子"><a href="#链子" class="headerlink" title="链子"></a>链子</h4><p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071225959.png" alt="image-20250707122521902"></p>
+<p>进入stop()</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071227771.png" alt="image-20250707122720706"></p>
+<p>进入isRunning()</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071227494.png" alt="image-20250707122750449"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071228208.png" alt="image-20250707122814153"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071228847.png" alt="image-20250707122845784"></p>
+<p>终于有了一个动态调用，readAndWrite这里可以用来触发__call</p>
+<h5 id="3-x版本利用"><a href="#3-x版本利用" class="headerlink" title="3.x版本利用"></a>3.x版本利用</h5><p>选择的方法vendor\cakephp\cakephp\src\ORM\Table.php#__call</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071234898.png" alt="image-20250707123419831"></p>
+<p>去找谁有危险call函数</p>
+<p>vendor\cakephp\cakephp\src\ORM\BehaviorRegistry.php#call<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071238090.png" alt="image-20250707123818042"></p>
+<p>因为这是动态调用方法，所以我们可以触发任何我们想要的函数，只是参数是定的，为两个bool值</p>
+<p>上图的两个条件判断分别为<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071331881.png" alt="image-20250707133111837"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507071331085.png" alt="image-20250707133123064"></p>
+<p>都是可控的。所以这条链路可以走通。</p>
+<p>因为参数不可控所以最好找个无参或者参数没啥用的函数</p>
+<p>vendor\cakephp\cakephp\src\Shell\ServerShell.php#main</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507072105553.png" alt="image-20250707210226058"></p>
+<p>因为有个system的参数是拼接成的，可以用命令注入</p>
+<h5 id="4-x版本利用"><a href="#4-x版本利用" class="headerlink" title="4.x版本利用"></a>4.x版本利用</h5><p>4.x版本ServerShell被删除了</p>
+<p>新的sink点：vendor\cakephp\cakephp\src\Database\Statement\CallbackStatement.php#fetch</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507072130943.png" alt="image-20250707213023910"></p>
+<p>vendor\cakephp\cakephp\src\Database\Statement\BufferedStatement.php</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507072308234.png" alt="image-20250707230846200"></p>
+<p>上图fetch方法能控制返回值，即上上图的$callback的参数可控了，$callback也是可控的，即任意函数调用</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/9446">CakePHP反序列化POP链挖掘-先知社区</a></p>
+
+  </div>
+
   
-  <article class="post-list-item">
-    <a href="/2025/07/07/CakePHP-POP%E9%93%BE/">
-      
-      <div class="content">
-        
-        <div class="title">
-          CakePHP-POP链
-        </div>
-        
-        
-        <time class="time" datetime="2025-07-07T00:00:00+08:00">
-          July 7, 2025
-        </time>
-        
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    <a class="next"></a>
+    
+    <a href="/2025/06/25/%E6%B5%85%E5%AD%A6%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">浅学原型链污染</h3>
       </div>
     </a>
-  </article>
-  
-  <article class="post-list-item">
-    <a href="/2025/06/25/%E6%B5%85%E5%AD%A6%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/">
-      
-      <div class="content">
-        
-        <div class="title">
-          浅学原型链污染
-        </div>
-        
-        
-        <time class="time" datetime="2025-06-25T00:00:00+08:00">
-          June 25, 2025
-        </time>
-        
-      </div>
-    </a>
-  </article>
-  
-  <article class="post-list-item">
-    <a href="/2025/06/23/OverLong-Encoding/">
-      
-      <div class="content">
-        
-        <div class="title">
-          OverLong-Encoding
-        </div>
-        
-        
-        <time class="time" datetime="2025-06-23T00:00:00+08:00">
-          June 23, 2025
-        </time>
-        
-      </div>
-    </a>
-  </article>
-  
-  <article class="post-list-item">
-    <a href="/2025/06/19/suctf%E5%A4%8D%E7%8E%B0/">
-      
-      <div class="content">
-        
-        <div class="title">
-          suctf复现
-        </div>
-        
-        
-        <time class="time" datetime="2025-06-19T00:00:00+08:00">
-          June 19, 2025
-        </time>
-        
-      </div>
-    </a>
-  </article>
-  
-</div>
+    
+  </div>
 
-</div>
-
-
+  
+    
+    
+  
+</article>
 
 
     </main>
