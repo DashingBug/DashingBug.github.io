@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>浅学RMI - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="浅学RMI - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/09/10/%E6%B5%85%E5%AD%A6RMI/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-09-09T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-09-10T00:00:00+08:00">
+      September 10, 2025
+    </time>
+    
+
+    <h1 class="title">浅学RMI</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RMI攻击手法只对jdk8u121之前有效，在8u121之后，bind,rebind,unbind这三个方法只能对本地进行攻击。</p>
+<h2 id="RMI"><a href="#RMI" class="headerlink" title="RMI"></a>RMI</h2><h3 id="RMI是什么"><a href="#RMI是什么" class="headerlink" title="RMI是什么"></a>RMI是什么</h3><p>RMI全称 Remote Method Invokcation,它允许一个Java程序中的对象调用运行在另一个JVM中的正在运行的对象方法，就像在本地调用一样。两者之间通过底层Socket进行通信。</p>
+<p>RMI使用的通信协议是JRMP(Java Remote Message Protocol),这协议是为Java定制的协议，只能用于两个Java程序之间进行通信。</p>
+<h3 id="RMI主要组成"><a href="#RMI主要组成" class="headerlink" title="RMI主要组成"></a>RMI主要组成</h3><p>RMI主要由三个组件组成Server,Client,Registry.</p>
+<p>Server将想要被调用的对象放置到通过包装放到某个端口之中</p>
+<p>Client通过lookup进行查找</p>
+<p>因为一个远程对象对应了一个Socket,一个Socket对应了一个端口，所以Client想要调用远程对象首先得知道那个对象对应的端口在哪。</p>
+<p>但是Server放置对象是随机放置的，具体端口不容易知道。所以Registry就起到了一个中转作用，Registry一般运行在Server的1099端口，Registry起到了一个类似于Map的作用，将String作为Key,远程对象作为value,Client只需要知道key就能通过Registry获取到一个value的stub。（后面再解释Stub是什么）</p>
+<h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><ol>
+<li>先编写一个远程接口</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">RemoteObj</span> <span class="keyword">extends</span> <span class="title class_">Remote</span>&#123;</span><br><span class="line">    pubilc <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这接口有三个要求</p>
+<ol>
+<li><p>作用域为public</p>
+</li>
+<li><p>继承Remote</p>
+</li>
+<li><p>让其接口中的方法抛出RemoteException</p>
+</li>
+<li><p>接下来定义该接口的实现类</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RemoteImpl</span> <span class="keyword">extends</span> <span class="title class_">UnicastRemoteObject</span> <span class="keyword">implements</span> <span class="title class_">RemoteObj</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RemoteImpl</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现类的要求</p>
+<ol>
+<li><p>实现远程接口</p>
+</li>
+<li><p>继承UnicastObject</p>
+</li>
+<li><p>构造函数抛出RemoteException</p>
+</li>
+<li><p>实现类中所有使用的对象都得实现Serialize接口，因为Server和Client是通过序列化进行数据传输</p>
+</li>
+<li><p>接下来注册远程对象</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Server</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line">        <span class="type">RemoteImpl</span> <span class="variable">remote</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RemoteImpl</span>();</span><br><span class="line">        <span class="type">Registry</span> <span class="variable">registry</span> <span class="operator">=</span> LocateRegistry.createRegistry(<span class="number">1099</span>);</span><br><span class="line">        registry.rebind(<span class="string">&quot;Impl&quot;</span>, remote);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此服务端就写好了</p>
+<p>客户端只需去Registry那获取对象即可，但是因为要给获取到的对象一个编译类型，所以客户端也得有一个RemoteObj接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">RemoteObj</span> <span class="keyword">extends</span> <span class="title class_">Remote</span>&#123;</span><br><span class="line">    pubilc <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="从Wireshark抓包分析RMI通信流程"><a href="#从Wireshark抓包分析RMI通信流程" class="headerlink" title="从Wireshark抓包分析RMI通信流程"></a>从Wireshark抓包分析RMI通信流程</h2><p>这部分是复制的其他师傅的文章，讲的非常好</p>
+<h3 id="数据端与注册中心（1099-端口）建立通讯"><a href="#数据端与注册中心（1099-端口）建立通讯" class="headerlink" title="数据端与注册中心（1099 端口）建立通讯"></a>数据端与注册中心（1099 端口）建立通讯</h3><ul>
+<li>客户端查询需要调用的函数的远程引用，注册中心返回远程引用和提供该服务的服务端 IP 与端口。</li>
+</ul>
+<p><img src="https://drun1baby.top/2022/07/19/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BRMI%E4%B8%93%E9%A2%9801-RMI%E5%9F%BA%E7%A1%80/registerCall.png" alt="img"></p>
+<p>数据端与注册中心（1099 端口）建立通讯完成后，RMI Server 向远端发送了⼀个 “Call” 消息，远端回复了⼀个 “ReturnData” 消息，然后 RMI Server 端新建了⼀个 TCP 连接，连到远端的 33769 端⼝</p>
+<p><img src="https://drun1baby.top/2022/07/19/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BRMI%E4%B8%93%E9%A2%9801-RMI%E5%9F%BA%E7%A1%80/registerCode.png" alt="img"></p>
+<p><code>AC ED 00 05</code>是常见的 Java 反序列化 16 进制特征<br>注意以上两个关键步骤都是使用序列化语句</p>
+<h3 id="客户端新起一个端口与服务端建立-TCP-通讯"><a href="#客户端新起一个端口与服务端建立-TCP-通讯" class="headerlink" title="客户端新起一个端口与服务端建立 TCP 通讯"></a>客户端新起一个端口与服务端建立 TCP 通讯</h3><p>客户端发送远程引用给服务端，服务端返回函数唯一标识符，来确认可以被调用</p>
+<p><img src="https://drun1baby.top/2022/07/19/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BRMI%E4%B8%93%E9%A2%9801-RMI%E5%9F%BA%E7%A1%80/Client2Server.png" alt="img"></p>
+<p>同样使用序列化的传输形式</p>
+<p>以上两个过程对应的代码是这两句</p>
+<p>JAVA</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Registry registry = LocateRegistry.getRegistry(&quot;127.0.0.1&quot;, 1099);  </span><br><span class="line">RemoteObj remoteObj = (RemoteObj) registry.lookup(&quot;remoteObj&quot;); // 查找远程对象</span><br></pre></td></tr></table></figure>
+
+<p>这里会返回一个 Proxy 类型函数，这个 Proxy 类型函数会在我们后续的攻击中用到。</p>
+<h3 id="客户端序列化传输调用函数的输入参数至服务端"><a href="#客户端序列化传输调用函数的输入参数至服务端" class="headerlink" title="客户端序列化传输调用函数的输入参数至服务端"></a>客户端序列化传输调用函数的输入参数至服务端</h3><ul>
+<li>这一步的同时：服务端返回序列化的执行结果至客户端</li>
+</ul>
+<p><img src="https://drun1baby.top/2022/07/19/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BRMI%E4%B8%93%E9%A2%9801-RMI%E5%9F%BA%E7%A1%80/returnResult.png" alt="img"></p>
+<p>以上调用通讯过程对应的代码是这一句</p>
+<p>JAVA</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remoteObj.sayHello(&quot;hello&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>可以看出所有的数据流都是使用序列化传输的，那必然在客户端和服务带都存在反序列化的语句。</p>
+<h3 id="总结一下-RMI-的通信原理"><a href="#总结一下-RMI-的通信原理" class="headerlink" title="总结一下 RMI 的通信原理"></a>总结一下 RMI 的通信原理</h3><p>实际建⽴了两次 TCP 连接，第一次是去连 1099 端口的；第二次是由服务端发送给客户端的。</p>
+<p>在第一次连接当中，是客户端连 Registry 的，在其中寻找 Name 为 hello 的对象，这个对应数据流中的 Call 消息；然后 Registry 返回⼀个序列化的数据，这个就是找到的 <code>Name=Hello</code> 的对象，这个对应数据流中的ReturnData消息。</p>
+<p>到了第二次连接，服务端发送给客户端 Call 的消息。客户端反序列化该对象，发现该对象是⼀个远程对象，地址在 172.17.88.209:24429，于是再与这个地址建⽴ TCP 连接；在这个新的连接中，才执⾏真正远程⽅法调⽤，也就是 <code>sayHello()</code></p>
+<p>RMI Registry 就像⼀个⽹关，他⾃⼰是不会执⾏远程⽅法的，但 RMI Server 可以在上⾯注册⼀个 Name 到对象的绑定关系；RMI Client 通过 Name 向 RMI Registry 查询，得到这个绑定关系，然后再连接 RMI Server；最后，远程⽅法实际上在 RMI Server 上调⽤。</p>
+<p>原理图如图</p>
+<p><img src="https://drun1baby.top/2022/07/19/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BRMI%E4%B8%93%E9%A2%9801-RMI%E5%9F%BA%E7%A1%80/RMIOriginal.png" alt="#"></p>
+<p>那么我们可以确定 RMI 是一个基于序列化的 Java 远程方法调用机制。</p>
+<p>通过这一部分我们就可以知道</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">RemoteObj</span> <span class="variable">remoteobj</span> <span class="operator">=</span> (RemoteObj) registry.lookup(<span class="string">&quot;Impl&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这一条语句Client向Registry发送数据包，Registry返回序列化的对象(这个对象就是前文提到的stub)，对象中包含了远程对象的地址，Client接收到了之后对其进行了反序列化，并赋值给了remoteobj</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remoteobj.hello();</span><br></pre></td></tr></table></figure>
+
+<p>这条语句就是Client发送序列化后的信息，Server反序列化并调用hello(),再将输出的结果序列化后返回给Client.</p>
+<p>Registry就是一个地址簿，Server告诉他远程对象的名字是什么，地址在哪。Client问Registry它想找的远程对象的地址在哪，Registry告诉Client它地址，最后Client与Server进行直接通信，至于为什么最开始Client不与Server直接通信，前文已经说过，因为Server分配远程对象端口时是随机分配的。</p>
+<h2 id="RMI通讯原理源码分析"><a href="#RMI通讯原理源码分析" class="headerlink" title="RMI通讯原理源码分析"></a>RMI通讯原理源码分析</h2><h3 id="Server端如何发布远程对象"><a href="#Server端如何发布远程对象" class="headerlink" title="Server端如何发布远程对象"></a>Server端如何发布远程对象</h3><p>这部分对应的是蓝色行的语句<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111537818.png" alt="image-20250911153716721"></p>
+<p>步入，因为RemoteImpl构造函数什么都没写所以直接进入其父类的构造函数，前文我们构造这个Impl时让其继承了UnicastRemoteObject</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111542799.png" alt="image-20250911154230748"></p>
+<p>这里传入的port为0代表了随机端口</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111543059.png" alt="image-20250911154347018"></p>
+<p>exportObject函数很关键，就是这个函数将对象绑定到随机端口上。</p>
+<p>继续调试</p>
+<p>步入UnicastRemoteObject.exportObject(Remote,port)</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111548403.png" alt="image-20250911154845345"></p>
+<p>可以看到这里创建了一个Ref,步入看看</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111549742.png" alt="image-20250911154947688"></p>
+<p>先看看super干了什么</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111550261.png" alt="image-20250911155027213"></p>
+<p>将这个新建的LiveRef赋值给UnicastServerRef的父类UnicastRef.ref，要注意的是LiveRef至始至终只会存在一个</p>
+<p>LiveRef的创建过程就不细看了，看一下创建好了的LiveRef的属性</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111556506.png" alt="image-20250911155650446"></p>
+<p>可以看到liveRef装着一个对应着Server端某个随机端口的TCPEndpoint</p>
+<p>TCPEndpoint类封装了一些TCP的东西，只需要调用它的方法就可以使Client和Server通信。现在有了这个远程对象对应的TCPEndpoint.</p>
+<p>创建好UnicastServerRef后，回到</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111602475.png" alt="image-20250911160206437"></p>
+<p>步入</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111606155.png" alt="image-20250911160622098"></p>
+<p>将UnicastServerRef赋值给UnicastRemoteObject.ref(其实UnicastRemoteObject没有ref,这是赋值给它的父类RemoteObject.ref),调用UnicastServerRef.exportObject()</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509111616611.png" alt="image-20250911161637498"></p>
+<p>这里出现了Stub,可以看到stub其实就是一个动态代理对象Proxy，下面还有个将各种对象封装起来的Target,步入209行ref.exportObject(target)此处的Ref就是之前创建的LiveRef</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112053684.png" alt="image-20250911205304633"></p>
+<p>调用LiveRef.ep.exportObject()即TCPEndpoint.exportObject()，TCPEndpoint这个类前文已经提过</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112103101.png" alt="image-20250911210305060"></p>
+<p>TCPEndpoint.transport是一个TCPTransport</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112109625.png" alt="image-20250911210907530"></p>
+<p>注意看上图的绿字，翻译过来就是将对象暴露出去从而能接收传入的调用，进入listen函数</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112114326.png" alt="image-20250911211407239"></p>
+<p>335行步入newServerSocket()</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112136876.png" alt="image-20250911213600827"></p>
+<p>光标所指的函数就是随机分配一个port给这个ServerSocket,与我们前文提到的Server端会随机为对象分配一个端口对应了</p>
+<p>回到listen函数,注意341-344行，进入AcceptLoop构造函数。因为AcceptLoop实现了Runnable接口，所以new NewThreadAction()在new AcceptLoop后会调用acceptLoop.run(),进入executeAcceptLoop()</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112115108.png" alt="image-20250911211516023"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112118944.png" alt="image-20250911211851868"></p>
+<p>还是注意上面的绿字。接收服务端的连接，并在线程池中为其执行处理程序，因为在listen函数中是为AcceptLoop.run()单开了一个线程的。</p>
+<p>所以listen()的作用其实就是监听随机分配的端口</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112156309.png" alt="image-20250911215653196"></p>
+<p>可以看到现在ref中port有值了，不再是之前的0了，进入super.exportObject</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509112159594.png" alt="image-20250911215957540"></p>
+<p>这两条语句就是把target的信息放进一些map里，与日志相当。</p>
+<p>以上就是Server发布远程服务的大致过程。</p>
+<p>小结一下，我对这个发布远程服务的大致印象是要发布的类继承了UnicastRemoteObject,在实例化的过程中调用了其父类的构造函数，之后的流程就是不断地调用不同类的exportObject方法，最终创建了一个ServerSocket并且将要封装了各种各样的类的target对象给绑定在了一起，在RMI流程中很重要的stub在这一环节被创建了，是一个动态代理类。</p>
+<h3 id="注册中心如何被发布"><a href="#注册中心如何被发布" class="headerlink" title="注册中心如何被发布"></a>注册中心如何被发布</h3><p>其实注册中心Registry与远程对象发布流程几乎一模一样</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151357859.png" alt="image-20250915135721752"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151358365.png" alt="image-20250915135804251"></p>
+<p>因为没有安全管理器所以直接进入else，可以看到这里也创建了一个LiveRef</p>
+<p>进入setup</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151359826.png" alt="image-20250915135945752"></p>
+<p>后面跟远程对象的流程几乎一模一样</p>
+<p>不停调用别的类的exportObject</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151400778.png" alt="image-20250915140040649"></p>
+<p>但是这里因为RegistryImpl的特殊性，创建stub的步骤有点不一样，进入createProxy</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151401538.png" alt="image-20250915140152394"></p>
+<p>发布自定义远程对象时这个判断是false直接跳过，但是进入这个判断看一下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151402614.png" alt="image-20250915140249515"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151411520.png" alt="image-20250915141151461"></p>
+<p>返回true</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151637854.png" alt="image-20250915163756734"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151638173.png" alt="image-20250915163827064"></p>
+<p>返回了RegistryImpl_Stub实例</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151639876.png" alt="image-20250915163924761"></p>
+<p>这一步是发布自定义类没有的，因为Proxy没有实现RemoteStub,但是RegistryImpl_Stub实现了</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151640888.png" alt="image-20250915164040765"></p>
+<p>Skeleton是干嘛的暂时别管，后面会解释。withoutSkeleton现在也是空的，进入createSkeleton<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151643105.png" alt="image-20250915164336021"></p>
+<p>很简单，就是加载RegistryImpl_Skel并实例化</p>
+<p>回到exportObject可以看到后面的Target和LiveRef.exportObject和发布远程自定义类一模一样。后面的环节就不赘述了</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151652286.png" alt="image-20250915165248246"></p>
+<p>再看下这句</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151653057.png" alt="image-20250915165328929"></p>
+<p>bindings就是一个HashTable,将名字和对象放进去而已。</p>
+<h3 id="客户端与注册中心的交互-客户端"><a href="#客户端与注册中心的交互-客户端" class="headerlink" title="客户端与注册中心的交互-客户端"></a>客户端与注册中心的交互-客户端</h3><p>RMI中客户端去找远程对象进行调用最开始是去找Registry</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151706159.png" alt="image-20250915170648028"></p>
+<p>跟注册中心创建RegistryImpl_Stub的流程一样，Util.createProxy返回了一个RegistryImpl_Stub，所以说registry其实是RegistryImpl_Stub</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151708990.png" alt="image-20250915170849913"></p>
+<p>获取到了RegistryImpl_Stub,接下来进行查找</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151739335.png" alt="image-20250915173957258"></p>
+<p>进入newCall看看</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509151741315.png" alt="image-20250915174113198"></p>
+<p>LiveRef.getChannel获取了一个管道，new Connection与目标对象创建了连接</p>
+<p>最后返回了StreamRemoteCall这个类其实也是对Connection的封装，</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509160959308.png" alt="image-20250916095912198"></p>
+<p>可以看到这个类的方法名大多都是对connection中输入输出流的操作</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161000500.png" alt="image-20250916100032383"></p>
+<p>回到lookup继续调试</p>
+<p>获取call后之后再获取call中的输出流并写入我们要查找的对象名，进入ref.invoke看看</p>
+<p>invoke调用了executeCall,这个函数大致分为两部分</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161030092.png" alt="image-20250916103056004"></p>
+<p>第一部分释放输出流并读取输入流前面几个字节，根据返回的类型returnType决定后面的操作</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161032029.png" alt="image-20250916103223905"></p>
+<p>可以看到如果返回的类型是个异常，就会反序列化这个类，如果说Registry是个恶意的Registry，这里就存在反序列化漏洞了。</p>
+<p>回到lookup</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161036216.png" alt="image-20250916103607079"></p>
+<p>这里也存在一个反序列化洞，但是这个洞没有刚才那里用途广泛，因为这是写在lookup里面的，而ref.invoke在RegistryImpl_Stub#bind&#x2F;rebind&#x2F;list&#x2F;lookup&#x2F;unbind都有，因为ref.invoke(call)是用来与Registry实现通信的</p>
+<p>lookup最后返回反序列化的对象</p>
+<h3 id="客户端与服务端交互-客户端"><a href="#客户端与服务端交互-客户端" class="headerlink" title="客户端与服务端交互-客户端"></a>客户端与服务端交互-客户端</h3><p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161222056.png" alt="image-20250916122222941"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161224680.png" alt="image-20250916122456583"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161225759.png" alt="image-20250916122515694"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161225984.png" alt="image-20250916122546821"></p>
+<p>序列化调用方法的参数</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161226498.png" alt="image-20250916122631368"></p>
+<p>String不属于上面的类型所以writeObject写入输出流中</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509161227335.png" alt="image-20250916122749214"></p>
+<p>反序列化服务端返回的序列化数据</p>
+<h3 id="客户端与注册中心的交互-注册中心"><a href="#客户端与注册中心的交互-注册中心" class="headerlink" title="客户端与注册中心的交互-注册中心"></a>客户端与注册中心的交互-注册中心</h3><p>我累了，以后再学吧</p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/09/17/Spring%E9%80%9A%E6%9D%80%E9%AB%98%E7%89%88%E6%9C%ACjdk/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Spring原生链通杀高版本jdk</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/07/17/Tomcat%E5%86%85%E5%AD%98%E9%A9%AC/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">Tomcat内存马</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
