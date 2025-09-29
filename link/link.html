@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   
-  <title>link - DashingBug</title>
+  <title>DashingBug</title>
   
     <link rel="shortcut icon" href="/./bug.png">
   
@@ -16,11 +16,11 @@
   
   
   
-  <meta property="og:title" content="link - DashingBug" />
+  <meta property="og:title" content="DashingBug" />
   
   <meta property="og:type" content="website" />
   
-  <meta property="og:url" content="http://dashingbug.xin/link/index.html" />
+  <meta property="og:url" content="http://dashingbug.xin/link/link.html" />
   
   <meta property="og:image" content="/favicon.png" />
   
@@ -191,16 +191,232 @@
     
 
     
-    <time class="date" datetime="2025-09-15T22:32:18+08:00">
-      September 15, 2025
+    <time class="date" datetime="2025-09-29T17:12:12+08:00">
+      September 29, 2025
     </time>
     
 
-    <h1 class="title">link</h1>
+    <h1 class="title"></h1>
   </div>
 
   <div class="content">
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>友情链接</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+        
+        /* 页面标题样式 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #222;
+            margin-bottom: 10px;
+        }
+        
+        .page-subtitle {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 友链容器 */
+        .links-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        
+        /* 友链卡片 */
+        .link-card {
+            background: white;
+            border-radius: 4px;
+            padding: 25px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: #222;
+            transition: height 0.3s ease;
+        }
+        
+        .link-card:hover::before {
+            height: 100%;
+        }
+        
+        .link-name {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #222;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .link-name::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #444;
+        }
+        
+        .link-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .link-url {
+            display: inline-block;
+            color: #444;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid #eee;
+            padding: 6px 12px;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+        }
+        
+        .link-url:hover {
+            background: #222;
+            color: white;
+            border-color: #222;
+        }
+        
+        /* 页脚样式 */
+        .page-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 0;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .links-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* 空状态样式 */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <h1 class="page-title">友情链接</h1>
+        <p class="page-subtitle">一些好朋友~</p>
+    </header>
     
+    <main class="links-container">
+        <!-- 友链卡片示例 -->
+        <article class="link-card">
+            <h2 class="link-name">UKFC</h2>
+            <p class="link-desc">UKFC官网</p>
+            <a href="https://ukfc.twilightly.top/" class="link-url" target="_blank">visit website</a>
+        </article>
+
+
+        <article class="link-card">
+            <h2 class="link-name">Mitunlny</h2>
+            <p class="link-desc">Misc&Web</p>
+            <a href="https://czxh.top" class="link-url" target="_blank">visit website</a>
+        </article>
+
+        <article class="link-card">
+            <h2 class="link-name">大鹅</h2>
+            <p class="link-desc">Reverse</p>
+            <a href="https://xxxqfs.github.io/" class="link-url" target="_blank">visit website</a>
+        </article>  
+              
+        <article class="link-card">
+            <h2 class="link-name">xieqwer</h2>
+            <p class="link-desc">Web</p>
+            <a href="https://xieqwer.github.io/" class="link-url" target="_blank">visit website</a>
+        </article>
+
+        <article class="link-card">
+            <h2 class="link-name">loO</h2>
+            <p class="link-desc">Pwn</p>
+            <a href="https://lo-o-github-io.vercel.app/" class="link-url" target="_blank">visit website</a>
+        </article>        
+        
+        <article class="link-card">
+            <h2 class="link-name">aniale</h2>
+            <p class="link-desc">Web</p>
+            <a href="https://aniale.top/blog/" class="link-url" target="_blank">visit website</a>
+        </article>
+        
+        <article class="link-card">
+            <h2 class="link-name">Twansh</h2>
+            <p class="link-desc">nepnep-Web</p>
+            <a href="https://3a0.top/" class="link-url" target="_blank">visit website</a>
+        </article>
+    </main>
+    
+    <footer class="page-footer">
+        <p>© 2025 Dashingbug.</p>
+    </footer>
+</body>
+</html>
   </div>
 
   
