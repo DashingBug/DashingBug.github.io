@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>浅学原型链污染 - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="浅学原型链污染 - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/06/25/%E6%B5%85%E5%AD%A6%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-06-24T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-06-25T00:00:00+08:00">
+      June 25, 2025
+    </time>
+    
+
+    <h1 class="title">浅学原型链污染</h1>
+  </div>
+
+  <div class="content">
+    <p>js中可以直接定义一个构造函数来创建一个实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Dashing</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">bug</span> = <span class="string">&quot;wudi&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">d = <span class="keyword">new</span> <span class="title class_">Dashing</span>()</span><br></pre></td></tr></table></figure>
+
+<p>js中每个对象都有其原型(即[[Prototype]])(类似于Java中的父类)，当调用一个实例的属性或方法时，就会在其自身属性或其_proto_(即[[Prototype]])中去找，_proto_找不到就去_proto_._proto_中找依此类推</p>
+<p>Dashing是一个构造函数，Dashing._<em>proto</em>_ 大部分时候指向Function.prototype</p>
+<p>什么是prototype?</p>
+<p>就是一个构造函数想要其实例有什么属性或方法都会写在construct.prototype属性里面，这样创建每个实例时就不用重复将属性或方法写在实例的属性里了，节省了内存。每个prototype都有constructor属性，指向构造函数自身</p>
+<p>像上方代码块中创建的d实例，d._proto_ &#x3D;Dashing.prototype。</p>
+<p>Dashing.prototype._proto_&#x3D;d._proto_._proto_</p>
+<p>继承语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Dashing</span>(<span class="params"></span>)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Bug</span>(<span class="params"></span>)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">setPrototypeof</span>(<span class="title class_">Dashing</span>.<span class="property"><span class="keyword">prototype</span></span>,<span class="title class_">Bug</span>.<span class="property"><span class="keyword">prototype</span></span>)</span><br><span class="line">d = <span class="keyword">new</span> <span class="title class_">Dashing</span>()</span><br><span class="line">#d.<span class="property">__proto__</span> = <span class="title class_">Dashing</span>.<span class="property"><span class="keyword">prototype</span></span>, d.<span class="property">__proto__</span>.<span class="property">__proto__</span>=<span class="title class_">Bug</span>.即将<span class="title class_">Bug</span>.<span class="property"><span class="keyword">prototype</span></span>赋给了<span class="title class_">Dashing</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">__proto__</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想改变prototype的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Dashing</span>(<span class="params"></span>)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dashing</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">foo</span> = <span class="number">1</span>;</span><br><span class="line">d = <span class="keyword">new</span> <span class="title class_">Dashing</span>();</span><br><span class="line">#这样d.<span class="property">__proto__</span>.<span class="property">foo</span>就等于<span class="number">1</span>了</span><br></pre></td></tr></table></figure>
+
+<p>Object.create()会创建一个新对象，函数第一个参数就是新对象的[[Prototype]]的值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">1</span>&#125;;</span><br><span class="line">b = <span class="title class_">Object</span>.<span class="title function_">create</span>(a);#b.[[<span class="title class_">Prototype</span>]]=a</span><br></pre></td></tr></table></figure>
+
+<p>什么是原型链污染？</p>
+<p>举个例子🌰：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;<span class="string">&#x27;number&#x27;</span>:<span class="number">1</span>&#125;</span><br><span class="line">b=&#123;&#125;</span><br><span class="line">a.<span class="property">__proto__</span>.<span class="property">number</span>=<span class="number">2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">number</span>)#<span class="number">1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b.<span class="property">number</span>)=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>其实就是通过改变某个对象原型链上的原型，使其他有这个原型的原型链也被改变了</p>
+<p>实例对象的__proto__实际上是对constructor.prototype的引用，这俩共享同一内存地址，一个改变另一个就跟着改变</p>
+<p>js大小写特性</p>
+<p>对于toUpperCase函数</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符&quot;ı&quot;、&quot;ſ&quot; 经过toUpperCase处理后结果为 &quot;I&quot;、&quot;S&quot;</span><br></pre></td></tr></table></figure>
+
+<p>对于toLowerCase</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符&quot;K&quot;经过toLowerCase处理后结果为&quot;k&quot;(这个K不是K)</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/361333.html">浅析CTF中的Node.js原型链污染 - FreeBuf网络安全行业门户</a></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/07/07/CakePHP-POP%E9%93%BE/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">CakePHP-POP链</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/06/23/OverLong-Encoding/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">OverLong-Encoding</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

